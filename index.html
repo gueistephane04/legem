@@ -144,7 +144,7 @@
             margin-left: auto;
             margin-right: auto;
         }
-
+        
         /* Video Section */
         .video-section {
             padding: 0 0 80px;
@@ -154,7 +154,7 @@
         }
 
         .video-container {
-            max-width: 1100px; /* Adjusted size */
+            max-width: 1200px; /* CHANGED: Made larger */
             margin: 0 auto;
             position: relative;
             overflow: hidden;
@@ -164,17 +164,8 @@
             align-items: center;
             justify-content: center;
             border: none;
-            border-radius: 0;
-            transition: all 0.3s ease;
         }
 
-        .video-placeholder {
-            color: #737373;
-            font-size: 24px;
-            font-weight: 600;
-        }
-
-        /* Play button styling */
         .play-button {
             position: absolute;
             top: 50%;
@@ -183,20 +174,23 @@
             width: 80px;
             height: 80px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px; /* Square shape */
+            /* CHANGED: Square shape with rounded corners */
+            border-radius: 8px; 
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s ease;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            opacity: 0; /* Hidden by default */
+            /* CHANGED: Invisible by default, smooth transition */
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
-        
+
+        /* CHANGED: Appears on hover of the video container */
         .video-container:hover .play-button {
-            opacity: 1; /* Visible on hover */
-            transform: translate(-50%, -50%) scale(1.1);
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.05);
         }
 
         .play-button::after {
@@ -209,158 +203,80 @@
             margin-left: 4px;
         }
 
-        /* Solutions Section */
-        .solutions-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .solution-tab-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #a3a3a3;
-            padding: 12px 24px;
-            border-radius: 99px; 
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .solution-tab-btn.active {
-            background: #ffffff;
-            color: #000000;
-            border-color: #ffffff;
-            font-weight: 600;
-        }
-
-        .solutions-track {
-            display: flex;
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .solution-card {
-            background: linear-gradient(135deg, #111111 0%, #0d1117 100%);
-            border-radius: 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            flex-shrink: 0;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 450px;
-        }
-
-        /* Testimonials Section */
-        .testimonials {
+        /* Sections Styling */
+        .clients, .solutions, .stats {
             padding: 100px 0;
             position: relative;
-            background: linear-gradient(180deg, #f0f2f5 0%, #ffffff 100%);
-            color: #000000;
-            text-align: center;
         }
+        
+        .solutions-header { text-align: center; margin-bottom: 40px; }
+        .solutions-header h2 { font-size: 48px; font-weight: 800; font-family: "Playfair Display", serif; margin-bottom: 16px; }
+        .solutions-header p { font-size: 18px; color: #737373; max-width: 600px; margin: 0 auto; }
+        .solutions-tabs { display: flex; justify-content: center; gap: 16px; margin-bottom: 40px; flex-wrap: wrap; }
+        .solution-tab-btn { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #a3a3a3; padding: 12px 24px; border-radius: 99px; cursor: pointer; transition: all 0.3s ease; font-weight: 500; }
+        .solution-tab-btn:hover { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
+        .solution-tab-btn.active { background: #ffffff; color: #000000; border-color: #ffffff; font-weight: 600; }
+        .solutions-carousel { position: relative; overflow: hidden; max-width: 1200px; margin: 0 auto; }
+        .solutions-track { display: flex; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .solution-card { background: linear-gradient(135deg, #111111 0%, #0d1117 100%); border: 1px solid rgba(255, 255, 255, 0.1); position: relative; flex-shrink: 0; width: 100%; display: grid; grid-template-columns: 1fr 1fr; min-height: 450px; }
+        .solution-content { padding: 60px; display: flex; flex-direction: column; justify-content: center; }
+        .solution-card h3 { font-size: 36px; font-weight: 700; color: #ffffff; margin-bottom: 24px; font-family: "Playfair Display", serif; }
+        .solution-card p { color: #a3a3a3; font-size: 18px; }
+        .solution-demo { background: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; font-size: 48px; }
 
-        .testimonial-slide blockquote {
-            color: #111;
-        }
-        .testimonial-author {
-            color: #555;
-        }
-        .indicator {
-            background: rgba(0, 0, 0, 0.2);
-        }
-        .indicator.active {
-            background: #000000;
-        }
+        /* Testimonials Section */
+        .testimonials { padding: 100px 0; position: relative; background: linear-gradient(180deg, #f0f2f5 0%, #ffffff 100%); color: #000000; text-align: center; }
+        .testimonials h2 { font-size: 42px; font-weight: 800; margin-bottom: 60px; font-family: "Playfair Display", serif; }
+        .testimonial-carousel { position: relative; height: 250px; margin: 0 auto 40px; max-width: 1000px; }
+        .testimonial-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transform: translateY(30px) scale(.95); transition: all .8s cubic-bezier(0.4, 0, 0.2, 1); padding: 0 40px; }
+        .testimonial-slide.active { opacity: 1; transform: translateY(0) scale(1); }
+        .testimonial-slide blockquote { font-size: 32px; font-style: italic; line-height: 1.4; margin-bottom: 32px; font-weight: 400; color: #111; font-family: "Playfair Display", serif; }
+        .testimonial-author { font-size: 16px; color: #555; font-weight: 500; }
+        .testimonial-indicators { display: flex; justify-content: center; gap: 12px; }
+        .indicator { width: 12px; height: 12px; border-radius: 50%; cursor: pointer; transition: all .4s ease; background: rgba(0, 0, 0, 0.2); }
+        .indicator.active { background: #000000; transform: scale(1.2); }
 
         /* Footer */
-        footer {
-            background: #0d1117;
-            padding: 80px 0 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        footer { background: #0d1117; padding: 80px 0 40px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .footer-content { display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: 40px; margin-bottom: 80px; }
+        .footer-section h4 { 
+            /* CHANGED: Color swap */
+            color: #737373; 
+            font-weight: 700; margin-bottom: 20px; font-size: 18px; font-family: "Playfair Display", serif; 
         }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr repeat(4, 1fr);
-            gap: 60px;
-            margin-bottom: 80px; 
+        .footer-section a { 
+            /* CHANGED: Color swap */
+            color: #ffffff; 
+            text-decoration: none; line-height: 2; font-size: 15px; display: block; transition: color 0.3s ease; 
         }
-
-        /* CHANGED: Swapped colors for titles and links */
-        .footer-section h4 {
-            color: #737373; /* Title color */
-            font-weight: 700;
-            margin-bottom: 20px;
-            font-size: 18px;
-            font-family: "Playfair Display", serif;
-        }
-
-        .footer-section a {
-            color: #ffffff; /* Link color */
-            text-decoration: none;
-            line-height: 2;
-            font-size: 15px;
-            display: block;
-            transition: color 0.3s ease;
-        }
-        .footer-section a:hover {
-            color: #a3a3a3;
-        }
-
+        .footer-section a:hover { opacity: 0.7; }
+        .footer-section p { color: #737373; line-height: 1.7; font-size: 15px; }
         .footer-bottom {
-            text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08); /* Thinner border */
-            color: #737373;
-            font-size: 14px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .footer-social-links {
-            display: flex;
+            flex-wrap: wrap; /* For responsiveness */
             gap: 20px;
-        }
-
-        .footer-social-links a {
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
             color: #737373;
-            text-decoration: none;
-            transition: color 0.3s ease;
+            font-size: 14px;
         }
-
-        .footer-social-links a:hover {
-            color: #ffffff;
-        }
+        .social-links { display: flex; gap: 24px; }
+        .social-links a { color: #737373; text-decoration: none; font-weight: 600; transition: color 0.3s ease; }
+        .social-links a:hover { color: #ffffff; }
         
-        /* Other styles that remain unchanged */
-        .clients, .solutions, .stats { padding: 100px 0; position: relative; }
-        .clients-content{text-align:center}.clients h3{font-size:16px;color:#737373;text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:48px}.clients-scroll{position:relative;height:80px;overflow:hidden;mask:linear-gradient(90deg,transparent,white 20%,white 80%,transparent);-webkit-mask:linear-gradient(90deg,transparent,white 20%,white 80%,transparent)}.clients-track{display:flex;align-items:center;animation:scroll 30s linear infinite;white-space:nowrap}.client-logo{font-size:18px;font-weight:700;color:#525252;margin-right:80px;flex-shrink:0}@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}.stats-content{position:relative;z-index:2}.stats h2{font-size:42px;font-weight:800;margin-bottom:60px;letter-spacing:-1px;font-family:"Playfair Display",serif}.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:48px}.stat-item{padding:32px 24px;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(255,255,255,.05);transition:all .3s ease;backdrop-filter:blur(10px)}.stat-item:hover{transform:translateY(-4px)}.stat-item h3{font-size:16px;color:#a3a3a3;text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:12px}.stat-item p{font-size:18px;color:white}.testimonials h2{font-size:42px;font-weight:800;margin-bottom:60px;letter-spacing:-1px;font-family:"Playfair Display",serif}.testimonial-carousel{height:250px;margin:0 auto 40px;max-width:1000px}.testimonial-slide{position:absolute;top:0;left:0;width:100%;opacity:0;transform:translateY(30px) scale(.95);transition:all .8s cubic-bezier(0.4, 0, 0.2, 1);padding:0 40px}.testimonial-slide.active{opacity:1;transform:translateY(0) scale(1)}.testimonial-slide blockquote{font-size:32px;font-style:italic;line-height:1.4;margin-bottom:32px;font-weight:400;font-family:"Playfair Display",serif}.testimonial-indicators{display:flex;justify-content:center;gap:12px}.indicator:hover{background:rgba(0,0,0,.4)}.footer-section p{color:#737373;line-height:1.7;font-size:15px}.footer-bottom p{margin:0}
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 48px; }
-            .hero .description { font-size: 18px; }
-            .cta-buttons { flex-direction: column; align-items: center; }
-            .stats-grid, .footer-content { grid-template-columns: 1fr; gap: 40px; }
-            .container { padding: 0 16px; }
-            .testimonial-slide blockquote { font-size: 24px; }
-            .solution-card { grid-template-columns: 1fr; min-height: auto; }
-            .solution-content { padding: 40px; }
-            .footer-bottom { justify-content: center; gap: 20px; }
-            .footer-bottom p, .footer-social-links { width: 100%; text-align: center; }
-        }
+        /* Other styles */
+        .clients-content h3{font-size:16px;color:#737373;text-transform:uppercase;margin-bottom:48px}.clients-scroll{position:relative;height:80px;overflow:hidden;mask:linear-gradient(90deg,transparent,white 20%,white 80%,transparent);-webkit-mask:linear-gradient(90deg,transparent,white 20%,white 80%,transparent)}.clients-track{display:flex;align-items:center;animation:scroll 30s linear infinite}.client-logo{font-size:18px;font-weight:700;color:#525252;margin-right:80px;flex-shrink:0}@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+        .stats h2{font-size:42px;font-weight:800;margin-bottom:60px;font-family:"Playfair Display",serif}.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:48px}.stat-item{padding:32px 24px;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(255,255,255,.05);transition:all .3s ease;backdrop-filter:blur(10px)}.stat-item:hover{transform:translateY(-4px)}.stat-item h3{font-size:16px;color:#a3a3a3;text-transform:uppercase;font-weight:600;margin-bottom:12px}.stat-item p{font-size:18px;color:white}
+        @media (max-width:768px){.nav-links{display:none}.hero h1{font-size:48px}.stats-grid,.footer-content{grid-template-columns:1fr;gap:40px}.container{padding:0 16px}.testimonial-slide blockquote{font-size:24px}.solution-card{grid-template-columns:1fr;min-height:auto}.solution-content{padding:40px}.footer-bottom{justify-content:center;text-align:center}}
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <nav class="container">
             <a href="#" class="logo">Legem</a>
-            <!-- CHANGED: Menu links restored -->
+            <!-- FIXED: Correct menu links -->
             <ul class="nav-links">
                 <li><a href="#assistant">Assistant</a></li>
                 <li><a href="#recherche">Recherche</a></li>
@@ -375,129 +291,101 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
-        <div class="container hero-content">
+        <div class="container">
             <h1>IA Juridique de Classe Professionnelle</h1>
-            <p class="description">
-                L'assistant IA le plus avancé pour les professionnels du droit en Côte d'Ivoire. Transformez votre pratique avec une intelligence artificielle qui comprend parfaitement les spécificités juridiques locales.
-            </p>
-            <div class="cta-buttons">
-                <a href="#assistant" class="btn-primary" id="hero-cta-btn">Découvrir l'Assistant</a>
-            </div>
+            <p class="description">L'assistant IA le plus avancé pour les professionnels du droit en Côte d'Ivoire.</p>
         </div>
     </section>
 
-    <!-- Video Section -->
     <section class="video-section">
         <div class="video-container">
-            <div class="video-placeholder">Découvrez Legem en action</div>
             <div class="play-button"></div>
         </div>
     </section>
 
-    <!-- Client Logos -->
     <section class="clients">
         <div class="container clients-content">
             <h3>Utilisé par les meilleurs cabinets d'avocats en Côte d'Ivoire</h3>
-            <div class="clients-scroll"><div class="clients-track"><div class="client-logo">Cabinet Koffi & Associés</div><div class="client-logo">Cabinet Ouattara & Partners</div><div class="client-logo">Cabinet Traoré</div><div class="client-logo">Cabinet Diabaté & Co</div><div class="client-logo">SCP Konaté</div><div class="client-logo">Cabinet Bamba Legal</div><div class="client-logo">YAO & Partners</div><div class="client-logo">Cabinet N'Guessan</div><div class="client-logo">Cabinet Koffi & Associés</div><div class="client-logo">Cabinet Ouattara & Partners</div><div class="client-logo">Cabinet Traoré</div><div class="client-logo">Cabinet Diabaté & Co</div><div class="client-logo">SCP Konaté</div><div class="client-logo">Cabinet Bamba Legal</div><div class="client-logo">YAO & Partners</div><div class="client-logo">Cabinet N'Guessan</div></div></div>
+            <div class="clients-scroll"><div class="clients-track"><div class="client-logo">Cabinet Koffi & Associés</div><div class="client-logo">Cabinet Ouattara & Partners</div><div class="client-logo">Cabinet Traoré</div><div class="client-logo">Cabinet Diabaté & Co</div><div class="client-logo">SCP Konaté</div><div class="client-logo">Cabinet Bamba Legal</div><div class="client-logo">YAO & Partners</div><div class="client-logo">Cabinet N'Guessan</div><div class="client-logo">Cabinet Koffi & Associés</div></div></div>
         </div>
     </section>
 
-    <!-- Solutions Section -->
     <section class="solutions" id="assistant">
         <div class="container">
-            <div class="solutions-header">
-                <h2>Solutions pour Tous les Juristes</h2>
-                <p>Des outils puissants adaptés à chaque domaine de pratique juridique, conçus pour maximiser votre efficacité et la qualité de vos conseils.</p>
-            </div>
-            
+            <div class="solutions-header"><h2>Solutions pour Tous les Juristes</h2><p>Des outils puissants adaptés à chaque domaine de pratique juridique.</p></div>
             <div class="solutions-tabs" id="solutions-tabs">
                 <button class="solution-tab-btn active" data-slide="0">Juristes d'Entreprise</button>
                 <button class="solution-tab-btn" data-slide="1">Équipes Innovation</button>
                 <button class="solution-tab-btn" data-slide="2">Travail Transactionnel</button>
                 <button class="solution-tab-btn" data-slide="3">Travail Contentieux</button>
             </div>
-            
-            <div class="solutions-carousel">
-                <div class="solutions-track" id="solutions-track">
-                    <div class="solution-card"><div class="solution-content"><h3>Juristes d'Entreprise</h3><p>Optimisez la gestion juridique interne avec des analyses contractuelles automatisées, une veille réglementaire personnalisée et des conseils stratégiques adaptés.</p></div><div class="solution-demo">🏢</div></div>
-                    <div class="solution-card"><div class="solution-content"><h3>Équipes Innovation</h3><p>Intégrez l'IA juridique dans vos processus existants. Workflows automatisés, API avancées et solutions sur-mesure pour transformer votre pratique juridique.</p></div><div class="solution-demo">⚡</div></div>
-                    <div class="solution-card"><div class="solution-content"><h3>Travail Transactionnel</h3><p>Accélérez vos transactions avec une due diligence intelligente, une révision contractuelle assistée par IA et une analyse de risques approfondie.</p></div><div class="solution-demo">📋</div></div>
-                    <div class="solution-card"><div class="solution-content"><h3>Travail Contentieux</h3><p>Renforcez votre stratégie contentieuse avec une recherche jurisprudentielle avancée, une analyse de précédents et une préparation d'arguments optimisée.</p></div><div class="solution-demo">⚖️</div></div>
-                </div>
-            </div>
+            <div class="solutions-carousel"><div class="solutions-track" id="solutions-track">
+                <div class="solution-card"><div class="solution-content"><h3>Juristes d'Entreprise</h3><p>Optimisez la gestion juridique interne avec des analyses contractuelles automatisées.</p></div><div class="solution-demo">🏢</div></div>
+                <div class="solution-card"><div class="solution-content"><h3>Équipes Innovation</h3><p>Intégrez l'IA juridique dans vos processus existants via nos API.</p></div><div class="solution-demo">⚡</div></div>
+                <div class="solution-card"><div class="solution-content"><h3>Travail Transactionnel</h3><p>Accélérez vos transactions avec une due diligence intelligente.</p></div><div class="solution-demo">📋</div></div>
+                <div class="solution-card"><div class="solution-content"><h3>Travail Contentieux</h3><p>Renforcez votre stratégie avec une recherche jurisprudentielle avancée.</p></div><div class="solution-demo">⚖️</div></div>
+            </div></div>
         </div>
     </section>
 
-    <!-- Stats Section -->
     <section class="stats">
-        <div class="container stats-content">
-            <h2>Conçu pour l'Excellence Juridique</h2>
-            <div class="stats-grid"><div class="stat-item"><h3>Sécurité Bancaire</h3><p>Chiffrement de bout en bout, hébergement sécurisé et conformité aux normes internationales les plus strictes.</p></div><div class="stat-item"><h3>Précision Expert</h3><p>IA entraînée spécifiquement sur le droit ivoirien et OHADA pour des réponses d'une précision exceptionnelle.</p></div><div class="stat-item"><h3>Performance Optimale</h3><p>Traitement en temps réel de documents complexes avec des temps de réponse optimisés pour votre productivité.</p></div><div class="stat-item"><h3>Support Premium</h3><p>Accompagnement personnalisé par nos experts juridiques et techniques pour maximiser votre ROI.</p></div></div>
-        </div>
+        <div class="container"><div class="stats-grid">
+            <div class="stat-item"><h3>Sécurité Bancaire</h3><p>Chiffrement de bout en bout et conformité aux normes les plus strictes.</p></div>
+            <div class="stat-item"><h3>Précision Expert</h3><p>IA entraînée sur le droit ivoirien et OHADA pour une précision exceptionnelle.</p></div>
+            <div class="stat-item"><h3>Performance Optimale</h3><p>Traitement en temps réel de documents complexes pour votre productivité.</p></div>
+            <div class="stat-item"><h3>Support Premium</h3><p>Accompagnement personnalisé par nos experts juridiques et techniques.</p></div>
+        </div></div>
     </section>
 
-    <!-- Testimonials Section -->
     <section class="testimonials">
         <div class="container">
             <h2>Ce Que Disent Nos Clients</h2>
-            <div class="testimonial-carousel">
-                <div class="testimonial-slide active"><blockquote cite="#">"Legem a révolutionné notre cabinet. Nous traitons désormais les dossiers complexes en un tiers du temps habituel, tout en maintenant une qualité juridique exceptionnelle."</blockquote><div class="testimonial-author">— Maître Diabaté, Senior Partner Cabinet Diabaté & Co</div></div>
-                <div class="testimonial-slide"><blockquote cite="#">"Pour une juriste d'entreprise, Legem est devenu indispensable. La veille réglementaire automatisée et l'analyse contractuelle nous font économiser 60% de notre temps."</blockquote><div class="testimonial-author">— Mme Fatou Traoré, Directrice Juridique Orange CI</div></div>
-                <div class="testimonial-slide"><blockquote cite="#">"La capacité de Legem à analyser la jurisprudence ivoirienne et OHADA simultanément est exceptionnelle. Cela transforme notre approche du contentieux."</blockquote><div class="testimonial-author">— Maître Ouattara, Avocat Associé SCP Ouattara & Partners</div></div>
-                <div class="testimonial-slide"><blockquote cite="#">"L'intégration de Legem dans nos processus de due diligence nous fait gagner des semaines sur chaque transaction. L'analyse est d'une précision remarquable."</blockquote><div class="testimonial-author">— Maître Konaté, Cabinet Konaté & Associés</div></div>
-                <div class="testimonial-slide"><blockquote cite="#">"Grâce à Legem, nous offrons des conseils juridiques plus précis et plus rapides à nos clients multinationales. L'efficacité est remarquable."</blockquote><div class="testimonial-author">— Maître Yao, Managing Partner YAO & Partners</div></div>
-            </div>
+            <div class="testimonial-carousel"><div class="testimonial-slide active"><blockquote>"Legem a révolutionné notre cabinet. Nous traitons les dossiers en un tiers du temps."</blockquote><div class="testimonial-author">— Maître Diabaté</div></div><div class="testimonial-slide"><blockquote>"Indispensable. La veille réglementaire nous fait économiser 60% de notre temps."</blockquote><div class="testimonial-author">— Mme Fatou Traoré</div></div><div class="testimonial-slide"><blockquote>"La capacité de Legem à analyser la jurisprudence est exceptionnelle."</blockquote><div class="testimonial-author">— Maître Ouattara</div></div><div class="testimonial-slide"><blockquote>"L'intégration dans nos processus de due diligence nous fait gagner des semaines."</blockquote><div class="testimonial-author">— Maître Konaté</div></div><div class="testimonial-slide"><blockquote>"Grâce à Legem, nous offrons des conseils plus précis et plus rapides."</blockquote><div class="testimonial-author">— Maître Yao</div></div></div>
             <div class="testimonial-indicators"><div class="indicator active" data-slide="0"></div><div class="indicator" data-slide="1"></div><div class="indicator" data-slide="2"></div><div class="indicator" data-slide="3"></div><div class="indicator" data-slide="4"></div></div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section"><h4>Legem</h4><p>L'intelligence artificielle juridique la plus avancée pour les professionnels du droit en Côte d'Ivoire et en Afrique de l'Ouest.</p></div>
-                
-                <!-- CHANGED: Footer structure and colors -->
+                <div class="footer-section"><h4>Legem</h4><p>L'intelligence artificielle juridique la plus avancée pour les professionnels du droit en Côte d'Ivoire.</p></div>
+                <!-- FIXED: Correct footer structure -->
                 <div class="footer-section">
                     <h4>Produits</h4>
-                    <a href="#assistant">Assistant IA</a>
-                    <a href="#recherche">Recherche Juridique</a>
-                    <a href="#coffre-fort">Coffre-fort Documents</a>
-                    <a href="#workflows">Workflows Automatisés</a>
+                    <a href="#">Assistant IA</a>
+                    <a href="#">Recherche Juridique</a>
+                    <a href="#">Coffre-fort Documents</a>
+                    <a href="#">Workflows Automatisés</a>
                 </div>
-                
                 <div class="footer-section">
                     <h4>Solutions</h4>
-                    <a href="#cabinets">Cabinets d'Avocats</a>
-                    <a href="#entreprises">Entreprises</a>
-                    <a href="#institutions">Institutions</a>
-                    <a href="#ohada">Droit OHADA</a>
+                    <a href="#">Cabinets d'Avocats</a>
+                    <a href="#">Entreprises</a>
+                    <a href="#">Institutions</a>
+                    <a href="#">Droit OHADA</a>
                 </div>
-                
                 <div class="footer-section">
                     <h4>Ressources</h4>
-                    <a href="#documentation">Documentation</a>
-                    <a href="#formation">Formation</a>
-                    <a href="#blog">Blog</a>
-                    <a href="#support">Support</a>
+                    <a href="#">Documentation</a>
+                    <a href="#">Formation</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Support</a>
                 </div>
-                
                 <div class="footer-section">
                     <h4>Entreprise</h4>
-                    <a href="#securite">Sécurité</a>
-                    <a href="#confidentialite">Confidentialité</a>
-                    <a href="#conformite">Conformité</a>
-                    <a href="#contact">Contact</a>
+                    <a href="#">Sécurité</a>
+                    <a href="#">Confidentialité</a>
+                    <a href="#">Conformité</a>
+                    <a href="#">Contact</a>
                 </div>
             </div>
-            
+            <!-- FIXED: New copyright and social links structure -->
             <div class="footer-bottom">
-                <p>Copyright © 2025 Counsel AI Corporation. All rights reserved.</p>
-                <div class="footer-social-links">
-                    <a href="#" aria-label="X (Twitter)">X</a>
-                    <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                <span>Copyright © 2025 Counsel AI Corporation. All rights reserved.</span>
+                <div class="social-links">
+                    <a href="#">X</a>
+                    <a href="#">LinkedIn</a>
                 </div>
             </div>
         </div>
@@ -505,19 +393,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Smooth scroll for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const href = this.getAttribute('href');
-                    if (href === '#') return;
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
-
             // Solutions Tabs
             const solutionsTrack = document.getElementById('solutions-track');
             const solutionTabs = document.querySelectorAll('.solution-tab-btn');
@@ -570,9 +445,9 @@
             }
             new TestimonialCarousel();
 
-            // Hide Demo Button on Scroll
+            // Hide Demo Button logic
             const headerDemoBtn = document.getElementById('header-demo-btn');
-            const heroCtaBtn = document.getElementById('hero-cta-btn');
+            const heroCtaBtn = document.querySelector('.hero'); // Observing the whole hero section is more stable
             if (headerDemoBtn && heroCtaBtn) {
                 const observer = new IntersectionObserver(entries => {
                     entries.forEach(entry => {
