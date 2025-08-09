@@ -28,133 +28,30 @@
         }
 
         /* Header */
-        header {
-            padding: 20px 0;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 36px;
-            font-weight: 800;
-            color: #ffffff;
-            text-decoration: none;
-            letter-spacing: -1px;
-            font-family: "Playfair Display", serif;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: #a3a3a3;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #ffffff;
-        }
-        
-        .auth-buttons {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-        }
-
-        .login-btn {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .login-btn:hover {
-            opacity: 0.8;
-        }
-
-        .demo-btn {
-            background: #ffffff;
-            color: #000000;
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            border: 1px solid transparent;
-            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
-            transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease, color 0.3s ease;
-        }
-
-        .demo-btn:hover {
-            background: transparent;
-            color: #ffffff;
-            border-color: #ffffff;
-            transform: translateY(-1px);
-        }
-        
-        .demo-btn.hidden {
-            opacity: 0;
-            transform: translateY(-10px);
-            pointer-events: none;
-        }
+        header { padding: 20px 0; position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 36px; font-weight: 800; color: #ffffff; text-decoration: none; letter-spacing: -1px; font-family: "Playfair Display", serif; }
+        .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
+        .nav-links a { color: #a3a3a3; text-decoration: none; font-weight: 500; font-size: 15px; transition: all 0.3s ease; }
+        .nav-links a:hover { color: #ffffff; }
+        .auth-buttons { display: flex; gap: 16px; align-items: center; }
+        .login-btn { color: #ffffff; text-decoration: none; font-weight: 500; font-size: 15px; transition: all 0.3s ease; }
+        .demo-btn { background: #ffffff; color: #000000; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; border: 1px solid transparent; box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15); transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease, color 0.3s ease; }
+        .demo-btn:hover { background: transparent; color: #ffffff; border-color: #ffffff; transform: translateY(-1px); }
+        .demo-btn.hidden { opacity: 0; transform: translateY(-10px); pointer-events: none; }
 
         /* Hero Section */
-        .hero {
-            padding: 140px 0 100px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
+        .hero { padding: 160px 0 100px; text-align: center; position: relative; }
+        .hero h1 { font-family: "Playfair Display", serif; font-size: clamp(48px, 8vw, 80px); font-weight: 700; color: #ffffff; line-height: 1.1; letter-spacing: -2px; margin-bottom: 32px; }
+        .hero .description { font-size: 20px; color: #737373; margin-bottom: 48px; max-width: 680px; margin-left: auto; margin-right: auto; }
+        .cta-buttons { display: flex; justify-content: center; }
+        .btn-primary { background: #ffffff; color: #000000; padding: 18px 32px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 16px; transition: all 0.3s ease; border: none; cursor: pointer; box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15); }
+        .btn-primary:hover { background: #f5f5f5; transform: translateY(-2px); }
 
-        .hero h1 {
-            font-family: "Playfair Display", serif;
-            font-size: clamp(48px, 8vw, 80px);
-            font-weight: 700;
-            color: #ffffff;
-            line-height: 1.1;
-            letter-spacing: -2px;
-            margin-bottom: 32px;
-        }
-
-        .hero .description {
-            font-size: 20px;
-            color: #737373;
-            margin-bottom: 48px;
-            max-width: 680px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
         /* Video Section */
-        .video-section {
-            padding: 0 0 80px;
-            margin-top: -60px;
-            position: relative;
-            z-index: 10;
-        }
-
+        .video-section { padding: 0 0 80px; margin-top: -60px; position: relative; z-index: 10; }
         .video-container {
-            max-width: 1200px; /* CHANGED: Made larger */
+            max-width: 1200px;
             margin: 0 auto;
             position: relative;
             overflow: hidden;
@@ -164,51 +61,35 @@
             align-items: center;
             justify-content: center;
             border: none;
+            /* CHANGED: Animation properties for scaling effect */
+            transform: scale(0.9);
+            transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
+        /* CHANGED: New class to trigger the zoom animation */
+        .video-container.in-view {
+            transform: scale(1);
+        }
+        .play-button { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; background: rgba(255, 255, 255, 0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); opacity: 0; transition: opacity 0.3s ease, transform 0.3s ease; }
+        .video-container:hover .play-button { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+        .play-button::after { content: ''; width: 0; height: 0; border-left: 20px solid #ffffff; border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 4px; }
 
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80px;
-            height: 80px;
-            background: rgba(255, 255, 255, 0.1);
-            /* CHANGED: Square shape with rounded corners */
-            border-radius: 8px; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            /* CHANGED: Invisible by default, smooth transition */
-            opacity: 0;
-            transition: opacity 0.3s ease, transform 0.3s ease;
+        /* Clients Section */
+        .clients { padding: 100px 0; }
+        .clients-content h3 {
+            font-size: 16px;
+            color: #737373;
+            text-transform: uppercase;
+            margin-bottom: 48px;
+            /* CHANGED: Left-aligned */
+            text-align: left;
         }
+        .clients-scroll { position: relative; height: 80px; overflow: hidden; mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent); -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent); }
+        .clients-track { display: flex; align-items: center; animation: scroll 30s linear infinite; }
+        .client-logo { font-size: 18px; font-weight: 700; color: #525252; margin-right: 80px; flex-shrink: 0; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
-        /* CHANGED: Appears on hover of the video container */
-        .video-container:hover .play-button {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1.05);
-        }
-
-        .play-button::after {
-            content: '';
-            width: 0;
-            height: 0;
-            border-left: 20px solid #ffffff;
-            border-top: 12px solid transparent;
-            border-bottom: 12px solid transparent;
-            margin-left: 4px;
-        }
-
-        /* Sections Styling */
-        .clients, .solutions, .stats {
-            padding: 100px 0;
-            position: relative;
-        }
-        
+        /* Solutions Section */
+        .solutions { padding: 100px 0; }
         .solutions-header { text-align: center; margin-bottom: 40px; }
         .solutions-header h2 { font-size: 48px; font-weight: 800; font-family: "Playfair Display", serif; margin-bottom: 16px; }
         .solutions-header p { font-size: 18px; color: #737373; max-width: 600px; margin: 0 auto; }
@@ -223,9 +104,18 @@
         .solution-card h3 { font-size: 36px; font-weight: 700; color: #ffffff; margin-bottom: 24px; font-family: "Playfair Display", serif; }
         .solution-card p { color: #a3a3a3; font-size: 18px; }
         .solution-demo { background: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; font-size: 48px; }
+        
+        /* Stats Section */
+        .stats { padding: 100px 0; }
+        .stats h2 { font-size: 42px; font-weight: 800; margin-bottom: 60px; font-family: "Playfair Display", serif; text-align:center; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 48px; }
+        .stat-item { padding: 32px 24px; border: 1px solid rgba(255, 255, 255, .1); border-radius: 16px; background: rgba(255, 255, 255, .05); transition: all .3s ease; backdrop-filter: blur(10px); }
+        .stat-item:hover { transform: translateY(-4px); }
+        .stat-item h3 { font-size: 16px; color: #a3a3a3; text-transform: uppercase; font-weight: 600; margin-bottom: 12px; }
+        .stat-item p { font-size: 18px; color: white; }
 
         /* Testimonials Section */
-        .testimonials { padding: 100px 0; position: relative; background: linear-gradient(180deg, #f0f2f5 0%, #ffffff 100%); color: #000000; text-align: center; }
+        .testimonials { padding: 100px 0; background: linear-gradient(180deg, #f0f2f5 0%, #ffffff 100%); color: #000000; text-align: center; }
         .testimonials h2 { font-size: 42px; font-weight: 800; margin-bottom: 60px; font-family: "Playfair Display", serif; }
         .testimonial-carousel { position: relative; height: 250px; margin: 0 auto 40px; max-width: 1000px; }
         .testimonial-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transform: translateY(30px) scale(.95); transition: all .8s cubic-bezier(0.4, 0, 0.2, 1); padding: 0 40px; }
@@ -239,36 +129,17 @@
         /* Footer */
         footer { background: #0d1117; padding: 80px 0 40px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
         .footer-content { display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: 40px; margin-bottom: 80px; }
-        .footer-section h4 { 
-            /* CHANGED: Color swap */
-            color: #737373; 
-            font-weight: 700; margin-bottom: 20px; font-size: 18px; font-family: "Playfair Display", serif; 
-        }
-        .footer-section a { 
-            /* CHANGED: Color swap */
-            color: #ffffff; 
-            text-decoration: none; line-height: 2; font-size: 15px; display: block; transition: color 0.3s ease; 
-        }
+        .footer-section h4 { color: #737373; font-weight: 700; margin-bottom: 20px; font-size: 18px; font-family: "Playfair Display", serif; }
+        /* CHANGED: Make the first h4 (Legem) larger and white */
+        .footer-section:first-child h4 { color: #ffffff; font-size: 28px; }
+        .footer-section a { color: #ffffff; text-decoration: none; line-height: 2; font-size: 15px; display: block; transition: color 0.3s ease; }
         .footer-section a:hover { opacity: 0.7; }
         .footer-section p { color: #737373; line-height: 1.7; font-size: 15px; }
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap; /* For responsiveness */
-            gap: 20px;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            color: #737373;
-            font-size: 14px;
-        }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.08); color: #737373; font-size: 14px; }
         .social-links { display: flex; gap: 24px; }
         .social-links a { color: #737373; text-decoration: none; font-weight: 600; transition: color 0.3s ease; }
         .social-links a:hover { color: #ffffff; }
         
-        /* Other styles */
-        .clients-content h3{font-size:16px;color:#737373;text-transform:uppercase;margin-bottom:48px}.clients-scroll{position:relative;height:80px;overflow:hidden;mask:linear-gradient(90deg,transparent,white 20%,white 80%,transparent);-webkit-mask:linear-gradient(90deg,transparent,white 20%,white 80%,transparent)}.clients-track{display:flex;align-items:center;animation:scroll 30s linear infinite}.client-logo{font-size:18px;font-weight:700;color:#525252;margin-right:80px;flex-shrink:0}@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
-        .stats h2{font-size:42px;font-weight:800;margin-bottom:60px;font-family:"Playfair Display",serif}.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:48px}.stat-item{padding:32px 24px;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(255,255,255,.05);transition:all .3s ease;backdrop-filter:blur(10px)}.stat-item:hover{transform:translateY(-4px)}.stat-item h3{font-size:16px;color:#a3a3a3;text-transform:uppercase;font-weight:600;margin-bottom:12px}.stat-item p{font-size:18px;color:white}
         @media (max-width:768px){.nav-links{display:none}.hero h1{font-size:48px}.stats-grid,.footer-content{grid-template-columns:1fr;gap:40px}.container{padding:0 16px}.testimonial-slide blockquote{font-size:24px}.solution-card{grid-template-columns:1fr;min-height:auto}.solution-content{padding:40px}.footer-bottom{justify-content:center;text-align:center}}
     </style>
 </head>
@@ -276,7 +147,6 @@
     <header>
         <nav class="container">
             <a href="#" class="logo">Legem</a>
-            <!-- FIXED: Correct menu links -->
             <ul class="nav-links">
                 <li><a href="#assistant">Assistant</a></li>
                 <li><a href="#recherche">Recherche</a></li>
@@ -295,6 +165,10 @@
         <div class="container">
             <h1>IA Juridique de Classe Professionnelle</h1>
             <p class="description">L'assistant IA le plus avancé pour les professionnels du droit en Côte d'Ivoire.</p>
+            <!-- FIXED: The button is back -->
+            <div class="cta-buttons">
+                <a href="#assistant" class="btn-primary" id="hero-cta-btn">Découvrir l'Assistant</a>
+            </div>
         </div>
     </section>
 
@@ -305,9 +179,11 @@
     </section>
 
     <section class="clients">
-        <div class="container clients-content">
-            <h3>Utilisé par les meilleurs cabinets d'avocats en Côte d'Ivoire</h3>
-            <div class="clients-scroll"><div class="clients-track"><div class="client-logo">Cabinet Koffi & Associés</div><div class="client-logo">Cabinet Ouattara & Partners</div><div class="client-logo">Cabinet Traoré</div><div class="client-logo">Cabinet Diabaté & Co</div><div class="client-logo">SCP Konaté</div><div class="client-logo">Cabinet Bamba Legal</div><div class="client-logo">YAO & Partners</div><div class="client-logo">Cabinet N'Guessan</div><div class="client-logo">Cabinet Koffi & Associés</div></div></div>
+        <div class="container">
+            <div class="clients-content">
+                <h3>Utilisé par les meilleurs cabinets d'avocats en Côte d'Ivoire</h3>
+                <div class="clients-scroll"><div class="clients-track"><div class="client-logo">Cabinet Koffi & Associés</div><div class="client-logo">Cabinet Ouattara & Partners</div><div class="client-logo">Cabinet Traoré</div><div class="client-logo">Cabinet Diabaté & Co</div><div class="client-logo">SCP Konaté</div><div class="client-logo">Cabinet Bamba Legal</div><div class="client-logo">YAO & Partners</div><div class="client-logo">Cabinet N'Guessan</div><div class="client-logo">Cabinet Koffi & Associés</div></div></div>
+            </div>
         </div>
     </section>
 
@@ -330,12 +206,15 @@
     </section>
 
     <section class="stats">
-        <div class="container"><div class="stats-grid">
-            <div class="stat-item"><h3>Sécurité Bancaire</h3><p>Chiffrement de bout en bout et conformité aux normes les plus strictes.</p></div>
-            <div class="stat-item"><h3>Précision Expert</h3><p>IA entraînée sur le droit ivoirien et OHADA pour une précision exceptionnelle.</p></div>
-            <div class="stat-item"><h3>Performance Optimale</h3><p>Traitement en temps réel de documents complexes pour votre productivité.</p></div>
-            <div class="stat-item"><h3>Support Premium</h3><p>Accompagnement personnalisé par nos experts juridiques et techniques.</p></div>
-        </div></div>
+        <div class="container">
+            <h2>Conçu pour l'Excellence Juridique</h2>
+            <div class="stats-grid">
+                <div class="stat-item"><h3>Sécurité Bancaire</h3><p>Chiffrement de bout en bout et conformité aux normes les plus strictes.</p></div>
+                <div class="stat-item"><h3>Précision Expert</h3><p>IA entraînée sur le droit ivoirien et OHADA pour une précision exceptionnelle.</p></div>
+                <div class="stat-item"><h3>Performance Optimale</h3><p>Traitement en temps réel de documents complexes pour votre productivité.</p></div>
+                <div class="stat-item"><h3>Support Premium</h3><p>Accompagnement personnalisé par nos experts juridiques et techniques.</p></div>
+            </div>
+        </div>
     </section>
 
     <section class="testimonials">
@@ -350,43 +229,22 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section"><h4>Legem</h4><p>L'intelligence artificielle juridique la plus avancée pour les professionnels du droit en Côte d'Ivoire.</p></div>
-                <!-- FIXED: Correct footer structure -->
                 <div class="footer-section">
-                    <h4>Produits</h4>
-                    <a href="#">Assistant IA</a>
-                    <a href="#">Recherche Juridique</a>
-                    <a href="#">Coffre-fort Documents</a>
-                    <a href="#">Workflows Automatisés</a>
+                    <h4>Produits</h4><a href="#">Assistant IA</a><a href="#">Recherche Juridique</a><a href="#">Coffre-fort Documents</a><a href="#">Workflows Automatisés</a>
                 </div>
                 <div class="footer-section">
-                    <h4>Solutions</h4>
-                    <a href="#">Cabinets d'Avocats</a>
-                    <a href="#">Entreprises</a>
-                    <a href="#">Institutions</a>
-                    <a href="#">Droit OHADA</a>
+                    <h4>Solutions</h4><a href="#">Cabinets d'Avocats</a><a href="#">Entreprises</a><a href="#">Institutions</a><a href="#">Droit OHADA</a>
                 </div>
                 <div class="footer-section">
-                    <h4>Ressources</h4>
-                    <a href="#">Documentation</a>
-                    <a href="#">Formation</a>
-                    <a href="#">Blog</a>
-                    <a href="#">Support</a>
+                    <h4>Ressources</h4><a href="#">Documentation</a><a href="#">Formation</a><a href="#">Blog</a><a href="#">Support</a>
                 </div>
                 <div class="footer-section">
-                    <h4>Entreprise</h4>
-                    <a href="#">Sécurité</a>
-                    <a href="#">Confidentialité</a>
-                    <a href="#">Conformité</a>
-                    <a href="#">Contact</a>
+                    <h4>Entreprise</h4><a href="#">Sécurité</a><a href="#">Confidentialité</a><a href="#">Conformité</a><a href="#">Contact</a>
                 </div>
             </div>
-            <!-- FIXED: New copyright and social links structure -->
             <div class="footer-bottom">
                 <span>Copyright © 2025 Counsel AI Corporation. All rights reserved.</span>
-                <div class="social-links">
-                    <a href="#">X</a>
-                    <a href="#">LinkedIn</a>
-                </div>
+                <div class="social-links"><a href="#">X</a><a href="#">LinkedIn</a></div>
             </div>
         </div>
     </footer>
@@ -406,48 +264,20 @@
             });
 
             // Testimonial Carousel
+            // (Same working code as before)
             class TestimonialCarousel {
-                constructor() {
-                    this.slides = document.querySelectorAll('.testimonial-slide');
-                    this.indicators = document.querySelectorAll('.testimonial-indicators .indicator');
-                    if (this.slides.length === 0) return;
-                    this.currentSlide = 0;
-                    this.intervalId = null;
-                    this.slideInterval = 5500;
-                    this.init();
-                }
-                init() {
-                    this.indicators.forEach((indicator, index) => {
-                        indicator.addEventListener('click', () => this.goToSlide(index));
-                    });
-                    this.startAutoRotation();
-                }
-                goToSlide(slideIndex) {
-                    if (this.intervalId) this.stopAutoRotation();
-                    this.slides[this.currentSlide].classList.remove('active');
-                    this.indicators[this.currentSlide].classList.remove('active');
-                    this.currentSlide = slideIndex;
-                    this.slides[this.currentSlide].classList.add('active');
-                    this.indicators[this.currentSlide].classList.add('active');
-                    this.startAutoRotation();
-                }
-                nextSlide() {
-                    const nextIndex = (this.currentSlide + 1) % this.slides.length;
-                    this.goToSlide(nextIndex);
-                }
-                startAutoRotation() {
-                    this.stopAutoRotation();
-                    this.intervalId = setInterval(() => this.nextSlide(), this.slideInterval);
-                }
-                stopAutoRotation() {
-                    clearInterval(this.intervalId);
-                }
+                constructor(){this.slides=document.querySelectorAll('.testimonial-slide');this.indicators=document.querySelectorAll('.testimonial-indicators .indicator');if(this.slides.length===0)return;this.currentSlide=0;this.intervalId=null;this.slideInterval=5500;this.init()}
+                init(){this.indicators.forEach((indicator,index)=>indicator.addEventListener('click',()=>this.goToSlide(index)));this.startAutoRotation()}
+                goToSlide(slideIndex){if(this.intervalId)this.stopAutoRotation();this.slides[this.currentSlide].classList.remove('active');this.indicators[this.currentSlide].classList.remove('active');this.currentSlide=slideIndex;this.slides[this.currentSlide].classList.add('active');this.indicators[this.currentSlide].classList.add('active');this.startAutoRotation()}
+                nextSlide(){const nextIndex=(this.currentSlide+1)%this.slides.length;this.goToSlide(nextIndex)}
+                startAutoRotation(){this.stopAutoRotation();this.intervalId=setInterval(()=>this.nextSlide(),this.slideInterval)}
+                stopAutoRotation(){clearInterval(this.intervalId)}
             }
             new TestimonialCarousel();
 
             // Hide Demo Button logic
             const headerDemoBtn = document.getElementById('header-demo-btn');
-            const heroCtaBtn = document.querySelector('.hero'); // Observing the whole hero section is more stable
+            const heroCtaBtn = document.getElementById('hero-cta-btn'); // Corrected selector
             if (headerDemoBtn && heroCtaBtn) {
                 const observer = new IntersectionObserver(entries => {
                     entries.forEach(entry => {
@@ -455,6 +285,17 @@
                     });
                 }, { threshold: 0.1 });
                 observer.observe(heroCtaBtn);
+            }
+
+            // NEW: Video Scale-up on Scroll
+            const videoContainer = document.querySelector('.video-container');
+            if (videoContainer) {
+                const videoObserver = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        entry.target.classList.toggle('in-view', entry.isIntersecting);
+                    });
+                }, { threshold: 0.3 });
+                videoObserver.observe(videoContainer);
             }
         });
     </script>
