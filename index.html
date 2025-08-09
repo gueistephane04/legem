@@ -126,21 +126,6 @@
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
         .hero h1 {
             font-family: "Playfair Display", serif;
             font-size: clamp(48px, 8vw, 80px);
@@ -160,30 +145,6 @@
             margin-right: auto;
         }
 
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-        }
-
-        .btn-primary {
-            background: #ffffff;
-            color: #000000;
-            padding: 18px 32px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
-        }
-
-        .btn-primary:hover {
-            background: #f5f5f5;
-            transform: translateY(-2px);
-        }
-
         /* Video Section */
         .video-section {
             padding: 0 0 80px;
@@ -193,7 +154,7 @@
         }
 
         .video-container {
-            max-width: 1100px; /* CHANGED: Made slightly larger */
+            max-width: 1100px; /* Adjusted size */
             margin: 0 auto;
             position: relative;
             overflow: hidden;
@@ -204,6 +165,7 @@
             justify-content: center;
             border: none;
             border-radius: 0;
+            transition: all 0.3s ease;
         }
 
         .video-placeholder {
@@ -212,6 +174,7 @@
             font-weight: 600;
         }
 
+        /* Play button styling */
         .play-button {
             position: absolute;
             top: 50%;
@@ -220,7 +183,7 @@
             width: 80px;
             height: 80px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
+            border-radius: 8px; /* Square shape */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -228,9 +191,11 @@
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0; /* Hidden by default */
         }
-
-        .play-button:hover {
+        
+        .video-container:hover .play-button {
+            opacity: 1; /* Visible on hover */
             transform: translate(-50%, -50%) scale(1.1);
         }
 
@@ -244,32 +209,7 @@
             margin-left: 4px;
         }
 
-        /* Clients, Solutions, Stats Sections */
-        .clients, .solutions, .stats {
-            padding: 100px 0;
-            position: relative;
-        }
-        
         /* Solutions Section */
-        .solutions-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .solutions-header h2 {
-            font-size: 48px;
-            font-weight: 800;
-            font-family: "Playfair Display", serif;
-            margin-bottom: 16px;
-        }
-
-        .solutions-header p {
-            font-size: 18px;
-            color: #737373;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
         .solutions-tabs {
             display: flex;
             justify-content: center;
@@ -283,15 +223,10 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: #a3a3a3;
             padding: 12px 24px;
-            border-radius: 99px;
+            border-radius: 99px; 
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 500;
-        }
-
-        .solution-tab-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
         }
 
         .solution-tab-btn.active {
@@ -299,13 +234,6 @@
             color: #000000;
             border-color: #ffffff;
             font-weight: 600;
-        }
-
-        .solutions-carousel {
-            position: relative;
-            overflow: hidden;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .solutions-track {
@@ -317,74 +245,38 @@
             background: linear-gradient(135deg, #111111 0%, #0d1117 100%);
             border-radius: 0;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
             flex-shrink: 0;
             width: 100%;
             display: grid;
             grid-template-columns: 1fr 1fr;
             min-height: 450px;
         }
-        
-        .solution-content {
-            padding: 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .solution-card h3 { font-size: 36px; font-weight: 700; color: #ffffff; margin-bottom: 24px; font-family: "Playfair Display", serif; }
-        .solution-card p { color: #a3a3a3; font-size: 18px; }
-        .solution-demo { background: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; font-size: 48px; }
 
         /* Testimonials Section */
         .testimonials {
             padding: 100px 0;
             position: relative;
-            /* CHANGED: New background gradient */
             background: linear-gradient(180deg, #f0f2f5 0%, #ffffff 100%);
-            /* CHANGED: New text color for readability */
             color: #000000;
             text-align: center;
         }
 
-        .testimonials h2 {
-            font-size: 42px;
-            font-weight: 800;
-            margin-bottom: 60px;
-            letter-spacing: -1px;
-            font-family: "Playfair Display", serif;
+        .testimonial-slide blockquote {
+            color: #111;
         }
-
-        .testimonial-carousel {
-            position: relative;
-            height: 250px;
-            margin: 0 auto 40px;
-            max-width: 1000px;
+        .testimonial-author {
+            color: #555;
         }
-
-        .testimonial-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            opacity: 0;
-            transform: translateY(30px) scale(.95);
-            transition: all .8s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 0 40px;
+        .indicator {
+            background: rgba(0, 0, 0, 0.2);
         }
-
-        .testimonial-slide.active { opacity: 1; transform: translateY(0) scale(1); }
-        .testimonial-slide blockquote { font-size: 32px; font-style: italic; line-height: 1.4; margin-bottom: 32px; font-weight: 400; color: #111; font-family: "Playfair Display", serif; }
-        .testimonial-author { font-size: 16px; color: #555; font-weight: 500; }
-        
-        .testimonial-indicators { display: flex; justify-content: center; gap: 12px; }
-        .indicator { width: 12px; height: 12px; border-radius: 50%; cursor: pointer; transition: all .4s ease; background: rgba(0, 0, 0, 0.2); }
-        .indicator.active { background: #000000; transform: scale(1.2); }
-        .indicator:hover { background: rgba(0, 0, 0, 0.4); }
+        .indicator.active {
+            background: #000000;
+        }
 
         /* Footer */
         footer {
-            background: #0d1117; /* Simplified background for consistency */
+            background: #0d1117;
             padding: 80px 0 40px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -393,28 +285,74 @@
             display: grid;
             grid-template-columns: 2fr repeat(4, 1fr);
             gap: 60px;
-            /* CHANGED: More space above the bottom bar */
             margin-bottom: 80px; 
         }
 
-        .footer-section h4 { color: #fff; font-weight: 700; margin-bottom: 20px; font-size: 18px; font-family: "Playfair Display", serif; }
-        .footer-section p { color: #737373; line-height: 1.7; font-size: 15px; }
-        .footer-section a { color: #737373; text-decoration: none; line-height: 2; font-size: 15px; display: block; transition: color 0.3s ease; }
-        .footer-section a:hover { color: #ffffff; }
+        /* CHANGED: Swapped colors for titles and links */
+        .footer-section h4 {
+            color: #737373; /* Title color */
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-family: "Playfair Display", serif;
+        }
+
+        .footer-section a {
+            color: #ffffff; /* Link color */
+            text-decoration: none;
+            line-height: 2;
+            font-size: 15px;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        .footer-section a:hover {
+            color: #a3a3a3;
+        }
 
         .footer-bottom {
             text-align: center;
             padding-top: 40px;
-            /* CHANGED: Thinner and more subtle border */
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid rgba(255, 255, 255, 0.08); /* Thinner border */
             color: #737373;
             font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-social-links a {
+            color: #737373;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social-links a:hover {
+            color: #ffffff;
         }
         
-        /* Other styles for brevity, they are unchanged and correct */
-        .clients-content{text-align:center}.clients h3{font-size:16px;color:#737373;text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:48px}.clients-scroll{position:relative;height:80px;overflow:hidden;mask:linear-gradient(90deg,transparent,white 20%,white 80%,transparent);-webkit-mask:linear-gradient(90deg,transparent,white 20%,white 80%,transparent)}.clients-track{display:flex;align-items:center;animation:scroll 30s linear infinite;white-space:nowrap}.client-logo{font-size:18px;font-weight:700;color:#525252;margin-right:80px;flex-shrink:0}@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
-        .stats-content{position:relative;z-index:2}.stats h2{font-size:42px;font-weight:800;margin-bottom:60px;letter-spacing:-1px;font-family:"Playfair Display",serif}.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:48px}.stat-item{padding:32px 24px;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(255,255,255,.05);transition:all .3s ease;backdrop-filter:blur(10px)}.stat-item:hover{transform:translateY(-4px)}.stat-item h3{font-size:16px;color:#a3a3a3;text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:12px}.stat-item p{font-size:18px;color:white}
-        @media (max-width:768px){.nav-links{display:none}.hero h1{font-size:48px}.hero .description{font-size:18px}.cta-buttons{flex-direction:column;align-items:center}.stats-grid,.footer-content{grid-template-columns:1fr;gap:40px}.container{padding:0 16px}.testimonial-slide blockquote{font-size:24px}.solution-card{grid-template-columns:1fr;min-height:auto}.solution-content{padding:40px}}
+        /* Other styles that remain unchanged */
+        .clients, .solutions, .stats { padding: 100px 0; position: relative; }
+        .clients-content{text-align:center}.clients h3{font-size:16px;color:#737373;text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:48px}.clients-scroll{position:relative;height:80px;overflow:hidden;mask:linear-gradient(90deg,transparent,white 20%,white 80%,transparent);-webkit-mask:linear-gradient(90deg,transparent,white 20%,white 80%,transparent)}.clients-track{display:flex;align-items:center;animation:scroll 30s linear infinite;white-space:nowrap}.client-logo{font-size:18px;font-weight:700;color:#525252;margin-right:80px;flex-shrink:0}@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}.stats-content{position:relative;z-index:2}.stats h2{font-size:42px;font-weight:800;margin-bottom:60px;letter-spacing:-1px;font-family:"Playfair Display",serif}.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:48px}.stat-item{padding:32px 24px;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(255,255,255,.05);transition:all .3s ease;backdrop-filter:blur(10px)}.stat-item:hover{transform:translateY(-4px)}.stat-item h3{font-size:16px;color:#a3a3a3;text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:12px}.stat-item p{font-size:18px;color:white}.testimonials h2{font-size:42px;font-weight:800;margin-bottom:60px;letter-spacing:-1px;font-family:"Playfair Display",serif}.testimonial-carousel{height:250px;margin:0 auto 40px;max-width:1000px}.testimonial-slide{position:absolute;top:0;left:0;width:100%;opacity:0;transform:translateY(30px) scale(.95);transition:all .8s cubic-bezier(0.4, 0, 0.2, 1);padding:0 40px}.testimonial-slide.active{opacity:1;transform:translateY(0) scale(1)}.testimonial-slide blockquote{font-size:32px;font-style:italic;line-height:1.4;margin-bottom:32px;font-weight:400;font-family:"Playfair Display",serif}.testimonial-indicators{display:flex;justify-content:center;gap:12px}.indicator:hover{background:rgba(0,0,0,.4)}.footer-section p{color:#737373;line-height:1.7;font-size:15px}.footer-bottom p{margin:0}
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 48px; }
+            .hero .description { font-size: 18px; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .stats-grid, .footer-content { grid-template-columns: 1fr; gap: 40px; }
+            .container { padding: 0 16px; }
+            .testimonial-slide blockquote { font-size: 24px; }
+            .solution-card { grid-template-columns: 1fr; min-height: auto; }
+            .solution-content { padding: 40px; }
+            .footer-bottom { justify-content: center; gap: 20px; }
+            .footer-bottom p, .footer-social-links { width: 100%; text-align: center; }
+        }
     </style>
 </head>
 <body>
@@ -422,9 +360,13 @@
     <header>
         <nav class="container">
             <a href="#" class="logo">Legem</a>
+            <!-- CHANGED: Menu links restored -->
             <ul class="nav-links">
                 <li><a href="#assistant">Assistant</a></li>
                 <li><a href="#recherche">Recherche</a></li>
+                <li><a href="#coffre-fort">Coffre-fort</a></li>
+                <li><a href="#workflows">Workflows</a></li>
+                <li><a href="#entreprise">Entreprise</a></li>
             </ul>
             <div class="auth-buttons">
                 <a href="#login" class="login-btn">Login</a>
@@ -516,13 +458,47 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section"><h4>Legem</h4><p>L'intelligence artificielle juridique la plus avancée pour les professionnels du droit en Côte d'Ivoire et en Afrique de l'Ouest.</p></div>
-                <div class="footer-section"><h4>Produits</h4><a href="#assistant">Assistant IA</a><a href="#">Recherche Juridique</a></div>
-                <div class="footer-section"><h4>Solutions</h4><a href="#">Cabinets d'Avocats</a><a href="#">Juristes d'Entreprise</a></div>
-                <div class="footer-section"><h4>Ressources</h4><a href="#">Documentation</a><a href="#">Blog & Insights</a></div>
-                <div class="footer-section"><h4>Entreprise</h4><a href="#">Sécurité & Conformité</a><a href="#">Nous Contacter</a></div>
+                
+                <!-- CHANGED: Footer structure and colors -->
+                <div class="footer-section">
+                    <h4>Produits</h4>
+                    <a href="#assistant">Assistant IA</a>
+                    <a href="#recherche">Recherche Juridique</a>
+                    <a href="#coffre-fort">Coffre-fort Documents</a>
+                    <a href="#workflows">Workflows Automatisés</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Solutions</h4>
+                    <a href="#cabinets">Cabinets d'Avocats</a>
+                    <a href="#entreprises">Entreprises</a>
+                    <a href="#institutions">Institutions</a>
+                    <a href="#ohada">Droit OHADA</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Ressources</h4>
+                    <a href="#documentation">Documentation</a>
+                    <a href="#formation">Formation</a>
+                    <a href="#blog">Blog</a>
+                    <a href="#support">Support</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Entreprise</h4>
+                    <a href="#securite">Sécurité</a>
+                    <a href="#confidentialite">Confidentialité</a>
+                    <a href="#conformite">Conformité</a>
+                    <a href="#contact">Contact</a>
+                </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>&copy; 2024 Legem. Tous droits réservés. | <a href="#" style="color: inherit;">Politique de confidentialité</a> | <a href="#" style="color: inherit;">Conditions d'utilisation</a></p>
+                <p>Copyright © 2025 Counsel AI Corporation. All rights reserved.</p>
+                <div class="footer-social-links">
+                    <a href="#" aria-label="X (Twitter)">X</a>
+                    <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                </div>
             </div>
         </div>
     </footer>
