@@ -29,9 +29,11 @@
 
         /* Header */
         header { padding: 20px 0; position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
-        nav { display: flex; justify-content: space-between; align-items: center; }
+        /* MODIFIÉ: La nav prend toute la largeur pour bien espacer les éléments */
+        nav { display: flex; align-items: center; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
         .logo { font-size: 36px; font-weight: 800; color: #ffffff; text-decoration: none; letter-spacing: -1px; font-family: "Playfair Display", serif; }
-        .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
+        /* MODIFIÉ: Le menu est centré automatiquement */
+        .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; margin: 0 auto; }
         .nav-links a { color: #a3a3a3; text-decoration: none; font-weight: 500; font-size: 15px; transition: all 0.3s ease; }
         .nav-links a:hover { color: #ffffff; }
         .auth-buttons { display: flex; gap: 16px; align-items: center; }
@@ -51,7 +53,8 @@
         /* Video Section */
         .video-section { padding: 0 0 80px; margin-top: -60px; position: relative; z-index: 10; }
         .video-container {
-            max-width: 1200px;
+            /* MODIFIÉ: La vidéo est plus grande */
+            max-width: 1280px;
             margin: 0 auto;
             position: relative;
             overflow: hidden;
@@ -61,11 +64,9 @@
             align-items: center;
             justify-content: center;
             border: none;
-            /* CHANGED: Animation properties for scaling effect */
             transform: scale(0.9);
             transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
-        /* CHANGED: New class to trigger the zoom animation */
         .video-container.in-view {
             transform: scale(1);
         }
@@ -75,18 +76,26 @@
 
         /* Clients Section */
         .clients { padding: 100px 0; }
-        .clients-content h3 {
+        /* MODIFIÉ: Le titre est maintenant centré et dans le container */
+        .clients h3 {
             font-size: 16px;
             color: #737373;
             text-transform: uppercase;
             margin-bottom: 48px;
-            /* CHANGED: Left-aligned */
-            text-align: left;
+            text-align: center;
         }
-        .clients-scroll { position: relative; height: 80px; overflow: hidden; mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent); -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent); }
-        .clients-track { display: flex; align-items: center; animation: scroll 30s linear infinite; }
-        .client-logo { font-size: 18px; font-weight: 700; color: #525252; margin-right: 80px; flex-shrink: 0; }
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+        /* MODIFIÉ: Le défilement est en pleine largeur */
+        .clients-scroll { 
+            position: relative; 
+            height: 80px; 
+            overflow: hidden; 
+            width: 100%; /* Prend toute la largeur */
+            mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent); 
+            -webkit-mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent); 
+        }
+        .clients-track { display: flex; align-items: center; animation: scroll 40s linear infinite; width: calc(250px * 18); /* Calcul de la largeur pour l'animation */ }
+        .client-logo { font-size: 18px; font-weight: 700; color: #525252; margin-right: 80px; flex-shrink: 0; white-space: nowrap; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } /* Animation sur la moitié pour une boucle parfaite */ }
 
         /* Solutions Section */
         .solutions { padding: 100px 0; }
@@ -127,10 +136,12 @@
         .indicator.active { background: #000000; transform: scale(1.2); }
 
         /* Footer */
-        footer { background: #0d1117; padding: 80px 0 40px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        /* MODIFIÉ: Le footer a maintenant un padding horizontal pour remplacer le container */
+        footer { background: #0d1117; padding: 80px 24px 40px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        /* MODIFIÉ: La grille est maintenant dans un container pour la centrer */
+        .footer-grid-container { max-width: 1280px; margin: 0 auto; }
         .footer-content { display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: 40px; margin-bottom: 80px; }
         .footer-section h4 { color: #737373; font-weight: 700; margin-bottom: 20px; font-size: 18px; font-family: "Playfair Display", serif; }
-        /* CHANGED: Make the first h4 (Legem) larger and white */
         .footer-section:first-child h4 { color: #ffffff; font-size: 28px; }
         .footer-section a { color: #ffffff; text-decoration: none; line-height: 2; font-size: 15px; display: block; transition: color 0.3s ease; }
         .footer-section a:hover { opacity: 0.7; }
@@ -140,12 +151,13 @@
         .social-links a { color: #737373; text-decoration: none; font-weight: 600; transition: color 0.3s ease; }
         .social-links a:hover { color: #ffffff; }
         
-        @media (max-width:768px){.nav-links{display:none}.hero h1{font-size:48px}.stats-grid,.footer-content{grid-template-columns:1fr;gap:40px}.container{padding:0 16px}.testimonial-slide blockquote{font-size:24px}.solution-card{grid-template-columns:1fr;min-height:auto}.solution-content{padding:40px}.footer-bottom{justify-content:center;text-align:center}}
+        @media (max-width:768px){.nav-links{display:none}.hero h1{font-size:48px}.stats-grid,.footer-content{grid-template-columns:1fr;gap:40px}.testimonial-slide blockquote{font-size:24px}.solution-card{grid-template-columns:1fr;min-height:auto}.solution-content{padding:40px}.footer-bottom{justify-content:center;text-align:center}}
     </style>
 </head>
 <body>
+    <!-- MODIFIÉ: La classe .container est maintenant à l'intérieur de la nav -->
     <header>
-        <nav class="container">
+        <nav>
             <a href="#" class="logo">Legem</a>
             <ul class="nav-links">
                 <li><a href="#assistant">Assistant</a></li>
@@ -165,7 +177,6 @@
         <div class="container">
             <h1>IA Juridique de Classe Professionnelle</h1>
             <p class="description">L'assistant IA le plus avancé pour les professionnels du droit en Côte d'Ivoire.</p>
-            <!-- FIXED: The button is back -->
             <div class="cta-buttons">
                 <a href="#assistant" class="btn-primary" id="hero-cta-btn">Découvrir l'Assistant</a>
             </div>
@@ -178,11 +189,32 @@
         </div>
     </section>
 
+    <!-- MODIFIÉ: La structure a changé pour permettre le défilement pleine largeur -->
     <section class="clients">
         <div class="container">
-            <div class="clients-content">
-                <h3>Utilisé par les meilleurs cabinets d'avocats en Côte d'Ivoire</h3>
-                <div class="clients-scroll"><div class="clients-track"><div class="client-logo">Cabinet Koffi & Associés</div><div class="client-logo">Cabinet Ouattara & Partners</div><div class="client-logo">Cabinet Traoré</div><div class="client-logo">Cabinet Diabaté & Co</div><div class="client-logo">SCP Konaté</div><div class="client-logo">Cabinet Bamba Legal</div><div class="client-logo">YAO & Partners</div><div class="client-logo">Cabinet N'Guessan</div><div class="client-logo">Cabinet Koffi & Associés</div></div></div>
+            <h3>Utilisé par les meilleurs cabinets d'avocats en Côte d'Ivoire</h3>
+        </div>
+        <div class="clients-scroll">
+            <div class="clients-track">
+                <div class="client-logo">Cabinet Koffi & Associés</div>
+                <div class="client-logo">Cabinet Ouattara & Partners</div>
+                <div class="client-logo">Cabinet Traoré</div>
+                <div class="client-logo">Cabinet Diabaté & Co</div>
+                <div class="client-logo">SCP Konaté</div>
+                <div class="client-logo">Cabinet Bamba Legal</div>
+                <div class="client-logo">YAO & Partners</div>
+                <div class="client-logo">Cabinet N'Guessan</div>
+                <div class="client-logo">Cabinet Adama</div>
+                <!-- Duplication pour une boucle parfaite -->
+                <div class="client-logo">Cabinet Koffi & Associés</div>
+                <div class="client-logo">Cabinet Ouattara & Partners</div>
+                <div class="client-logo">Cabinet Traoré</div>
+                <div class="client-logo">Cabinet Diabaté & Co</div>
+                <div class="client-logo">SCP Konaté</div>
+                <div class="client-logo">Cabinet Bamba Legal</div>
+                <div class="client-logo">YAO & Partners</div>
+                <div class="client-logo">Cabinet N'Guessan</div>
+                <div class="client-logo">Cabinet Adama</div>
             </div>
         </div>
     </section>
@@ -225,8 +257,9 @@
         </div>
     </section>
 
+    <!-- MODIFIÉ: La classe .container a été enlevée du footer et une nouvelle structure a été ajoutée pour centrer le contenu -->
     <footer>
-        <div class="container">
+        <div class="footer-grid-container">
             <div class="footer-content">
                 <div class="footer-section"><h4>Legem</h4><p>L'intelligence artificielle juridique la plus avancée pour les professionnels du droit en Côte d'Ivoire.</p></div>
                 <div class="footer-section">
@@ -264,7 +297,6 @@
             });
 
             // Testimonial Carousel
-            // (Same working code as before)
             class TestimonialCarousel {
                 constructor(){this.slides=document.querySelectorAll('.testimonial-slide');this.indicators=document.querySelectorAll('.testimonial-indicators .indicator');if(this.slides.length===0)return;this.currentSlide=0;this.intervalId=null;this.slideInterval=5500;this.init()}
                 init(){this.indicators.forEach((indicator,index)=>indicator.addEventListener('click',()=>this.goToSlide(index)));this.startAutoRotation()}
@@ -277,7 +309,7 @@
 
             // Hide Demo Button logic
             const headerDemoBtn = document.getElementById('header-demo-btn');
-            const heroCtaBtn = document.getElementById('hero-cta-btn'); // Corrected selector
+            const heroCtaBtn = document.getElementById('hero-cta-btn'); 
             if (headerDemoBtn && heroCtaBtn) {
                 const observer = new IntersectionObserver(entries => {
                     entries.forEach(entry => {
@@ -287,7 +319,7 @@
                 observer.observe(heroCtaBtn);
             }
 
-            // NEW: Video Scale-up on Scroll
+            // Video Scale-up on Scroll
             const videoContainer = document.querySelector('.video-container');
             if (videoContainer) {
                 const videoObserver = new IntersectionObserver(entries => {
