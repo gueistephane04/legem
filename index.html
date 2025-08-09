@@ -27,8 +27,7 @@
             margin: 0 auto;
             padding: 0 24px;
         }
-
-        /* MODIFICATION 4: Bordure du header invisible par défaut et transition ajoutée */
+        
         header { 
             padding: 20px 0; 
             position: fixed; 
@@ -37,12 +36,12 @@
             z-index: 1000; 
             background: rgba(0, 0, 0, 0.95); 
             backdrop-filter: blur(20px); 
-            border-bottom: 1px solid transparent; /* Bordure transparente par défaut */
-            transition: all 0.3s ease, opacity 0.4s ease; /* Transition pour la bordure et l'opacité */
+            border-bottom: 1px solid transparent; 
+            transition: all 0.3s ease, opacity 0.4s ease; 
         }
-        /* Classe ajoutée via JS au scroll */
+        
         header.scrolled {
-            border-bottom-color: rgba(255, 255, 255, 0.1); /* Bordure visible au scroll */
+            border-bottom-color: rgba(255, 255, 255, 0.1); 
         }
         
         nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; width: 100%; padding: 0 40px; }
@@ -51,8 +50,7 @@
         
         .nav-links { justify-self: center; display: flex; gap: 40px; list-style: none; align-items: center; }
         
-        /* MODIFICATION 2A: Taille de la police réduite de 10% */
-        .nav-links a { color: #ffffff; text-decoration: none; font-weight: 400; font-size: 13.5px; /* Ancien: 15px */ transition: color 0.3s ease; }
+        .nav-links a { color: #ffffff; text-decoration: none; font-weight: 400; font-size: 13.5px; transition: color 0.3s ease; }
         
         nav:hover .nav-links a { color: rgba(255, 255, 255, 0.4); }
         nav .nav-links a:hover { color: #ffffff; }
@@ -64,7 +62,6 @@
         .demo-btn { background: #ffffff; color: #000000; padding: 7.5px 20px; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 14px; border: 1px solid transparent; box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15); transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease; }
         .demo-btn:hover { background: transparent; color: #ffffff; border-color: #ffffff; transform: translateY(-1px); }
 
-        /* Hero Section */
         .hero { padding: 160px 0 100px; text-align: center; position: relative; }
         .hero h1 { font-family: "Playfair Display", serif; font-size: clamp(48px, 8vw, 80px); font-weight: 400; color: #ffffff; line-height: 1.1; letter-spacing: -2px; margin-bottom: 32px; }
         .hero .description { font-size: 20px; color: #737373; margin-bottom: 48px; max-width: 680px; margin-left: auto; margin-right: auto; }
@@ -76,7 +73,6 @@
         .video-section { padding: 0 15% 56px; margin-top: -60px; position: relative; z-index: 10; }
         .video-container { margin: 0 auto; position: relative; overflow: hidden; background: #111111; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; border: none; transform: scale(0.95); transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
         .video-container.in-view { transform: scale(1); }
-        /* MODIFICATION 3: Style pour l'iframe YouTube */
         .video-container iframe {
             position: absolute;
             top: 0;
@@ -135,8 +131,7 @@
         
         .footer-section.legem-block h4 { color: #ffffff; font-size: 28px; font-weight: 500; }
         
-        /* MODIFICATION 2B: Taille de la police réduite de 10% */
-        .footer-section a { color: #ffffff; text-decoration: none; line-height: 2; font-size: 13.5px; /* Ancien: 15px */ display: block; transition: color 0.3s ease; font-weight: 400; }
+        .footer-section a { color: #ffffff; text-decoration: none; line-height: 2; font-size: 13.5px; display: block; transition: color 0.3s ease; font-weight: 400; }
         .footer-section a:hover { opacity: 0.7; }
         .footer-section p { color: #737373; line-height: 1.7; font-size: 15px; max-width: 300px; }
         
@@ -149,19 +144,14 @@
         .mobile-menu { display: none; }
         
         @media (max-width:900px){
-            .nav-links { display:none; }
-            .auth-buttons { display: none; }
+            .nav-links, .auth-buttons { display:none; }
             nav { grid-template-columns: 1fr auto; }
             .logo { justify-self: start; }
-
             .hamburger-menu { display: flex; flex-direction: column; justify-content: space-around; width: 28px; height: 24px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 10; justify-self: end; }
-
             .hamburger-menu .line { width: 28px; height: 2px; background-color: #fff; border-radius: 10px; transition: all 0.3s linear; }
-            
             .mobile-menu { display: flex; flex-direction: column; align-items: center; gap: 30px; padding: 100px 20px 40px; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.98); backdrop-filter: blur(15px); transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
             .mobile-menu.open { transform: translateX(0); }
             .mobile-menu a { color: #ffffff; text-decoration: none; font-weight: 500; font-size: 24px; }
-            
             .footer-content { flex-direction: column; }
         }
 
@@ -169,7 +159,6 @@
             nav, footer { padding-left: 24px; padding-right: 24px; }
             .video-section { padding: 0 24px 56px; }
             .video-container { aspect-ratio: 4/3; }
-
             .hero h1{font-size:48px}
             .stats-grid{grid-template-columns:1fr;gap:40px}
             .footer-links-group { flex-direction: column; } 
@@ -177,7 +166,6 @@
             .solution-card{grid-template-columns:1fr;min-height:auto}
             .solution-content{padding:40px}
             .footer-bottom{justify-content:center;text-align:center}
-
             .solutions-tabs { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 16px; margin-left: -24px; margin-right: -24px; padding-left: 24px; padding-right: 24px; scrollbar-width: none; }
             .solutions-tabs::-webkit-scrollbar { display: none; }
             .solution-tab-btn { flex-shrink: 0; }
@@ -216,7 +204,7 @@
     </header>
     <section class="hero">
         <div class="container">
-            <h1>L'IA Juridique de Classe Professionnelle</h1>
+            <h1>IA Juridique de Classe Professionnelle</h1>
             <p class="description">L'assistant IA le plus avancé pour les professionnels du droit en Côte d'Ivoire.</p>
             <div class="cta-buttons">
                 <a href="#assistant" class="btn-primary" id="hero-cta-btn">Découvrir l'Assistant</a>
@@ -225,9 +213,9 @@
     </section>
     <section class="video-section">
         <div class="video-container">
-            <!-- MODIFICATION 3: Remplacement de la balise <video> par un <iframe> YouTube -->
+            <!-- VIDÉO CORRIGÉE : Remplacement de l'URL YouTube -->
             <iframe 
-                src="https://www.youtube.com/embed/e_k_y_h25aI?autoplay=1&mute=1&loop=1&controls=0&playlist=e_k_y_h25aI" 
+                src="https://www.youtube.com/embed/V-A3p7o6N6A?autoplay=1&mute=1&loop=1&controls=0&playlist=V-A3p7o6N6A" 
                 title="YouTube video player" 
                 frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -265,7 +253,6 @@
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileMenuLinks = mobileMenu.querySelectorAll('a');
 
-            // --- NOUVEAU: Logique pour la bordure du header au scroll ---
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 10) {
                     header.classList.add('scrolled');
@@ -274,19 +261,18 @@
                 }
             });
 
-            // --- NOUVEAU: Logique pour faire disparaître le header quand le footer est visible ---
             if (header && footer) {
                 const footerObserver = new IntersectionObserver(entries => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             header.style.opacity = '0';
-                            header.style.pointerEvents = 'none'; // Empêche l'interaction quand il est invisible
+                            header.style.pointerEvents = 'none';
                         } else {
                             header.style.opacity = '1';
                             header.style.pointerEvents = 'auto';
                         }
                     });
-                }, { threshold: 0.1 }); // Se déclenche quand 10% du footer est visible
+                }, { threshold: 0.1 });
                 footerObserver.observe(footer);
             }
 
