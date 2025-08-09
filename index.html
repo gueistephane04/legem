@@ -36,35 +36,20 @@
         
         .nav-links a:hover { color: rgba(255, 255, 255, 0.7); }
 
-        .auth-buttons { justify-self: end; display: flex; gap: 16px; align-items: center; }
+        .auth-buttons { justify-self: end; display: flex; gap: 24px; align-items: center; }
         .login-btn { 
             color: #ffffff; 
             text-decoration: none; 
             font-weight: 500; 
             font-size: 15px; 
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
         }
+        .login-btn:hover { color: rgba(255, 255, 255, 0.7); }
         
-        /* MODIFIÉ: Le style du bouton "Login" lorsqu'il remplace le bouton démo */
-        .login-btn.cta-style {
-            background: #ffffff; 
-            color: #000000; 
-            padding: 10px 20px; /* Taille réduite */
-            border-radius: 8px; 
-            font-weight: 600; 
-            font-size: 14px; 
-            text-decoration: none !important;
-        }
-        .login-btn.cta-style:hover {
-            background: #f5f5f5;
-        }
-
-        /* MODIFIÉ: Bouton démo plus petit */
         .demo-btn { 
             background: #ffffff; color: #000000; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; border: 1px solid transparent; box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15); transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease; 
         }
         .demo-btn:hover { background: transparent; color: #ffffff; border-color: #ffffff; transform: translateY(-1px); }
-        /* La classe 'hidden' n'est plus utilisée, la disparition est gérée par JS */
 
         /* Hero Section */
         .hero { padding: 160px 0 100px; text-align: center; position: relative; }
@@ -123,13 +108,14 @@
         .indicator { width: 12px; height: 12px; border-radius: 50%; cursor: pointer; transition: all .4s ease; background: rgba(0, 0, 0, 0.2); }
         .indicator.active { background: #000000; transform: scale(1.2); }
 
-        /* MODIFIÉ: Footer réorganisé pour alignement gauche/droite */
         footer { background: #0d1117; padding: 80px 40px 40px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
         .footer-content { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; margin-bottom: 80px; }
-        .footer-section.legem-block { /* flex: 1; a été supprimé */ }
-        .footer-links-group { display: flex; justify-content: space-between; gap: 40px; /* flex: 2; a été supprimé */ }
+        .footer-links-group { display: flex; justify-content: space-between; gap: 40px; }
         .footer-section h4 { color: #737373; font-weight: 700; margin-bottom: 20px; font-size: 18px; font-family: "Playfair Display", serif; }
-        .footer-section:first-child h4 { color: #ffffff; font-size: 28px; }
+        
+        /* MODIFIÉ: Cible uniquement le h4 du bloc Legem pour le style spécial */
+        .footer-section.legem-block h4 { color: #ffffff; font-size: 28px; }
+        
         .footer-section a { color: #ffffff; text-decoration: none; line-height: 2; font-size: 15px; display: block; transition: color 0.3s ease; }
         .footer-section a:hover { opacity: 0.7; }
         .footer-section p { color: #737373; line-height: 1.7; font-size: 15px; max-width: 300px; }
@@ -236,17 +222,14 @@
             }
             new TestimonialCarousel();
 
-            // MODIFIÉ: Logique pour cacher le bouton démo et transformer le bouton login
+            // MODIFIÉ: Logique pour cacher le bouton démo SANS changer le style de Login
             const headerDemoBtn = document.getElementById('header-demo-btn');
             const heroCtaBtn = document.getElementById('hero-cta-btn'); 
-            const loginBtn = document.getElementById('login-btn');
-            if (headerDemoBtn && heroCtaBtn && loginBtn) {
+            const loginBtn = document.getElementById('login-btn'); // loginBtn n'est plus utilisé ici mais on le garde pour la clarté
+            if (headerDemoBtn && heroCtaBtn) {
                 const observer = new IntersectionObserver(entries => {
                     entries.forEach(entry => {
                         const isHeroBtnVisible = entry.isIntersecting;
-                        
-                        // Applique le style de bouton au login quand le démo est caché
-                        loginBtn.classList.toggle('cta-style', isHeroBtnVisible);
                         
                         // Masque le bouton Démo en utilisant display:none pour qu'il ne prenne plus de place
                         if (isHeroBtnVisible) {
