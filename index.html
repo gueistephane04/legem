@@ -27,16 +27,49 @@
             padding: 0 24px;
         }
 
-        /* Header */
-        header { padding: 20px 0; position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
-        /* MODIFIÉ: La nav prend toute la largeur pour bien espacer les éléments */
-        nav { display: flex; align-items: center; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-        .logo { font-size: 36px; font-weight: 800; color: #ffffff; text-decoration: none; letter-spacing: -1px; font-family: "Playfair Display", serif; }
-        /* MODIFIÉ: Le menu est centré automatiquement */
-        .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; margin: 0 auto; }
+        /* MODIFIÉ: Header pour disposition aux extrémités */
+        header { 
+            padding: 20px 0; 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            z-index: 1000; 
+            background: rgba(0, 0, 0, 0.95); 
+            backdrop-filter: blur(20px); 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+            transition: all 0.3s ease; 
+        }
+        nav { 
+            display: grid;
+            grid-template-columns: 1fr auto 1fr; /* Crée 3 colonnes: gauche, centre, droite */
+            align-items: center;
+            width: 100%;
+            padding: 0 40px; /* Espace sur les côtés de la page */
+        }
+        .logo { 
+            justify-self: start; /* Aligne le logo au début de la 1ère colonne */
+            font-size: 36px; 
+            font-weight: 800; 
+            color: #ffffff; 
+            text-decoration: none; 
+            letter-spacing: -1px; 
+            font-family: "Playfair Display", serif; 
+        }
+        .nav-links { 
+            justify-self: center; /* Aligne le menu au centre de la 2ème colonne */
+            display: flex; 
+            gap: 40px; 
+            list-style: none; 
+            align-items: center; 
+        }
         .nav-links a { color: #a3a3a3; text-decoration: none; font-weight: 500; font-size: 15px; transition: all 0.3s ease; }
         .nav-links a:hover { color: #ffffff; }
-        .auth-buttons { display: flex; gap: 16px; align-items: center; }
+        .auth-buttons { 
+            justify-self: end; /* Aligne les boutons à la fin de la 3ème colonne */
+            display: flex; 
+            gap: 16px; 
+            align-items: center; 
+        }
         .login-btn { color: #ffffff; text-decoration: none; font-weight: 500; font-size: 15px; transition: all 0.3s ease; }
         .demo-btn { background: #ffffff; color: #000000; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; border: 1px solid transparent; box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15); transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease, color 0.3s ease; }
         .demo-btn:hover { background: transparent; color: #ffffff; border-color: #ffffff; transform: translateY(-1px); }
@@ -50,11 +83,14 @@
         .btn-primary { background: #ffffff; color: #000000; padding: 18px 32px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 16px; transition: all 0.3s ease; border: none; cursor: pointer; box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15); }
         .btn-primary:hover { background: #f5f5f5; transform: translateY(-2px); }
 
-        /* Video Section */
-        .video-section { padding: 0 0 80px; margin-top: -60px; position: relative; z-index: 10; }
+        /* MODIFIÉ: Vidéo plus large */
+        .video-section { 
+            padding: 0 40px 80px; /* Ajout d'un padding horizontal pour contrôler la largeur */
+            margin-top: -60px; 
+            position: relative; 
+            z-index: 10; 
+        }
         .video-container {
-            /* MODIFIÉ: La vidéo est plus grande */
-            max-width: 1280px;
             margin: 0 auto;
             position: relative;
             overflow: hidden;
@@ -74,9 +110,8 @@
         .video-container:hover .play-button { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
         .play-button::after { content: ''; width: 0; height: 0; border-left: 20px solid #ffffff; border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 4px; }
 
-        /* Clients Section */
+        /* Clients Section (pleine largeur) */
         .clients { padding: 100px 0; }
-        /* MODIFIÉ: Le titre est maintenant centré et dans le container */
         .clients h3 {
             font-size: 16px;
             color: #737373;
@@ -84,18 +119,17 @@
             margin-bottom: 48px;
             text-align: center;
         }
-        /* MODIFIÉ: Le défilement est en pleine largeur */
         .clients-scroll { 
             position: relative; 
             height: 80px; 
             overflow: hidden; 
-            width: 100%; /* Prend toute la largeur */
+            width: 100%;
             mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent); 
             -webkit-mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent); 
         }
-        .clients-track { display: flex; align-items: center; animation: scroll 40s linear infinite; width: calc(250px * 18); /* Calcul de la largeur pour l'animation */ }
+        .clients-track { display: flex; align-items: center; animation: scroll 40s linear infinite; width: calc(250px * 18); }
         .client-logo { font-size: 18px; font-weight: 700; color: #525252; margin-right: 80px; flex-shrink: 0; white-space: nowrap; }
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } /* Animation sur la moitié pour une boucle parfaite */ }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         /* Solutions Section */
         .solutions { padding: 100px 0; }
@@ -135,11 +169,16 @@
         .indicator { width: 12px; height: 12px; border-radius: 50%; cursor: pointer; transition: all .4s ease; background: rgba(0, 0, 0, 0.2); }
         .indicator.active { background: #000000; transform: scale(1.2); }
 
-        /* Footer */
-        /* MODIFIÉ: Le footer a maintenant un padding horizontal pour remplacer le container */
-        footer { background: #0d1117; padding: 80px 24px 40px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
-        /* MODIFIÉ: La grille est maintenant dans un container pour la centrer */
-        .footer-grid-container { max-width: 1280px; margin: 0 auto; }
+        /* MODIFIÉ: Footer pleine largeur */
+        footer { 
+            background: #0d1117; 
+            padding: 80px 40px 40px; /* Padding contrôle l'espacement latéral */
+            border-top: 1px solid rgba(255, 255, 255, 0.1); 
+        }
+        .footer-inner-container { 
+            max-width: 1280px; 
+            margin: 0 auto; 
+        }
         .footer-content { display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: 40px; margin-bottom: 80px; }
         .footer-section h4 { color: #737373; font-weight: 700; margin-bottom: 20px; font-size: 18px; font-family: "Playfair Display", serif; }
         .footer-section:first-child h4 { color: #ffffff; font-size: 28px; }
@@ -151,11 +190,23 @@
         .social-links a { color: #737373; text-decoration: none; font-weight: 600; transition: color 0.3s ease; }
         .social-links a:hover { color: #ffffff; }
         
-        @media (max-width:768px){.nav-links{display:none}.hero h1{font-size:48px}.stats-grid,.footer-content{grid-template-columns:1fr;gap:40px}.testimonial-slide blockquote{font-size:24px}.solution-card{grid-template-columns:1fr;min-height:auto}.solution-content{padding:40px}.footer-bottom{justify-content:center;text-align:center}}
+        @media (max-width:900px){
+            .nav-links{display:none} /* Cache le menu central sur mobile */
+            nav { grid-template-columns: 1fr 1fr; } /* Passe en 2 colonnes: gauche, droite */
+        }
+        @media (max-width:768px){
+            nav, footer { padding-left: 24px; padding-right: 24px; }
+            .video-section { padding-left: 24px; padding-right: 24px; }
+            .hero h1{font-size:48px}
+            .stats-grid,.footer-content{grid-template-columns:1fr;gap:40px}
+            .testimonial-slide blockquote{font-size:24px}
+            .solution-card{grid-template-columns:1fr;min-height:auto}
+            .solution-content{padding:40px}
+            .footer-bottom{justify-content:center;text-align:center}
+        }
     </style>
 </head>
 <body>
-    <!-- MODIFIÉ: La classe .container est maintenant à l'intérieur de la nav -->
     <header>
         <nav>
             <a href="#" class="logo">Legem</a>
@@ -189,32 +240,14 @@
         </div>
     </section>
 
-    <!-- MODIFIÉ: La structure a changé pour permettre le défilement pleine largeur -->
     <section class="clients">
         <div class="container">
             <h3>Utilisé par les meilleurs cabinets d'avocats en Côte d'Ivoire</h3>
         </div>
         <div class="clients-scroll">
             <div class="clients-track">
-                <div class="client-logo">Cabinet Koffi & Associés</div>
-                <div class="client-logo">Cabinet Ouattara & Partners</div>
-                <div class="client-logo">Cabinet Traoré</div>
-                <div class="client-logo">Cabinet Diabaté & Co</div>
-                <div class="client-logo">SCP Konaté</div>
-                <div class="client-logo">Cabinet Bamba Legal</div>
-                <div class="client-logo">YAO & Partners</div>
-                <div class="client-logo">Cabinet N'Guessan</div>
-                <div class="client-logo">Cabinet Adama</div>
-                <!-- Duplication pour une boucle parfaite -->
-                <div class="client-logo">Cabinet Koffi & Associés</div>
-                <div class="client-logo">Cabinet Ouattara & Partners</div>
-                <div class="client-logo">Cabinet Traoré</div>
-                <div class="client-logo">Cabinet Diabaté & Co</div>
-                <div class="client-logo">SCP Konaté</div>
-                <div class="client-logo">Cabinet Bamba Legal</div>
-                <div class="client-logo">YAO & Partners</div>
-                <div class="client-logo">Cabinet N'Guessan</div>
-                <div class="client-logo">Cabinet Adama</div>
+                <div class="client-logo">Cabinet Koffi & Associés</div><div class="client-logo">Cabinet Ouattara & Partners</div><div class="client-logo">Cabinet Traoré</div><div class="client-logo">Cabinet Diabaté & Co</div><div class="client-logo">SCP Konaté</div><div class="client-logo">Cabinet Bamba Legal</div><div class="client-logo">YAO & Partners</div><div class="client-logo">Cabinet N'Guessan</div><div class="client-logo">Cabinet Adama</div>
+                <div class="client-logo">Cabinet Koffi & Associés</div><div class="client-logo">Cabinet Ouattara & Partners</div><div class="client-logo">Cabinet Traoré</div><div class="client-logo">Cabinet Diabaté & Co</div><div class="client-logo">SCP Konaté</div><div class="client-logo">Cabinet Bamba Legal</div><div class="client-logo">YAO & Partners</div><div class="client-logo">Cabinet N'Guessan</div><div class="client-logo">Cabinet Adama</div>
             </div>
         </div>
     </section>
@@ -257,9 +290,8 @@
         </div>
     </section>
 
-    <!-- MODIFIÉ: La classe .container a été enlevée du footer et une nouvelle structure a été ajoutée pour centrer le contenu -->
     <footer>
-        <div class="footer-grid-container">
+        <div class="footer-inner-container">
             <div class="footer-content">
                 <div class="footer-section"><h4>Legem</h4><p>L'intelligence artificielle juridique la plus avancée pour les professionnels du droit en Côte d'Ivoire.</p></div>
                 <div class="footer-section">
