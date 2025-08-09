@@ -29,12 +29,22 @@
 
         header { padding: 20px 0; position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
         nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; width: 100%; padding: 0 40px; }
-        .logo { justify-self: start; font-size: 36px; font-weight: 800; color: #ffffff; text-decoration: none; letter-spacing: -1px; font-family: "Playfair Display", serif; }
+        
+        /* MODIFICATION 1: Épaisseur des caractères réduite */
+        .logo { justify-self: start; font-size: 36px; font-weight: 600; color: #ffffff; text-decoration: none; letter-spacing: -1px; font-family: "Playfair Display", serif; }
         
         .nav-links { justify-self: center; display: flex; gap: 40px; list-style: none; align-items: center; }
         .nav-links a { color: #ffffff; text-decoration: none; font-weight: 500; font-size: 15px; transition: color 0.3s ease; }
         
-        .nav-links a:hover { color: rgba(255, 255, 255, 0.7); }
+        /* MODIFICATION 4: Effet de survol du menu */
+        nav:hover .nav-links a {
+            color: rgba(255, 255, 255, 0.4);
+        }
+        nav .nav-links a:hover {
+            color: #ffffff; /* Le lien survolé reste blanc */
+        }
+        /* Fin de la modification 4 */
+
 
         .auth-buttons { justify-self: end; display: flex; gap: 24px; align-items: center; }
         .login-btn { 
@@ -46,36 +56,57 @@
         }
         .login-btn:hover { color: rgba(255, 255, 255, 0.7); }
         
+        /* MODIFICATION 3: Hauteur du bouton "démo" réduite de 25% */
         .demo-btn { 
-            background: #ffffff; color: #000000; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; border: 1px solid transparent; box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15); transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease; 
+            background: #ffffff; color: #000000; padding: 7.5px 20px; /* Ancien padding: 10px 20px */
+            border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; border: 1px solid transparent; box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15); transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease; 
         }
         .demo-btn:hover { background: transparent; color: #ffffff; border-color: #ffffff; transform: translateY(-1px); }
 
         /* Hero Section */
         .hero { padding: 160px 0 100px; text-align: center; position: relative; }
-        .hero h1 { font-family: "Playfair Display", serif; font-size: clamp(48px, 8vw, 80px); font-weight: 700; color: #ffffff; line-height: 1.1; letter-spacing: -2px; margin-bottom: 32px; }
+        /* MODIFICATION 1: Épaisseur des caractères réduite */
+        .hero h1 { font-family: "Playfair Display", serif; font-size: clamp(48px, 8vw, 80px); font-weight: 500; color: #ffffff; line-height: 1.1; letter-spacing: -2px; margin-bottom: 32px; }
         .hero .description { font-size: 20px; color: #737373; margin-bottom: 48px; max-width: 680px; margin-left: auto; margin-right: auto; }
         .cta-buttons { display: flex; justify-content: center; }
         .btn-primary { background: #ffffff; color: #000000; padding: 18px 32px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 16px; transition: all 0.3s ease; border: none; cursor: pointer; box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15); }
         .btn-primary:hover { background: #f5f5f5; transform: translateY(-2px); }
 
-        .video-section { padding: 0 15% 80px; margin-top: -60px; position: relative; z-index: 10; }
+        /* MODIFICATION 2: Distance vidéo -> titre réduite */
+        .video-section { padding: 0 15% 56px; /* Ancien padding-bottom: 80px */ margin-top: -60px; position: relative; z-index: 10; }
         .video-container { margin: 0 auto; position: relative; overflow: hidden; background: #111111; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; border: none; transform: scale(0.95); transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
         .video-container.in-view { transform: scale(1); }
-        .play-button { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; background: rgba(255, 255, 255, 0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); opacity: 0; transition: opacity 0.3s ease, transform 0.3s ease; }
-        .video-container:hover .play-button { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+        
+        /* AJOUT 8: Vidéo en arrière-plan */
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Pour qu'elle soit derrière le bouton play */
+        }
+        
+        /* MODIFICATION 7: Bouton Play toujours visible */
+        .play-button { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; background: rgba(255, 255, 255, 0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); opacity: 1; /* Ancien opacity: 0 */ transition: opacity 0.3s ease, transform 0.3s ease; }
+        .video-container:hover .play-button { transform: translate(-50%, -50%) scale(1.05); } /* On garde l'effet de grossissement */
         .play-button::after { content: ''; width: 0; height: 0; border-left: 20px solid #ffffff; border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 4px; }
 
-        .clients { padding: 100px 0; }
-        .clients h3 { font-size: 16px; color: #737373; text-transform: uppercase; margin-bottom: 48px; text-align: center; }
+        /* MODIFICATION 6: Distance clients -> solutions réduite */
+        .clients { padding: 100px 0 50px; /* Ancien padding: 100px 0 */ }
+        
+        /* MODIFICATION 5: Logos clients plus clairs */
+        .clients h3 { font-size: 16px; color: #a3a3a3; /* Ancien color: #737373 */ text-transform: uppercase; margin-bottom: 48px; text-align: center; }
         .clients-scroll { position: relative; height: 80px; overflow: hidden; width: 100%; mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent); -webkit-mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent); }
         .clients-track { display: flex; align-items: center; animation: scroll 40s linear infinite; width: calc(250px * 18); }
-        .client-logo { font-size: 18px; font-weight: 700; color: #525252; margin-right: 80px; flex-shrink: 0; white-space: nowrap; }
+        .client-logo { font-size: 18px; font-weight: 700; color: #888888; /* Ancien color: #525252 */ margin-right: 80px; flex-shrink: 0; white-space: nowrap; }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         .solutions { padding: 100px 0; }
         .solutions-header { text-align: center; margin-bottom: 40px; }
-        .solutions-header h2 { font-size: 48px; font-weight: 800; font-family: "Playfair Display", serif; margin-bottom: 16px; }
+        /* MODIFICATION 1: Épaisseur des caractères réduite */
+        .solutions-header h2 { font-size: 48px; font-weight: 600; font-family: "Playfair Display", serif; margin-bottom: 16px; }
         .solutions-header p { font-size: 18px; color: #737373; max-width: 600px; margin: 0 auto; }
         .solutions-tabs { display: flex; justify-content: center; gap: 16px; margin-bottom: 40px; flex-wrap: wrap; }
         .solution-tab-btn { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #a3a3a3; padding: 12px 24px; border-radius: 99px; cursor: pointer; transition: all 0.3s ease; font-weight: 500; }
@@ -85,12 +116,14 @@
         .solutions-track { display: flex; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
         .solution-card { background: linear-gradient(135deg, #111111 0%, #0d1117 100%); border: 1px solid rgba(255, 255, 255, 0.1); position: relative; flex-shrink: 0; width: 100%; display: grid; grid-template-columns: 1fr 1fr; min-height: 450px; }
         .solution-content { padding: 60px; display: flex; flex-direction: column; justify-content: center; }
-        .solution-card h3 { font-size: 36px; font-weight: 700; color: #ffffff; margin-bottom: 24px; font-family: "Playfair Display", serif; }
+        /* MODIFICATION 1: Épaisseur des caractères réduite */
+        .solution-card h3 { font-size: 36px; font-weight: 500; color: #ffffff; margin-bottom: 24px; font-family: "Playfair Display", serif; }
         .solution-card p { color: #a3a3a3; font-size: 18px; }
         .solution-demo { background: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; font-size: 48px; }
         
         .stats { padding: 100px 0; }
-        .stats h2 { font-size: 42px; font-weight: 800; margin-bottom: 60px; font-family: "Playfair Display", serif; text-align:center; }
+        /* MODIFICATION 1: Épaisseur des caractères réduite */
+        .stats h2 { font-size: 42px; font-weight: 600; margin-bottom: 60px; font-family: "Playfair Display", serif; text-align:center; }
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 48px; }
         .stat-item { padding: 32px 24px; border: 1px solid rgba(255, 255, 255, .1); border-radius: 16px; background: rgba(255, 255, 255, .05); transition: all .3s ease; backdrop-filter: blur(10px); }
         .stat-item:hover { transform: translateY(-4px); }
@@ -113,8 +146,8 @@
         .footer-links-group { display: flex; justify-content: space-between; gap: 40px; }
         .footer-section h4 { color: #737373; font-weight: 700; margin-bottom: 20px; font-size: 18px; font-family: "Playfair Display", serif; }
         
-        /* MODIFIÉ: Cible uniquement le h4 du bloc Legem pour le style spécial */
-        .footer-section.legem-block h4 { color: #ffffff; font-size: 28px; }
+        /* MODIFICATION 1: Épaisseur des caractères réduite */
+        .footer-section.legem-block h4 { color: #ffffff; font-size: 28px; font-weight: 600; }
         
         .footer-section a { color: #ffffff; text-decoration: none; line-height: 2; font-size: 15px; display: block; transition: color 0.3s ease; }
         .footer-section a:hover { opacity: 0.7; }
@@ -124,15 +157,78 @@
         .social-links { display: flex; gap: 24px; }
         .social-links a { color: #737373; text-decoration: none; font-weight: 600; transition: color 0.3s ease; }
         .social-links a:hover { color: #ffffff; }
+
+        /* AJOUT 10: Menu Hamburger (caché sur grand écran) */
+        .hamburger-menu { display: none; }
+        .mobile-menu { display: none; }
         
         @media (max-width:900px){
-            .nav-links{display:none} 
-            nav { grid-template-columns: 1fr 1fr; }
+            /* MODIFICATION 10: Logique du menu hamburger */
+            .nav-links { display:none; } /* Cache le menu desktop */
+            .auth-buttons { display: none; } /* Cache les boutons Login/Démo */
+            nav { grid-template-columns: 1fr auto; }
+            .logo { justify-self: start; }
+
+            .hamburger-menu {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                width: 28px;
+                height: 24px;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+                z-index: 10;
+                justify-self: end;
+            }
+
+            .hamburger-menu .line {
+                width: 28px;
+                height: 3px;
+                background-color: #fff;
+                border-radius: 10px;
+                transition: all 0.3s linear;
+            }
+            
+            .mobile-menu {
+                display: flex; /* Sera géré par JS */
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+                padding: 100px 20px 40px;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.98);
+                backdrop-filter: blur(15px);
+                transform: translateX(100%);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .mobile-menu.open {
+                transform: translateX(0);
+            }
+            .mobile-menu a {
+                color: #ffffff;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 24px;
+            }
+            /* Fin de la modification 10 */
+
+
             .footer-content { flex-direction: column; }
         }
+
         @media (max-width:768px){
             nav, footer { padding-left: 24px; padding-right: 24px; }
-            .video-section { padding: 0 24px 80px; }
+            .video-section { padding: 0 24px 56px; } /* padding-bottom ajusté aussi ici */
+            /* MODIFICATION 11: Hauteur du cadre vidéo augmentée sur mobile */
+            .video-container { aspect-ratio: 4/3; } /* Ancien: 16/9, plus haut de 25% */
+
             .hero h1{font-size:48px}
             .stats-grid{grid-template-columns:1fr;gap:40px}
             .footer-links-group { flex-direction: column; } 
@@ -140,6 +236,27 @@
             .solution-card{grid-template-columns:1fr;min-height:auto}
             .solution-content{padding:40px}
             .footer-bottom{justify-content:center;text-align:center}
+
+            /* MODIFICATION 9: Boutons de solutions scrollables horizontalement */
+            .solutions-tabs {
+                justify-content: flex-start; /* Aligne au début pour le scroll */
+                flex-wrap: nowrap; /* Empêche le retour à la ligne */
+                overflow-x: auto; /* Active le scroll horizontal */
+                -webkit-overflow-scrolling: touch; /* Défilement fluide sur iOS */
+                padding-bottom: 16px; /* Espace pour la barre de scroll */
+                margin-left: -24px; /* Compense le padding du container */
+                margin-right: -24px;
+                padding-left: 24px; /* Maintient le padding initial */
+                padding-right: 24px;
+                /* Cache la barre de scroll pour l'esthétique */
+                scrollbar-width: none; /* Firefox */
+            }
+            .solutions-tabs::-webkit-scrollbar {
+                display: none; /* Chrome, Safari, et Opera */
+            }
+            .solution-tab-btn {
+                flex-shrink: 0; /* Empêche les boutons de rétrécir */
+            }
         }
     </style>
 </head>
@@ -147,6 +264,8 @@
     <header>
         <nav>
             <a href="#" class="logo">Legem</a>
+            
+            <!-- Menu pour grand écran -->
             <ul class="nav-links">
                 <li><a href="#assistant">Assistant</a></li>
                 <li><a href="#recherche">Recherche</a></li>
@@ -154,10 +273,28 @@
                 <li><a href="#workflows">Workflows</a></li>
                 <li><a href="#entreprise">Entreprise</a></li>
             </ul>
+
+            <!-- Boutons pour grand écran -->
             <div class="auth-buttons">
                 <a href="#login" class="login-btn" id="login-btn">Login</a>
                 <a href="#demo" class="demo-btn" id="header-demo-btn">Demander une Démo</a>
             </div>
+
+            <!-- AJOUT 10: Menu Hamburger et menu mobile -->
+            <button class="hamburger-menu" id="hamburger-menu" aria-label="Ouvrir le menu">
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
+            <div class="mobile-menu" id="mobile-menu">
+                <a href="#assistant">Assistant</a>
+                <a href="#recherche">Recherche</a>
+                <a href="#coffre-fort">Coffre-fort</a>
+                <a href="#workflows">Workflows</a>
+                <a href="#entreprise">Entreprise</a>
+                <a href="#login" style="margin-top: 30px; opacity: 0.8;">Login</a>
+                <a href="#demo" style="background: #fff; color: #000; padding: 12px 24px; border-radius: 8px; font-size: 18px;">Demander une Démo</a>
+            </div>
+            <!-- Fin de l'ajout 10 -->
         </nav>
     </header>
 
@@ -171,8 +308,19 @@
         </div>
     </section>
 
-    <!-- LE RESTE DU BODY EST INCHANGÉ... -->
-    <section class="video-section"><div class="video-container"><div class="play-button"></div></div></section>
+    <!-- MODIFICATION 8: Ajout d'une vidéo de démonstration -->
+    <section class="video-section">
+        <div class="video-container">
+            <video 
+                src="https://vod-progressive.akamaized.net/exp=1725301825~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F1983%2F14%2F359917305%2F1478143859.mp4~hmac=a4c9a721759bd8a7a00f2ef9ec3ed7b9f3d9175a91439c369bb9c07e0e7a8848/vimeo-prod-skyfire-std-us/01/1983/14/359917305/1478143859.mp4" 
+                loop 
+                muted 
+                playsinline>
+            </video>
+            <div class="play-button"></div>
+        </div>
+    </section>
+
     <section class="clients"><div class="container"><h3>Utilisé par les meilleurs cabinets d'avocats en Côte d'Ivoire</h3></div><div class="clients-scroll"><div class="clients-track"><div class="client-logo">Cabinet Koffi & Associés</div><div class="client-logo">Cabinet Ouattara & Partners</div><div class="client-logo">Cabinet Traoré</div><div class="client-logo">Cabinet Diabaté & Co</div><div class="client-logo">SCP Konaté</div><div class="client-logo">Cabinet Bamba Legal</div><div class="client-logo">YAO & Partners</div><div class="client-logo">Cabinet N'Guessan</div><div class="client-logo">Cabinet Adama</div><div class="client-logo">Cabinet Koffi & Associés</div><div class="client-logo">Cabinet Ouattara & Partners</div><div class="client-logo">Cabinet Traoré</div><div class="client-logo">Cabinet Diabaté & Co</div><div class="client-logo">SCP Konaté</div><div class="client-logo">Cabinet Bamba Legal</div><div class="client-logo">YAO & Partners</div><div class="client-logo">Cabinet N'Guessan</div><div class="client-logo">Cabinet Adama</div></div></div></section>
     <section class="solutions" id="assistant"><div class="container"><div class="solutions-header"><h2>Solutions pour Tous les Juristes</h2><p>Des outils puissants adaptés à chaque domaine de pratique juridique.</p></div><div class="solutions-tabs" id="solutions-tabs"><button class="solution-tab-btn active" data-slide="0">Juristes d'Entreprise</button><button class="solution-tab-btn" data-slide="1">Équipes Innovation</button><button class="solution-tab-btn" data-slide="2">Travail Transactionnel</button><button class="solution-tab-btn" data-slide="3">Travail Contentieux</button></div><div class="solutions-carousel"><div class="solutions-track" id="solutions-track"><div class="solution-card"><div class="solution-content"><h3>Juristes d'Entreprise</h3><p>Optimisez la gestion juridique interne avec des analyses contractuelles automatisées.</p></div><div class="solution-demo">🏢</div></div><div class="solution-card"><div class="solution-content"><h3>Équipes Innovation</h3><p>Intégrez l'IA juridique dans vos processus existants via nos API.</p></div><div class="solution-demo">⚡</div></div><div class="solution-card"><div class="solution-content"><h3>Travail Transactionnel</h3><p>Accélérez vos transactions avec une due diligence intelligente.</p></div><div class="solution-demo">📋</div></div><div class="solution-card"><div class="solution-content"><h3>Travail Contentieux</h3><p>Renforcez votre stratégie avec une recherche jurisprudentielle avancée.</p></div><div class="solution-demo">⚖️</div></div></div></div></div></section>
     <section class="stats"><div class="container"><h2>Conçu pour l'Excellence Juridique</h2><div class="stats-grid"><div class="stat-item"><h3>Sécurité Bancaire</h3><p>Chiffrement de bout en bout et conformité aux normes les plus strictes.</p></div><div class="stat-item"><h3>Précision Expert</h3><p>IA entraînée sur le droit ivoirien et OHADA pour une précision exceptionnelle.</p></div><div class="stat-item"><h3>Performance Optimale</h3><p>Traitement en temps réel de documents complexes pour votre productivité.</p></div><div class="stat-item"><h3>Support Premium</h3><p>Accompagnement personnalisé par nos experts juridiques et techniques.</p></div></div></div></section>
@@ -199,6 +347,25 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // AJOUT 10: Logique pour le menu hamburger
+            const hamburger = document.getElementById('hamburger-menu');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+
+            if (hamburger && mobileMenu) {
+                hamburger.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('open');
+                });
+                
+                // Ferme le menu quand on clique sur un lien
+                mobileMenuLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('open');
+                    });
+                });
+            }
+
+
             // Solutions Tabs
             const solutionsTrack = document.getElementById('solutions-track');
             const solutionTabs = document.querySelectorAll('.solution-tab-btn');
@@ -222,20 +389,21 @@
             }
             new TestimonialCarousel();
 
-            // MODIFIÉ: Logique pour cacher le bouton démo SANS changer le style de Login
+            // Logique pour cacher le bouton démo du header
             const headerDemoBtn = document.getElementById('header-demo-btn');
             const heroCtaBtn = document.getElementById('hero-cta-btn'); 
-            const loginBtn = document.getElementById('login-btn'); // loginBtn n'est plus utilisé ici mais on le garde pour la clarté
+            const loginBtn = document.getElementById('login-btn');
             if (headerDemoBtn && heroCtaBtn) {
                 const observer = new IntersectionObserver(entries => {
                     entries.forEach(entry => {
                         const isHeroBtnVisible = entry.isIntersecting;
                         
-                        // Masque le bouton Démo en utilisant display:none pour qu'il ne prenne plus de place
-                        if (isHeroBtnVisible) {
-                            headerDemoBtn.style.display = 'none';
-                        } else {
-                            headerDemoBtn.style.display = 'inline-block';
+                        if (window.innerWidth > 900) { // S'assure que cela ne s'applique pas sur mobile
+                           if (isHeroBtnVisible) {
+                                headerDemoBtn.style.display = 'none';
+                            } else {
+                                headerDemoBtn.style.display = 'inline-block';
+                            }
                         }
                     });
                 }, { threshold: 0.1 });
