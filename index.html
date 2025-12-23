@@ -3,337 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legem – IA Juridique Professionnelle</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>LEGEM - Bientôt disponible</title>
+    <meta name="description" content="Site officiel de LEGEM Africa. En cours de construction.">
+    
+    <!-- Importation de polices Google élégantes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
     <style>
+        /* RESET & BASE */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(180deg, #000000 0%, #0d1117 100%);
-            color: #ffffff;
-            line-height: 1.6;
-            font-size: 16px;
-            overflow-x: hidden;
-            font-weight: 400;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-        
-        header { 
-            padding: 20px 0; 
-            position: fixed; 
-            top: 0; 
-            width: 100%; 
-            z-index: 1000; 
-            background: rgba(0, 0, 0, 0.95); 
-            backdrop-filter: blur(20px); 
-            border-bottom: 1px solid transparent; 
-            transition: all 0.3s ease, opacity 0.4s ease; 
-        }
-        
-        header.scrolled {
-            border-bottom-color: rgba(255, 255, 255, 0.1); 
-        }
-        
-        nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; width: 100%; padding: 0 40px; }
-        
-        .logo { justify-self: start; font-size: 36px; font-weight: 500; color: #ffffff; text-decoration: none; letter-spacing: -1px; font-family: "Playfair Display", serif; }
-        
-        .nav-links { justify-self: center; display: flex; gap: 40px; list-style: none; align-items: center; }
-        
-        .nav-links a { color: #ffffff; text-decoration: none; font-weight: 400; font-size: 13.5px; transition: color 0.3s ease; }
-        
-        nav:hover .nav-links a { color: rgba(255, 255, 255, 0.4); }
-        nav .nav-links a:hover { color: #ffffff; }
-
-        .auth-buttons { justify-self: end; display: flex; gap: 24px; align-items: center; }
-        .login-btn { color: #ffffff; text-decoration: none; font-weight: 400; font-size: 15px; transition: color 0.3s ease; }
-        .login-btn:hover { color: rgba(255, 255, 255, 0.7); }
-        
-        .demo-btn { background: #ffffff; color: #000000; padding: 7.5px 20px; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 14px; border: 1px solid transparent; box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15); transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease; }
-        .demo-btn:hover { background: transparent; color: #ffffff; border-color: #ffffff; transform: translateY(-1px); }
-
-        .hero { padding: 160px 0 100px; text-align: center; position: relative; }
-        .hero h1 { font-family: "Playfair Display", serif; font-size: clamp(48px, 8vw, 80px); font-weight: 400; color: #ffffff; line-height: 1.1; letter-spacing: -2px; margin-bottom: 32px; }
-        .hero .description { font-size: 20px; color: #737373; margin-bottom: 48px; max-width: 680px; margin-left: auto; margin-right: auto; }
-        .cta-buttons { display: flex; justify-content: center; }
-        
-        .btn-primary { background: #ffffff; color: #000000; padding: 7.5px 32px; border-radius: 12px; text-decoration: none; font-weight: 500; font-size: 16px; transition: all 0.3s ease; border: none; cursor: pointer; box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15); }
-        .btn-primary:hover { background: #f5f5f5; transform: translateY(-2px); }
-
-        .video-section { padding: 0 15% 56px; margin-top: -60px; position: relative; z-index: 10; }
-        .video-container { margin: 0 auto; position: relative; overflow: hidden; background: #111111; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; border: none; transform: scale(0.95); transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
-        .video-container.in-view { transform: scale(1); }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
+        body, html {
             height: 100%;
-            border: 0;
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff; /* Page blanche */
+            color: #333333;
+            overflow: hidden; /* Évite les barres de défilement inutiles */
         }
 
-        .clients { padding: 100px 0 50px; }
-        .clients h3 { font-size: 16px; color: #a3a3a3; text-transform: uppercase; margin-bottom: 48px; text-align: center; font-weight: 500; }
-        .clients-scroll { position: relative; height: 80px; overflow: hidden; width: 100%; mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent); -webkit-mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent); }
-        .clients-track { display: flex; align-items: center; animation: scroll 40s linear infinite; width: calc(250px * 18); }
-        .client-logo { font-size: 18px; font-weight: 500; color: #888888; margin-right: 80px; flex-shrink: 0; white-space: nowrap; }
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-        .solutions { padding: 100px 0; }
-        .solutions-header { text-align: center; margin-bottom: 40px; }
-        .solutions-header h2 { font-size: 48px; font-weight: 500; font-family: "Playfair Display", serif; margin-bottom: 16px; }
-        .solutions-header p { font-size: 18px; color: #737373; max-width: 600px; margin: 0 auto; }
-        .solutions-tabs { display: flex; justify-content: center; gap: 16px; margin-bottom: 40px; flex-wrap: wrap; }
-        .solution-tab-btn { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #a3a3a3; padding: 12px 24px; border-radius: 99px; cursor: pointer; transition: all 0.3s ease; font-weight: 400; }
-        .solution-tab-btn:hover { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
-        .solution-tab-btn.active { background: #ffffff; color: #000000; border-color: #ffffff; font-weight: 500; }
-        .solutions-carousel { position: relative; overflow: hidden; max-width: 1200px; margin: 0 auto; }
-        .solutions-track { display: flex; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
-        .solution-card { background: linear-gradient(135deg, #111111 0%, #0d1117 100%); border: 1px solid rgba(255, 255, 255, 0.1); position: relative; flex-shrink: 0; width: 100%; display: grid; grid-template-columns: 1fr 1fr; min-height: 450px; }
-        .solution-content { padding: 60px; display: flex; flex-direction: column; justify-content: center; }
-        .solution-card h3 { font-size: 36px; font-weight: 400; color: #ffffff; margin-bottom: 24px; font-family: "Playfair Display", serif; }
-        .solution-card p { color: #a3a3a3; font-size: 18px; }
-        .solution-demo { background: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; font-size: 48px; }
-        
-        .stats { padding: 100px 0; }
-        .stats h2 { font-size: 42px; font-weight: 500; margin-bottom: 60px; font-family: "Playfair Display", serif; text-align:center; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 48px; }
-        .stat-item { padding: 32px 24px; border: 1px solid rgba(255, 255, 255, .1); border-radius: 16px; background: rgba(255, 255, 255, .05); transition: all .3s ease; backdrop-filter: blur(10px); }
-        .stat-item:hover { transform: translateY(-4px); }
-        .stat-item h3 { font-size: 16px; color: #a3a3a3; text-transform: uppercase; font-weight: 500; margin-bottom: 12px; }
-        .stat-item p { font-size: 18px; color: white; }
-
-        .testimonials { padding: 100px 0; background: linear-gradient(180deg, #f0f2f5 0%, #ffffff 100%); color: #000000; text-align: center; }
-        .testimonials h2 { font-size: 42px; font-weight: 600; margin-bottom: 60px; font-family: "Playfair Display", serif; }
-        .testimonial-carousel { position: relative; height: 250px; margin: 0 auto 40px; max-width: 1000px; }
-        .testimonial-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transform: translateY(30px) scale(.95); transition: all .8s cubic-bezier(0.4, 0, 0.2, 1); padding: 0 40px; }
-        .testimonial-slide.active { opacity: 1; transform: translateY(0) scale(1); }
-        .testimonial-slide blockquote { font-size: 32px; font-style: italic; line-height: 1.4; margin-bottom: 32px; font-weight: 400; color: #111; font-family: "Playfair Display", serif; }
-        .testimonial-author { font-size: 16px; color: #555; font-weight: 400; }
-        .testimonial-indicators { display: flex; justify-content: center; gap: 12px; }
-        .indicator { width: 12px; height: 12px; border-radius: 50%; cursor: pointer; transition: all .4s ease; background: rgba(0, 0, 0, 0.2); }
-        .indicator.active { background: #000000; transform: scale(1.2); }
-
-        footer { background: #0d1117; padding: 80px 40px 40px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
-        .footer-content { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; margin-bottom: 80px; }
-        .footer-links-group { display: flex; justify-content: space-between; gap: 40px; }
-        .footer-section h4 { color: #737373; font-weight: 500; margin-bottom: 20px; font-size: 18px; font-family: "Playfair Display", serif; }
-        
-        .footer-section.legem-block h4 { color: #ffffff; font-size: 28px; font-weight: 500; }
-        
-        .footer-section a { color: #ffffff; text-decoration: none; line-height: 2; font-size: 13.5px; display: block; transition: color 0.3s ease; font-weight: 400; }
-        .footer-section a:hover { opacity: 0.7; }
-        .footer-section p { color: #737373; line-height: 1.7; font-size: 15px; max-width: 300px; }
-        
-        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.08); color: #737373; font-size: 14px; }
-        .social-links { display: flex; gap: 24px; }
-        .social-links a { color: #737373; text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
-        .social-links a:hover { color: #ffffff; }
-
-        .hamburger-menu { display: none; }
-        .mobile-menu { display: none; }
-        
-        @media (max-width:900px){
-            .nav-links, .auth-buttons { display:none; }
-            nav { grid-template-columns: 1fr auto; }
-            .logo { justify-self: start; }
-            .hamburger-menu { display: flex; flex-direction: column; justify-content: space-around; width: 28px; height: 24px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 10; justify-self: end; }
-            .hamburger-menu .line { width: 28px; height: 2px; background-color: #fff; border-radius: 10px; transition: all 0.3s linear; }
-            .mobile-menu { display: flex; flex-direction: column; align-items: center; gap: 30px; padding: 100px 20px 40px; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.98); backdrop-filter: blur(15px); transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-            .mobile-menu.open { transform: translateX(0); }
-            .mobile-menu a { color: #ffffff; text-decoration: none; font-weight: 500; font-size: 24px; }
-            .footer-content { flex-direction: column; }
+        /* LAYOUT CENTRAL */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+            animation: fadeIn 2s ease-in-out;
         }
 
-        @media (max-width:768px){
-            nav, footer { padding-left: 24px; padding-right: 24px; }
-            .video-section { padding: 0 24px 56px; }
-            .video-container { aspect-ratio: 4/3; }
-            .hero h1{font-size:48px}
-            .stats-grid{grid-template-columns:1fr;gap:40px}
-            .footer-links-group { flex-direction: column; } 
-            .testimonial-slide blockquote{font-size:24px}
-            .solution-card{grid-template-columns:1fr;min-height:auto}
-            .solution-content{padding:40px}
-            .footer-bottom{justify-content:center;text-align:center}
-            .solutions-tabs { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 16px; margin-left: -24px; margin-right: -24px; padding-left: 24px; padding-right: 24px; scrollbar-width: none; }
-            .solutions-tabs::-webkit-scrollbar { display: none; }
-            .solution-tab-btn { flex-shrink: 0; }
+        /* TYPOGRAPHIE & DESIGN */
+        
+        /* Logo simulé (Si vous avez une image, remplacez ce texte par la balise img) */
+        .brand-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #000;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif; /* Police "Classe" avec empattement */
+            font-size: 3rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        p.subtext {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #666;
+            margin-bottom: 40px;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        /* LIEN EMAIL STYLISÉ */
+        .contact-box {
+            margin-top: 20px;
+        }
+
+        .contact-label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+
+        .email-link {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #1a1a1a; /* Noir doux */
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+            font-style: italic;
+        }
+
+        /* Effet de soulignement élégant au survol */
+        .email-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: -5px;
+            left: 0;
+            background-color: #d4af37; /* Couleur Or subtil */
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+
+        .email-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .email-link:hover {
+            color: #555;
+        }
+
+        /* FOOTER */
+        footer {
+            position: absolute;
+            bottom: 30px;
+            font-size: 0.75rem;
+            color: #aaa;
+            letter-spacing: 1px;
+        }
+
+        /* ANIMATION */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* RESPONSIVE MOBILE */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .email-link { font-size: 1.2rem; }
+            .brand-name { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
-    <header id="page-header">
-        <nav>
-            <a href="#" class="logo">Legem</a>
-            <ul class="nav-links">
-                <li><a href="#assistant">Assistant</a></li>
-                <li><a href="#recherche">Recherche</a></li>
-                <li><a href="#coffre-fort">Coffre-fort</a></li>
-                <li><a href="#workflows">Workflows</a></li>
-                <li><a href="#entreprise">Entreprise</a></li>
-            </ul>
-            <div class="auth-buttons">
-                <a href="#login" class="login-btn" id="login-btn">Login</a>
-                <a href="#demo" class="demo-btn" id="header-demo-btn">Demander une Démo</a>
-            </div>
-            <button class="hamburger-menu" id="hamburger-menu" aria-label="Ouvrir le menu">
-                <span class="line"></span>
-                <span class="line"></span>
-            </button>
-            <div class="mobile-menu" id="mobile-menu">
-                <a href="#assistant">Assistant</a>
-                <a href="#recherche">Recherche</a>
-                <a href="#coffre-fort">Coffre-fort</a>
-                <a href="#workflows">Workflows</a>
-                <a href="#entreprise">Entreprise</a>
-                <a href="#login" style="margin-top: 30px; opacity: 0.8;">Login</a>
-                <a href="#demo" style="background: #fff; color: #000; padding: 12px 24px; border-radius: 8px; font-size: 18px;">Demander une Démo</a>
-            </div>
-        </nav>
-    </header>
-    <section class="hero">
-        <div class="container">
-            <h1>L'IA Juridique de Classe Professionnelle</h1>
-            <p class="description">L'assistant IA le plus avancé pour les professionnels du droit en Côte d'Ivoire.</p>
-            <div class="cta-buttons">
-                <a href="#assistant" class="btn-primary" id="hero-cta-btn">Découvrir l'Assistant</a>
-            </div>
+
+    <div class="container">
+        <!-- Logo ou Nom de l'entreprise -->
+        <div class="brand-name">LEGEM AFRICA</div>
+
+        <!-- Titre Principal -->
+        <h1>L'excellence en préparation</h1>
+
+        <!-- Sous-texte -->
+        <p class="subtext">
+            Nous bâtissons actuellement une nouvelle expérience numérique pour vous servir.<br>
+            Notre site sera bientôt en ligne.
+        </p>
+
+        <!-- Section Contact -->
+        <div class="contact-box">
+            <span class="contact-label">Nous contacter</span>
+            <a href="mailto:contact@legem.africa" class="email-link">contact@legem.africa</a>
         </div>
-    </section>
-    <section class="video-section">
-        <div class="video-container">
-            <iframe 
-                src="https://www.youtube.com/embed/6dfx2S11hhQ?autoplay=1&mute=1&loop=1&controls=0&playlist=6dfx2S11hhQ" 
-                title="YouTube video player" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
-        </div>
-    </section>
-    <section class="clients"><div class="container"><h3>Utilisé par les meilleurs cabinets d'avocats en Côte d'Ivoire</h3></div><div class="clients-scroll"><div class="clients-track"><div class="client-logo">Cabinet Koffi & Associés</div><div class="client-logo">Cabinet Ouattara & Partners</div><div class="client-logo">Cabinet Traoré</div><div class="client-logo">Cabinet Diabaté & Co</div><div class="client-logo">SCP Konaté</div><div class="client-logo">Cabinet Bamba Legal</div><div class="client-logo">YAO & Partners</div><div class="client-logo">Cabinet N'Guessan</div><div class="client-logo">Cabinet Adama</div><div class="client-logo">Cabinet Koffi & Associés</div><div class="client-logo">Cabinet Ouattara & Partners</div><div class="client-logo">Cabinet Traoré</div><div class="client-logo">Cabinet Diabaté & Co</div><div class="client-logo">SCP Konaté</div><div class="client-logo">Cabinet Bamba Legal</div><div class="client-logo">YAO & Partners</div><div class="client-logo">Cabinet N'Guessan</div><div class="client-logo">Cabinet Adama</div></div></div></section>
-    <section class="solutions" id="assistant"><div class="container"><div class="solutions-header"><h2>Solutions pour Tous les Juristes</h2><p>Des outils puissants adaptés à chaque domaine de pratique juridique.</p></div><div class="solutions-tabs" id="solutions-tabs"><button class="solution-tab-btn active" data-slide="0">Juristes d'Entreprise</button><button class="solution-tab-btn" data-slide="1">Équipes Innovation</button><button class="solution-tab-btn" data-slide="2">Travail Transactionnel</button><button class="solution-tab-btn" data-slide="3">Travail Contentieux</button></div><div class="solutions-carousel"><div class="solutions-track" id="solutions-track"><div class="solution-card"><div class="solution-content"><h3>Juristes d'Entreprise</h3><p>Optimisez la gestion juridique interne avec des analyses contractuelles automatisées.</p></div><div class="solution-demo">🏢</div></div><div class="solution-card"><div class="solution-content"><h3>Équipes Innovation</h3><p>Intégrez l'IA juridique dans vos processus existants via nos API.</p></div><div class="solution-demo">⚡</div></div><div class="solution-card"><div class="solution-content"><h3>Travail Transactionnel</h3><p>Accélérez vos transactions avec une due diligence intelligente.</p></div><div class="solution-demo">📋</div></div><div class="solution-card"><div class="solution-content"><h3>Travail Contentieux</h3><p>Renforcez votre stratégie avec une recherche jurisprudentielle avancée.</p></div><div class="solution-demo">⚖️</div></div></div></div></div></section>
-    <section class="stats"><div class="container"><h2>Conçu pour l'Excellence Juridique</h2><div class="stats-grid"><div class="stat-item"><h3>Sécurité Bancaire</h3><p>Chiffrement de bout en bout et conformité aux normes les plus strictes.</p></div><div class="stat-item"><h3>Précision Expert</h3><p>IA entraînée sur le droit ivoirien et OHADA pour une précision exceptionnelle.</p></div><div class="stat-item"><h3>Performance Optimale</h3><p>Traitement en temps réel de documents complexes pour votre productivité.</p></div><div class="stat-item"><h3>Support Premium</h3><p>Accompagnement personnalisé par nos experts juridiques et techniques.</p></div></div></div></section>
-    <section class="testimonials"><div class="container"><h2>Ce Que Disent Nos Clients</h2><div class="testimonial-carousel"><div class="testimonial-slide active"><blockquote>"Legem a révolutionné notre cabinet. Nous traitons les dossiers en un tiers du temps."</blockquote><div class="testimonial-author">— Maître Diabaté</div></div><div class="testimonial-slide"><blockquote>"Indispensable. La veille réglementaire nous fait économiser 60% de notre temps."</blockquote><div class="testimonial-author">— Mme Fatou Traoré</div></div><div class="testimonial-slide"><blockquote>"La capacité de Legem à analyser la jurisprudence est exceptionnelle."</blockquote><div class="testimonial-author">— Maître Ouattara</div></div><div class="testimonial-slide"><blockquote>"L'intégration dans nos processus de due diligence nous fait gagner des semaines."</blockquote><div class="testimonial-author">— Maître Konaté</div></div><div class="testimonial-slide"><blockquote>"Grâce à Legem, nous offrons des conseils plus précis et plus rapides."</blockquote><div class="testimonial-author">— Maître Yao</div></div></div><div class="testimonial-indicators"><div class="indicator active" data-slide="0"></div><div class="indicator" data-slide="1"></div><div class="indicator" data-slide="2"></div><div class="indicator" data-slide="3"></div><div class="indicator" data-slide="4"></div></div></div></section>
-    <footer id="page-footer">
-        <div class="footer-content">
-            <div class="footer-section legem-block">
-                <h4>Legem</h4>
-                <p>L'intelligence artificielle juridique la plus avancée pour les professionnels du droit en Côte d'Ivoire.</p>
-            </div>
-            <div class="footer-links-group">
-                <div class="footer-section"><h4>Produits</h4><a href="#">Assistant IA</a><a href="#">Recherche Juridique</a><a href="#">Coffre-fort</a><a href="#">Workflows</a></div>
-                <div class="footer-section"><h4>Solutions</h4><a href="#">Cabinets d'Avocats</a><a href="#">Entreprises</a><a href="#">Institutions</a><a href="#">Droit OHADA</a></div>
-                <div class="footer-section"><h4>Ressources</h4><a href="#">Documentation</a><a href="#">Formation</a><a href="#">Blog</a><a href="#">Support</a></div>
-                <div class="footer-section"><h4>Entreprise</h4><a href="#">Sécurité</a><a href="#">Confidentialité</a><a href="#">Conformité</a><a href="#">Contact</a></div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>Copyright © 2025 Counsel AI Corporation. All rights reserved.</span>
-            <div class="social-links"><a href="#">X</a><a href="#">LinkedIn</a></div>
-        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Legem Africa. Tous droits réservés.
     </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const header = document.getElementById('page-header');
-            const footer = document.getElementById('page-footer');
-            const hamburger = document.getElementById('hamburger-menu');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
 
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 10) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
-
-            if (header && footer) {
-                const footerObserver = new IntersectionObserver(entries => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            header.style.opacity = '0';
-                            header.style.pointerEvents = 'none';
-                        } else {
-                            header.style.opacity = '1';
-                            header.style.pointerEvents = 'auto';
-                        }
-                    });
-                }, { threshold: 0.1 });
-                footerObserver.observe(footer);
-            }
-
-            if (hamburger && mobileMenu) {
-                hamburger.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('open');
-                });
-                
-                mobileMenuLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        mobileMenu.classList.remove('open');
-                    });
-                });
-            }
-            const solutionsTrack = document.getElementById('solutions-track');
-            const solutionTabs = document.querySelectorAll('.solution-tab-btn');
-            solutionTabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const slideIndex = tab.getAttribute('data-slide');
-                    solutionsTrack.style.transform = `translateX(-${slideIndex * 100}%)`;
-                    solutionTabs.forEach(t => t.classList.remove('active'));
-                    tab.classList.add('active');
-                });
-            });
-            class TestimonialCarousel {
-                constructor(){this.slides=document.querySelectorAll('.testimonial-slide');this.indicators=document.querySelectorAll('.testimonial-indicators .indicator');if(this.slides.length===0)return;this.currentSlide=0;this.intervalId=null;this.slideInterval=5500;this.init()}
-                init(){this.indicators.forEach((indicator,index)=>indicator.addEventListener('click',()=>this.goToSlide(index)));this.startAutoRotation()}
-                goToSlide(slideIndex){if(this.intervalId)this.stopAutoRotation();this.slides[this.currentSlide].classList.remove('active');this.indicators[this.currentSlide].classList.remove('active');this.currentSlide=slideIndex;this.slides[this.currentSlide].classList.add('active');this.indicators[this.currentSlide].classList.add('active');this.startAutoRotation()}
-                nextSlide(){const nextIndex=(this.currentSlide+1)%this.slides.length;this.goToSlide(nextIndex)}
-                startAutoRotation(){this.stopAutoRotation();this.intervalId=setInterval(()=>this.nextSlide(),this.slideInterval)}
-                stopAutoRotation(){clearInterval(this.intervalId)}
-            }
-            new TestimonialCarousel();
-            const headerDemoBtn = document.getElementById('header-demo-btn');
-            const heroCtaBtn = document.getElementById('hero-cta-btn'); 
-            const loginBtn = document.getElementById('login-btn');
-            if (headerDemoBtn && heroCtaBtn) {
-                const observer = new IntersectionObserver(entries => {
-                    entries.forEach(entry => {
-                        const isHeroBtnVisible = entry.isIntersecting;
-                        
-                        if (window.innerWidth > 900) { 
-                           if (isHeroBtnVisible) {
-                                headerDemoBtn.style.display = 'none';
-                            } else {
-                                headerDemoBtn.style.display = 'inline-block';
-                            }
-                        }
-                    });
-                }, { threshold: 0.1 });
-                observer.observe(heroCtaBtn);
-            }
-            const videoContainer = document.querySelector('.video-container');
-            if (videoContainer) {
-                const videoObserver = new IntersectionObserver(entries => {
-                    entries.forEach(entry => {
-                        entry.target.classList.toggle('in-view', entry.isIntersecting);
-                    });
-                }, { threshold: 0.3 });
-                videoObserver.observe(videoContainer);
-            }
-        });
-    </script>
 </body>
 </html>
