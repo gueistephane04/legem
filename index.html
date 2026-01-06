@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <!-- Viewport optimisé pour mobile -->
+    <!-- Optimisation Mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>LEGEM - Bientôt disponible</title>
     <meta name="description" content="Site officiel de LEGEM Africa. En cours de construction.">
@@ -29,13 +29,39 @@
         .container {
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Centre verticalement sur PC */
+            justify-content: center; /* Centre verticalement */
             align-items: center;     /* Centre horizontalement */
             min-height: 100vh;
             text-align: center;
             padding: 20px;
             animation: fadeIn 2s ease-in-out;
             position: relative;
+        }
+
+        /* --- BOUTON D'ACTION (Centré PC et Mobile) --- */
+        .action-btn {
+            /* Positionnement statique pour rester dans le flux centré */
+            display: inline-block;
+            text-decoration: none;
+            color: #1a1a1a;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 1px solid #1a1a1a;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: transparent;
+            
+            /* Style par défaut (PC) */
+            margin-bottom: 50px; /* Espace sous le bouton avant le logo */
+            padding: 12px 30px;
+            font-size: 0.9rem;
+        }
+
+        .action-btn:hover {
+            background-color: #1a1a1a;
+            color: #ffffff;
         }
 
         /* --- TYPOGRAPHIE --- */
@@ -93,27 +119,6 @@
         }
         .email-link:hover::after { transform: scaleX(1); transform-origin: bottom left; }
         .email-link:hover { color: #555; }
-
-        /* --- BOUTON D'ACTION (PC) --- */
-        .action-btn {
-            position: absolute; /* Fixe en haut à droite sur PC */
-            top: 40px;
-            right: 50px;
-            text-decoration: none;
-            color: #1a1a1a;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border: 1px solid #1a1a1a;
-            padding: 12px 25px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            z-index: 10;
-            background: rgba(255,255,255,0.8);
-        }
-        .action-btn:hover { background-color: #1a1a1a; color: #ffffff; }
 
         /* --- FOOTER --- */
         footer {
@@ -211,24 +216,16 @@
         @media (max-width: 768px) {
             
             .container {
-                /* On aligne tout proprement */
-                justify-content: center; 
-                padding-top: 40px; 
+                padding-top: 60px; 
                 padding-bottom: 60px;
             }
 
             /* --- BOUTON MODIFIÉ POUR MOBILE --- */
             .action-btn {
-                position: static; /* Annule la position absolue (haut droite) */
-                display: inline-block;
-                margin-bottom: 40px; /* Espace avant le logo */
-                
-                /* +20% de taille environ */
-                font-size: 1.1rem; /* 0.9rem + 20% */
-                padding: 15px 30px; /* Padding augmenté */
-                border-width: 2px; /* Bordure un peu plus épaisse pour le style */
-                
-                background-color: transparent; /* Fond transparent pour l'élégance */
+                /* +20% de taille et padding */
+                font-size: 1.1rem; 
+                padding: 15px 35px; 
+                margin-bottom: 40px;
             }
 
             .brand-name { font-size: 1.4rem; margin-bottom: 20px; }
@@ -247,7 +244,7 @@
 
     <div class="container">
         
-        <!-- Bouton déplacé ici pour le flux mobile -->
+        <!-- LE BOUTON EST MAINTENANT LE PREMIER ÉLÉMENT CENTRÉ SUR TOUTES LES VERSIONS -->
         <a id="openFormBtn" class="action-btn">Nous rejoindre</a>
 
         <div class="brand-name">LEGEM AFRICA</div>
@@ -266,20 +263,28 @@
         &copy; 2025 Legem Africa. Tous droits réservés.
     </footer>
 
-    <!-- FORMULAIRE (MODALE) -->
+    <!-- FORMULAIRE -->
     <div id="contactModal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
             <h2 class="modal-title">Inscription</h2>
             
+            <!-- DÉBUT DU FORMULAIRE CORRIGÉ -->
             <form action="https://formsubmit.co/contact@legem.africa" method="POST">
-                <!-- Configuration FormSubmit -->
-                <input type="hidden" name="_subject" value="Nouvelle Inscription - Legem Africa">
+                
+                <!-- 1. Sujet du mail -->
+                <input type="hidden" name="_subject" value="Nouvelle Inscription - Site Legem">
+                
+                <!-- 2. Template "Box" pour s'assurer que les données s'affichent bien dans le mail -->
+                <input type="hidden" name="_template" value="box">
+                
+                <!-- 3. Désactiver le captcha -->
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
+                
+                <!-- 4. Redirection après envoi -->
                 <input type="hidden" name="_next" value="https://legem.africa">
 
-                <!-- Champs -->
+                <!-- CHAMPS (Les attributs 'name' sont cruciaux pour l'envoi du mail) -->
                 <div class="form-group">
                     <label for="nom">Nom</label>
                     <input type="text" id="nom" name="Nom" required>
@@ -307,6 +312,7 @@
 
                 <button type="submit" class="submit-btn">Envoyer l'inscription</button>
             </form>
+            <!-- FIN DU FORMULAIRE -->
         </div>
     </div>
 
