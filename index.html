@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <!-- Cette ligne est CRUCIALE pour le mobile -->
+    <!-- Viewport optimisé pour mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>LEGEM - Bientôt disponible</title>
     <meta name="description" content="Site officiel de LEGEM Africa. En cours de construction.">
@@ -22,7 +22,6 @@
             font-family: 'Montserrat', sans-serif;
             background-color: #ffffff;
             color: #333333;
-            /* On autorise le scroll vertical si le contenu dépasse sur petit écran */
             overflow-x: hidden; 
         }
 
@@ -30,9 +29,9 @@
         .container {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh; /* Utilise min-height pour permettre le scroll sur mobile */
+            justify-content: center; /* Centre verticalement sur PC */
+            align-items: center;     /* Centre horizontalement */
+            min-height: 100vh;
             text-align: center;
             padding: 20px;
             animation: fadeIn 2s ease-in-out;
@@ -54,7 +53,7 @@
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem; /* Plus grand sur PC */
+            font-size: 3.5rem;
             font-weight: 600;
             color: #1a1a1a;
             margin-bottom: 25px;
@@ -95,15 +94,15 @@
         .email-link:hover::after { transform: scaleX(1); transform-origin: bottom left; }
         .email-link:hover { color: #555; }
 
-        /* --- BOUTON HAUT DROITE --- */
-        .top-right-btn {
-            position: absolute;
+        /* --- BOUTON D'ACTION (PC) --- */
+        .action-btn {
+            position: absolute; /* Fixe en haut à droite sur PC */
             top: 40px;
             right: 50px;
             text-decoration: none;
             color: #1a1a1a;
             font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1.5px;
@@ -112,9 +111,9 @@
             transition: all 0.3s ease;
             cursor: pointer;
             z-index: 10;
-            background: rgba(255,255,255,0.8); /* Légère transparence pour lisibilité */
+            background: rgba(255,255,255,0.8);
         }
-        .top-right-btn:hover { background-color: #1a1a1a; color: #ffffff; }
+        .action-btn:hover { background-color: #1a1a1a; color: #ffffff; }
 
         /* --- FOOTER --- */
         footer {
@@ -138,11 +137,11 @@
             height: 100%;
             background-color: rgba(0,0,0,0.7);
             backdrop-filter: blur(5px);
-            align-items: center; /* Centre verticalement sur PC */
+            align-items: center;
             justify-content: center;
             opacity: 0;
             transition: opacity 0.3s ease;
-            overflow-y: auto; /* Permet le scroll si l'écran est petit */
+            overflow-y: auto;
             padding: 20px;
         }
 
@@ -156,7 +155,7 @@
             position: relative;
             box-shadow: 0 15px 30px rgba(0,0,0,0.3);
             border-radius: 4px;
-            margin: auto; /* Centre dans le flex */
+            margin: auto;
         }
 
         .close-btn {
@@ -186,7 +185,7 @@
         }
         .form-group input {
             width: 100%; padding: 12px 0; border: none; border-bottom: 1px solid #ccc;
-            font-family: 'Montserrat', sans-serif; font-size: 1.1rem; /* Texte input plus grand */
+            font-family: 'Montserrat', sans-serif; font-size: 1.1rem;
             outline: none; transition: border-color 0.3s; background: transparent;
             color: #000;
         }
@@ -211,60 +210,46 @@
         /* ========================================= */
         @media (max-width: 768px) {
             
-            /* Ajustement du conteneur pour ne pas que le logo touche le haut */
             .container {
-                padding-top: 100px; /* Espace pour le bouton */
-                padding-bottom: 80px; /* Espace pour le footer */
-                justify-content: flex-start; /* Aligner en haut plutôt qu'au centre */
+                /* On aligne tout proprement */
+                justify-content: center; 
+                padding-top: 40px; 
+                padding-bottom: 60px;
             }
 
-            /* Bouton "Nous rejoindre" plus compact et bien placé */
-            .top-right-btn {
-                top: 20px;
-                right: 20px;
-                padding: 10px 15px;
-                font-size: 0.8rem;
-                letter-spacing: 1px;
-                background-color: #fff; /* Fond blanc pour cacher le texte dessous si besoin */
+            /* --- BOUTON MODIFIÉ POUR MOBILE --- */
+            .action-btn {
+                position: static; /* Annule la position absolue (haut droite) */
+                display: inline-block;
+                margin-bottom: 40px; /* Espace avant le logo */
+                
+                /* +20% de taille environ */
+                font-size: 1.1rem; /* 0.9rem + 20% */
+                padding: 15px 30px; /* Padding augmenté */
+                border-width: 2px; /* Bordure un peu plus épaisse pour le style */
+                
+                background-color: transparent; /* Fond transparent pour l'élégance */
             }
 
-            /* Logo */
             .brand-name { font-size: 1.4rem; margin-bottom: 20px; }
-
-            /* Gros titre */
             h1 { font-size: 2.2rem; line-height: 1.2; margin-bottom: 15px; }
-
-            /* Sous-texte */
             p.subtext { font-size: 1rem; line-height: 1.5; padding: 0 10px; margin-bottom: 30px; }
-
-            /* Lien email */
             .email-link { font-size: 1.3rem; display: block; word-break: break-all; }
-
-            /* Footer */
             footer { font-size: 0.7rem; bottom: 15px; }
 
             /* MODALE SUR MOBILE */
-            .modal {
-                align-items: flex-start; /* Aligner en haut pour permettre le scroll */
-                padding: 10px;
-            }
-            .modal-content {
-                padding: 25px 20px;
-                margin-top: 60px; /* Marge du haut pour ne pas coller */
-                margin-bottom: 40px; /* Marge du bas pour scroller */
-            }
-            .modal-title { font-size: 1.6rem; }
-            .form-group input { font-size: 1rem; padding: 10px 0; } /* Taille 16px min pour éviter le zoom iOS */
-            .submit-btn { padding: 15px; font-size: 0.9rem; }
+            .modal { align-items: flex-start; padding: 10px; }
+            .modal-content { padding: 25px 20px; margin-top: 40px; margin-bottom: 40px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Bouton d'ouverture -->
-    <a id="openFormBtn" class="top-right-btn">Nous rejoindre</a>
-
     <div class="container">
+        
+        <!-- Bouton déplacé ici pour le flux mobile -->
+        <a id="openFormBtn" class="action-btn">Nous rejoindre</a>
+
         <div class="brand-name">LEGEM AFRICA</div>
         <h1>L'excellence en préparation</h1>
         <p class="subtext">
@@ -334,7 +319,6 @@
 
         btn.onclick = function() {
             modal.classList.add("show");
-            // Empêcher le site derrière de scroller quand la modale est ouverte
             body.style.overflow = "hidden";
         }
 
