@@ -2,22 +2,19 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Cette ligne est CRUCIALE pour le mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>LEGEM - Bientôt disponible</title>
     <meta name="description" content="Site officiel de LEGEM Africa. En cours de construction.">
     
-    <!-- Importation de polices Google élégantes -->
+    <!-- Polices -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
 
     <style>
-        /* RESET & BASE */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* --- RESET & BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body, html {
             height: 100%;
@@ -25,22 +22,24 @@
             font-family: 'Montserrat', sans-serif;
             background-color: #ffffff;
             color: #333333;
-            overflow: hidden;
+            /* On autorise le scroll vertical si le contenu dépasse sur petit écran */
+            overflow-x: hidden; 
         }
 
-        /* LAYOUT CENTRAL */
+        /* --- LAYOUT CENTRAL --- */
         .container {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh; /* Utilise min-height pour permettre le scroll sur mobile */
             text-align: center;
             padding: 20px;
             animation: fadeIn 2s ease-in-out;
+            position: relative;
         }
 
-        /* TYPOGRAPHIE & DESIGN */
+        /* --- TYPOGRAPHIE --- */
         .brand-name {
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
@@ -48,236 +47,221 @@
             letter-spacing: 4px;
             text-transform: uppercase;
             color: #000;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             border-bottom: 1px solid #ddd;
             padding-bottom: 10px;
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+            font-size: 3.5rem; /* Plus grand sur PC */
             font-weight: 600;
             color: #1a1a1a;
-            margin-bottom: 20px;
-            line-height: 1.2;
+            margin-bottom: 25px;
+            line-height: 1.1;
         }
 
         p.subtext {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 300;
-            color: #666;
+            color: #555;
             margin-bottom: 40px;
-            max-width: 600px;
+            max-width: 700px;
             line-height: 1.6;
         }
 
-        /* LIEN EMAIL STYLISÉ */
-        .contact-box {
-            margin-top: 20px;
-        }
-
+        /* --- LIEN EMAIL --- */
+        .contact-box { margin-top: 20px; }
         .contact-label {
             display: block;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #999;
             margin-bottom: 10px;
         }
-
         .email-link {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: #1a1a1a;
             text-decoration: none;
             position: relative;
-            transition: color 0.3s ease;
             font-style: italic;
+            transition: color 0.3s;
         }
-
         .email-link::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            transform: scaleX(0);
-            height: 1px;
-            bottom: -5px;
-            left: 0;
-            background-color: #d4af37;
-            transform-origin: bottom right;
-            transition: transform 0.25s ease-out;
+            content: ''; position: absolute; width: 100%; transform: scaleX(0); height: 1px; bottom: -5px; left: 0; background-color: #d4af37; transform-origin: bottom right; transition: transform 0.25s ease-out;
         }
+        .email-link:hover::after { transform: scaleX(1); transform-origin: bottom left; }
+        .email-link:hover { color: #555; }
 
-        .email-link:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
-
-        .email-link:hover {
-            color: #555;
-        }
-
-        /* FOOTER */
-        footer {
-            position: absolute;
-            bottom: 30px;
-            font-size: 0.75rem;
-            color: #aaa;
-            letter-spacing: 1px;
-        }
-
-        /* BOUTON HAUT DROITE */
+        /* --- BOUTON HAUT DROITE --- */
         .top-right-btn {
             position: absolute;
-            top: 30px;
-            right: 40px;
+            top: 40px;
+            right: 50px;
             text-decoration: none;
             color: #1a1a1a;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             border: 1px solid #1a1a1a;
-            padding: 10px 20px;
+            padding: 12px 25px;
             transition: all 0.3s ease;
             cursor: pointer;
             z-index: 10;
+            background: rgba(255,255,255,0.8); /* Légère transparence pour lisibilité */
+        }
+        .top-right-btn:hover { background-color: #1a1a1a; color: #ffffff; }
+
+        /* --- FOOTER --- */
+        footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.8rem;
+            color: #aaa;
+            letter-spacing: 1px;
+            width: 100%;
+            text-align: center;
         }
 
-        .top-right-btn:hover {
-            background-color: #1a1a1a;
-            color: #ffffff;
-        }
-
-        /* MODALE (POPUP) */
+        /* --- MODALE (POPUP) --- */
         .modal {
             display: none;
             position: fixed;
-            z-index: 100;
+            z-index: 1000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.6);
+            background-color: rgba(0,0,0,0.7);
             backdrop-filter: blur(5px);
-            align-items: center;
+            align-items: center; /* Centre verticalement sur PC */
             justify-content: center;
             opacity: 0;
             transition: opacity 0.3s ease;
+            overflow-y: auto; /* Permet le scroll si l'écran est petit */
+            padding: 20px;
         }
 
-        .modal.show {
-            display: flex;
-            opacity: 1;
-        }
+        .modal.show { display: flex; opacity: 1; }
 
         .modal-content {
             background-color: #fff;
             padding: 40px;
-            width: 90%;
+            width: 100%;
             max-width: 500px;
             position: relative;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-            transform: translateY(-20px);
-            transition: transform 0.3s ease;
-        }
-
-        .modal.show .modal-content {
-            transform: translateY(0);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            border-radius: 4px;
+            margin: auto; /* Centre dans le flex */
         }
 
         .close-btn {
             position: absolute;
             top: 15px;
             right: 20px;
-            font-size: 28px;
-            font-weight: bold;
+            font-size: 35px;
+            font-weight: 300;
             color: #aaa;
             cursor: pointer;
-            transition: color 0.3s;
+            line-height: 20px;
         }
+        .close-btn:hover { color: #000; }
 
-        .close-btn:hover {
-            color: #000;
-        }
-
-        /* STYLE DU FORMULAIRE */
+        /* FORMULAIRE */
         .modal-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 25px;
             color: #1a1a1a;
             text-align: center;
         }
-
-        .form-group {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-
+        .form-group { margin-bottom: 18px; text-align: left; }
         .form-group label {
-            display: block;
-            font-size: 0.75rem;
-            color: #666;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            display: block; font-size: 0.85rem; color: #444; margin-bottom: 8px;
+            text-transform: uppercase; letter-spacing: 1px; font-weight: 600;
         }
-
         .form-group input {
-            width: 100%;
-            padding: 10px 0;
-            border: none;
-            border-bottom: 1px solid #ddd;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.3s;
+            width: 100%; padding: 12px 0; border: none; border-bottom: 1px solid #ccc;
+            font-family: 'Montserrat', sans-serif; font-size: 1.1rem; /* Texte input plus grand */
+            outline: none; transition: border-color 0.3s; background: transparent;
+            color: #000;
         }
-
-        .form-group input:focus {
-            border-bottom: 1px solid #d4af37;
-        }
-
+        .form-group input:focus { border-bottom: 2px solid #d4af37; }
+        
         .submit-btn {
-            width: 100%;
-            background-color: #1a1a1a;
-            color: #fff;
-            padding: 15px;
-            border: none;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 15px;
-            transition: background-color 0.3s;
+            width: 100%; background-color: #1a1a1a; color: #fff; padding: 18px;
+            border: none; font-family: 'Montserrat', sans-serif; text-transform: uppercase;
+            letter-spacing: 2px; font-weight: 600; cursor: pointer; margin-top: 10px;
+            font-size: 1rem; transition: background-color 0.3s;
         }
+        .submit-btn:hover { background-color: #444; }
 
-        .submit-btn:hover {
-            background-color: #333;
-        }
-
-        /* ANIMATION */
+        /* --- ANIMATION --- */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* RESPONSIVE */
+        /* ========================================= */
+        /* === VERSION MOBILE (RESPONSIVE) === */
+        /* ========================================= */
         @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            .email-link { font-size: 1.2rem; }
-            .brand-name { font-size: 1.2rem; }
-            .top-right-btn { top: 20px; right: 20px; padding: 8px 15px; font-size: 0.75rem; }
-            .modal-content { padding: 30px 20px; }
+            
+            /* Ajustement du conteneur pour ne pas que le logo touche le haut */
+            .container {
+                padding-top: 100px; /* Espace pour le bouton */
+                padding-bottom: 80px; /* Espace pour le footer */
+                justify-content: flex-start; /* Aligner en haut plutôt qu'au centre */
+            }
+
+            /* Bouton "Nous rejoindre" plus compact et bien placé */
+            .top-right-btn {
+                top: 20px;
+                right: 20px;
+                padding: 10px 15px;
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+                background-color: #fff; /* Fond blanc pour cacher le texte dessous si besoin */
+            }
+
+            /* Logo */
+            .brand-name { font-size: 1.4rem; margin-bottom: 20px; }
+
+            /* Gros titre */
+            h1 { font-size: 2.2rem; line-height: 1.2; margin-bottom: 15px; }
+
+            /* Sous-texte */
+            p.subtext { font-size: 1rem; line-height: 1.5; padding: 0 10px; margin-bottom: 30px; }
+
+            /* Lien email */
+            .email-link { font-size: 1.3rem; display: block; word-break: break-all; }
+
+            /* Footer */
+            footer { font-size: 0.7rem; bottom: 15px; }
+
+            /* MODALE SUR MOBILE */
+            .modal {
+                align-items: flex-start; /* Aligner en haut pour permettre le scroll */
+                padding: 10px;
+            }
+            .modal-content {
+                padding: 25px 20px;
+                margin-top: 60px; /* Marge du haut pour ne pas coller */
+                margin-bottom: 40px; /* Marge du bas pour scroller */
+            }
+            .modal-title { font-size: 1.6rem; }
+            .form-group input { font-size: 1rem; padding: 10px 0; } /* Taille 16px min pour éviter le zoom iOS */
+            .submit-btn { padding: 15px; font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Bouton d'ouverture du formulaire -->
+    <!-- Bouton d'ouverture -->
     <a id="openFormBtn" class="top-right-btn">Nous rejoindre</a>
 
     <div class="container">
@@ -297,46 +281,43 @@
         &copy; 2025 Legem Africa. Tous droits réservés.
     </footer>
 
-    <!-- FENÊTRE MODALE (FORMULAIRE FORMSUBMIT) -->
+    <!-- FORMULAIRE (MODALE) -->
     <div id="contactModal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
             <h2 class="modal-title">Inscription</h2>
             
-            <!-- FORMULAIRE CONNECTÉ À FORMSUBMIT -->
             <form action="https://formsubmit.co/contact@legem.africa" method="POST">
-                
-                <!-- Paramètres cachés pour la configuration -->
+                <!-- Configuration FormSubmit -->
                 <input type="hidden" name="_subject" value="Nouvelle Inscription - Legem Africa">
-                <input type="hidden" name="_captcha" value="false"> <!-- Désactive le puzzle anti-robot -->
-                <input type="hidden" name="_template" value="table"> <!-- Présentation propre du mail -->
-                <!-- Redirection après envoi : renvoie vers la page d'accueil -->
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
                 <input type="hidden" name="_next" value="https://legem.africa">
 
-                <!-- Champs visibles -->
+                <!-- Champs -->
                 <div class="form-group">
                     <label for="nom">Nom</label>
-                    <input type="text" id="nom" name="Nom" required placeholder="Votre nom">
+                    <input type="text" id="nom" name="Nom" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="prenom">Prénoms</label>
-                    <input type="text" id="prenom" name="Prenom" required placeholder="Votre prénom">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" id="prenom" name="Prenom" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="fonction">Profession</label>
-                    <input type="text" id="fonction" name="Fonction" required placeholder="Votre poste / titre">
+                    <label for="fonction">Fonction</label>
+                    <input type="text" id="fonction" name="Fonction" required>
                 </div>
 
                 <div class="form-group">
                     <label for="contact">Contact (Téléphone)</label>
-                    <input type="tel" id="contact" name="Telephone" required placeholder="Votre numéro">
+                    <input type="tel" id="contact" name="Telephone" required>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Adresse E-mail</label>
-                    <input type="email" id="email" name="Email" required placeholder="Votre adresse mail">
+                    <input type="email" id="email" name="Email" required>
                 </div>
 
                 <button type="submit" class="submit-btn">Envoyer l'inscription</button>
@@ -349,18 +330,23 @@
         const modal = document.getElementById("contactModal");
         const btn = document.getElementById("openFormBtn");
         const span = document.getElementsByClassName("close-btn")[0];
+        const body = document.body;
 
         btn.onclick = function() {
             modal.classList.add("show");
+            // Empêcher le site derrière de scroller quand la modale est ouverte
+            body.style.overflow = "hidden";
         }
 
         span.onclick = function() {
             modal.classList.remove("show");
+            body.style.overflow = "auto";
         }
 
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.classList.remove("show");
+                body.style.overflow = "auto";
             }
         }
     </script>
