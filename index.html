@@ -25,7 +25,7 @@
             font-family: 'Montserrat', sans-serif;
             background-color: #ffffff;
             color: #333333;
-            overflow: hidden; /* Empêche le scroll de fond quand la modale est fermée */
+            overflow: hidden;
         }
 
         /* LAYOUT CENTRAL */
@@ -126,7 +126,7 @@
             letter-spacing: 1px;
         }
 
-        /* --- NOUVEAU : BOUTON HAUT DROITE --- */
+        /* BOUTON HAUT DROITE */
         .top-right-btn {
             position: absolute;
             top: 30px;
@@ -150,16 +150,16 @@
             color: #ffffff;
         }
 
-        /* --- NOUVEAU : MODALE (POPUP) --- */
+        /* MODALE (POPUP) */
         .modal {
-            display: none; /* Caché par défaut */
+            display: none;
             position: fixed;
             z-index: 100;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.6); /* Fond sombre transparent */
+            background-color: rgba(0,0,0,0.6);
             backdrop-filter: blur(5px);
             align-items: center;
             justify-content: center;
@@ -206,19 +206,19 @@
         .modal-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             color: #1a1a1a;
             text-align: center;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-align: left;
         }
 
         .form-group label {
             display: block;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #666;
             margin-bottom: 5px;
             text-transform: uppercase;
@@ -251,7 +251,7 @@
             letter-spacing: 2px;
             font-weight: 600;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 15px;
             transition: background-color 0.3s;
         }
 
@@ -265,7 +265,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* RESPONSIVE MOBILE */
+        /* RESPONSIVE */
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
             .email-link { font-size: 1.2rem; }
@@ -281,19 +281,12 @@
     <a id="openFormBtn" class="top-right-btn">Nous rejoindre</a>
 
     <div class="container">
-        <!-- Logo ou Nom de l'entreprise -->
         <div class="brand-name">LEGEM AFRICA</div>
-
-        <!-- Titre Principal -->
         <h1>L'excellence en préparation</h1>
-
-        <!-- Sous-texte -->
         <p class="subtext">
             Nous bâtissons actuellement une nouvelle expérience numérique pour vous servir.<br>
             Notre site sera bientôt en ligne.
         </p>
-
-        <!-- Section Contact -->
         <div class="contact-box">
             <span class="contact-label">Nous contacter</span>
             <a href="mailto:contact@legem.africa" class="email-link">contact@legem.africa</a>
@@ -304,65 +297,67 @@
         &copy; 2025 Legem Africa. Tous droits réservés.
     </footer>
 
-    <!-- FENÊTRE MODALE (FORMULAIRE) -->
+    <!-- FENÊTRE MODALE (FORMULAIRE FORMSUBMIT) -->
     <div id="contactModal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
             <h2 class="modal-title">Inscription</h2>
             
-            <!-- 
-                IMPORTANT: L'action mailto ouvre le logiciel de messagerie de l'utilisateur.
-                enctype="text/plain" assure que le texte est lisible.
-            -->
-            <form action="mailto:contact@legem.africa" method="post" enctype="text/plain">
+            <!-- FORMULAIRE CONNECTÉ À FORMSUBMIT -->
+            <form action="https://formsubmit.co/contact@legem.africa" method="POST">
+                
+                <!-- Paramètres cachés pour la configuration -->
+                <input type="hidden" name="_subject" value="Nouvelle Inscription - Legem Africa">
+                <input type="hidden" name="_captcha" value="false"> <!-- Désactive le puzzle anti-robot -->
+                <input type="hidden" name="_template" value="table"> <!-- Présentation propre du mail -->
+                <!-- Redirection après envoi : renvoie vers la page d'accueil -->
+                <input type="hidden" name="_next" value="https://legem.africa">
+
+                <!-- Champs visibles -->
                 <div class="form-group">
                     <label for="nom">Nom</label>
-                    <input type="text" id="nom" name="Nom" required>
+                    <input type="text" id="nom" name="Nom" required placeholder="Votre nom">
                 </div>
 
                 <div class="form-group">
-                    <label for="prenom">Prénoms</label>
-                    <input type="text" id="prenom" name="Prenom" required>
+                    <label for="prenom">Prénom</label>
+                    <input type="text" id="prenom" name="Prenom" required placeholder="Votre prénom">
                 </div>
 
                 <div class="form-group">
-                    <label for="fonction">Profession</label>
-                    <input type="text" id="fonction" name="Fonction" required>
+                    <label for="fonction">Fonction</label>
+                    <input type="text" id="fonction" name="Fonction" required placeholder="Votre poste / titre">
                 </div>
 
                 <div class="form-group">
                     <label for="contact">Contact (Téléphone)</label>
-                    <input type="tel" id="contact" name="Telephone" required>
+                    <input type="tel" id="contact" name="Telephone" required placeholder="Votre numéro">
                 </div>
 
                 <div class="form-group">
                     <label for="email">Adresse E-mail</label>
-                    <input type="email" id="email" name="Email" required>
+                    <input type="email" id="email" name="Email" required placeholder="Votre adresse mail">
                 </div>
 
-                <button type="submit" class="submit-btn">Envoyer</button>
+                <button type="submit" class="submit-btn">Envoyer l'inscription</button>
             </form>
         </div>
     </div>
 
-    <!-- JAVASCRIPT POUR GERER LA MODALE -->
+    <!-- JAVASCRIPT -->
     <script>
-        // Sélection des éléments
         const modal = document.getElementById("contactModal");
         const btn = document.getElementById("openFormBtn");
         const span = document.getElementsByClassName("close-btn")[0];
 
-        // Quand on clique sur le bouton "Nous rejoindre", ouvrir la modale
         btn.onclick = function() {
             modal.classList.add("show");
         }
 
-        // Quand on clique sur (x), fermer la modale
         span.onclick = function() {
             modal.classList.remove("show");
         }
 
-        // Quand on clique n'importe où en dehors de la modale, fermer
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.classList.remove("show");
