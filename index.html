@@ -2,7 +2,6 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <!-- Optimisation Mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>LEGEM - Bientôt disponible</title>
     <meta name="description" content="Site officiel de LEGEM Africa. En cours de construction.">
@@ -29,22 +28,20 @@
         .container {
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Centre verticalement */
-            align-items: center;     /* Centre horizontalement */
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
             text-align: center;
             padding: 20px;
             animation: fadeIn 2s ease-in-out;
-            position: relative; /* Important pour le positionnement du bouton PC */
+            position: relative;
         }
 
-        /* --- BOUTON D'ACTION (Configuration PC par défaut) --- */
+        /* --- BOUTON D'ACTION (PC: Haut-Droite / Mobile: Centré) --- */
         .action-btn {
-            /* PC : On le fixe en haut à droite */
             position: absolute;
             top: 40px;
             right: 50px;
-            
             text-decoration: none;
             color: #1a1a1a;
             font-family: 'Montserrat', sans-serif;
@@ -204,6 +201,20 @@
             font-size: 1rem; transition: background-color 0.3s;
         }
         .submit-btn:hover { background-color: #444; }
+        .submit-btn:disabled { background-color: #999; cursor: not-allowed; }
+
+        /* Message de succès caché par défaut */
+        #successMessage {
+            display: none;
+            text-align: center;
+            color: #1a1a1a;
+        }
+        #successMessage h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #d4af37;
+        }
 
         /* --- ANIMATION --- */
         @keyframes fadeIn {
@@ -215,24 +226,14 @@
         /* === VERSION MOBILE (RESPONSIVE) === */
         /* ========================================= */
         @media (max-width: 768px) {
+            .container { padding-top: 60px; padding-bottom: 60px; }
             
-            .container {
-                padding-top: 60px; 
-                padding-bottom: 60px;
-            }
-
-            /* --- BOUTON MODIFIÉ POUR MOBILE --- */
             .action-btn {
-                /* Mobile : On annule la position fixe pour le remettre dans le flux */
                 position: static; 
                 display: inline-block;
-                margin-bottom: 40px; /* Espace avant le logo */
-                
-                /* +20% de taille environ */
+                margin-bottom: 40px; 
                 font-size: 1.1rem; 
                 padding: 15px 35px; 
-                
-                /* Centrage naturel via le flex du container */
             }
 
             .brand-name { font-size: 1.4rem; margin-bottom: 20px; }
@@ -240,8 +241,6 @@
             p.subtext { font-size: 1rem; line-height: 1.5; padding: 0 10px; margin-bottom: 30px; }
             .email-link { font-size: 1.3rem; display: block; word-break: break-all; }
             footer { font-size: 0.7rem; bottom: 15px; }
-
-            /* MODALE SUR MOBILE */
             .modal { align-items: flex-start; padding: 10px; }
             .modal-content { padding: 25px 20px; margin-top: 40px; margin-bottom: 40px; }
         }
@@ -250,10 +249,7 @@
 <body>
 
     <div class="container">
-        
-        <!-- BOUTON -->
-        <!-- Sur PC, le CSS l'envoie en haut à droite. -->
-        <!-- Sur Mobile, le CSS le laisse ici, centré au-dessus du logo. -->
+        <!-- Bouton (Position gérée par CSS) -->
         <a id="openFormBtn" class="action-btn">Nous rejoindre</a>
 
         <div class="brand-name">LEGEM AFRICA</div>
@@ -272,33 +268,38 @@
         &copy; 2025 Legem Africa. Tous droits réservés.
     </footer>
 
-    <!-- FORMULAIRE -->
+    <!-- MODALE -->
     <div id="contactModal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
-            <h2 class="modal-title">Inscription</h2>
+            <h2 class="modal-title" id="modalTitle">Inscription</h2>
             
-            <form action="https://formsubmit.co/contact@legem.africa" method="POST">
-                
-                <!-- CONFIGURATION MAIL -->
-                <input type="hidden" name="_subject" value="Nouvelle Inscription - Site Legem">
-                <input type="hidden" name="_template" value="box"> <!-- Pour éviter le mail vide -->
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://legem.africa">
+            <!-- Message de succès (caché au début) -->
+            <div id="successMessage">
+                <h3>Merci !</h3>
+                <p>Vos informations ont bien été transmises.<br>Nous vous recontacterons très bientôt.</p>
+            </div>
 
-                <!-- CHAMPS -->
+            <!-- Formulaire -->
+            <form id="legemForm" action="https://formsubmit.co/contact@legem.africa" method="POST">
+                
+                <input type="hidden" name="_subject" value="Nouvelle Inscription - Site Legem">
+                <input type="hidden" name="_template" value="box">
+                <input type="hidden" name="_captcha" value="false">
+                <!-- Plus besoin de _next car on gère l'envoi en JavaScript -->
+
                 <div class="form-group">
                     <label for="nom">Nom</label>
                     <input type="text" id="nom" name="Nom" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="prenom">Prénoms</label>
+                    <label for="prenom">Prénom</label>
                     <input type="text" id="prenom" name="Prenom" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="fonction">Profession</label>
+                    <label for="fonction">Fonction</label>
                     <input type="text" id="fonction" name="Fonction" required>
                 </div>
 
@@ -312,23 +313,36 @@
                     <input type="email" id="email" name="Email" required>
                 </div>
 
-                <button type="submit" class="submit-btn">Envoyer l'inscription</button>
+                <button type="submit" id="submitBtn" class="submit-btn">Envoyer l'inscription</button>
             </form>
         </div>
     </div>
 
-    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT AVANCÉ (Envoi silencieux) -->
     <script>
         const modal = document.getElementById("contactModal");
         const btn = document.getElementById("openFormBtn");
         const span = document.getElementsByClassName("close-btn")[0];
         const body = document.body;
+        
+        // Éléments du formulaire
+        const form = document.getElementById("legemForm");
+        const submitBtn = document.getElementById("submitBtn");
+        const successMessage = document.getElementById("successMessage");
+        const modalTitle = document.getElementById("modalTitle");
 
+        // Ouverture de la modale
         btn.onclick = function() {
             modal.classList.add("show");
             body.style.overflow = "hidden";
+            // Réinitialiser si on réouvre
+            form.style.display = "block";
+            successMessage.style.display = "none";
+            modalTitle.style.display = "block";
+            form.reset();
         }
 
+        // Fermeture de la modale
         span.onclick = function() {
             modal.classList.remove("show");
             body.style.overflow = "auto";
@@ -340,6 +354,39 @@
                 body.style.overflow = "auto";
             }
         }
+
+        // GESTION DE L'ENVOI DU FORMULAIRE (AJAX)
+        form.addEventListener("submit", function(e) {
+            e.preventDefault(); // Empêche le rechargement de page
+            
+            // Changer le texte du bouton
+            submitBtn.textContent = "Envoi en cours...";
+            submitBtn.disabled = true;
+
+            // Préparer les données
+            const formData = new FormData(form);
+
+            // Envoyer à FormSubmit via Fetch
+            fetch("https://formsubmit.co/ajax/contact@legem.africa", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // SUCCÈS
+                form.style.display = "none";       // Cacher le formulaire
+                modalTitle.style.display = "none"; // Cacher le titre "Inscription"
+                successMessage.style.display = "block"; // Afficher le message de merci
+                submitBtn.textContent = "Envoyer l'inscription";
+                submitBtn.disabled = false;
+            })
+            .catch(error => {
+                // ERREUR
+                alert("Une erreur est survenue. Merci de réessayer ou de nous écrire directement par mail.");
+                submitBtn.textContent = "Envoyer l'inscription";
+                submitBtn.disabled = false;
+            });
+        });
     </script>
 
 </body>
