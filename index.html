@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>LEGEM - IA Juridique Côte d'Ivoire</title>
-    <meta name="description" content="LEGEM Africa — Premier agent d'IA juridique en Côte d'Ivoire. Plateforme opérationnelle. Contactez-nous pour accéder au service.">
+    <meta name="description" content="LEGEM Africa — Premier agent d'IA juridique en Côte d'Ivoire. Plateforme opérationnelle. Contactez-nous par email pour accéder au service.">
 
     <!-- Polices -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -151,10 +151,36 @@
             border-top: 1px solid var(--gris-clair);
             border-bottom: 1px solid var(--gris-clair);
             padding: 12px 25px;
-            margin-bottom: 45px;
+            margin-bottom: 50px;
         }
 
-        /* --- BOUTON D'ACTION --- */
+        /* --- BLOC CONTACT EMAIL (élément central de la page) --- */
+        .contact-card {
+            background: var(--gris-tres-clair);
+            border: 1px solid var(--gris-clair);
+            padding: 40px 50px;
+            max-width: 560px;
+            width: 100%;
+        }
+
+        .contact-card-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            color: var(--noir);
+            margin-bottom: 15px;
+        }
+
+        .contact-card-text {
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: var(--gris);
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        /* Bouton principal : ouvre le client mail avec message pré-rempli */
         .action-btn {
             text-decoration: none;
             color: var(--blanc);
@@ -167,8 +193,8 @@
             cursor: pointer;
             padding: 16px 45px;
             font-size: 0.78rem;
-            margin-bottom: 40px;
             display: inline-block;
+            margin-bottom: 25px;
         }
 
         .action-btn:hover {
@@ -176,24 +202,23 @@
             color: var(--noir);
         }
 
-        /* --- LIEN EMAIL --- */
-        .contact-box { margin-top: 10px; }
-        .contact-label {
-            display: block;
+        /* Adresse affichée en clair (repli si le mailto ne s'ouvre pas) */
+        .email-fallback {
             font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
             color: var(--gris);
-            margin-bottom: 10px;
+            letter-spacing: 1px;
         }
+
         .email-link {
             font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             color: var(--noir);
             text-decoration: none;
             font-style: italic;
             border-bottom: 1px solid transparent;
             transition: border-color 0.3s;
+            display: inline-block;
+            margin-top: 6px;
         }
         .email-link:hover { border-bottom: 1px solid var(--noir); }
 
@@ -209,100 +234,6 @@
             border-top: 1px solid var(--gris-tres-clair);
         }
 
-        /* --- MODALE --- */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0; top: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.75);
-            backdrop-filter: blur(8px);
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            overflow-y: auto;
-            padding: 20px;
-        }
-        .modal.show { display: flex; opacity: 1; }
-        .modal-content {
-            background-color: var(--blanc);
-            padding: 40px;
-            width: 100%;
-            max-width: 480px;
-            border-radius: 2px;
-        }
-        .modal-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            color: var(--noir);
-        }
-        .modal-subtitle {
-            font-size: 0.85rem;
-            color: var(--gris);
-            margin-bottom: 25px;
-            line-height: 1.5;
-        }
-
-        /* FORMULAIRE */
-        .form-group { margin-bottom: 18px; text-align: left; }
-        .form-group label {
-            display: block; font-size: 0.72rem; color: var(--gris-fonce); margin-bottom: 5px;
-            text-transform: uppercase; letter-spacing: 1px; font-weight: 600;
-        }
-        .form-group input {
-            width: 100%; padding: 10px 0; border: none; border-bottom: 1px solid var(--gris-clair);
-            font-family: 'Montserrat', sans-serif; font-size: 1rem;
-            outline: none; transition: border-color 0.3s;
-            background: transparent;
-        }
-        .form-group input:focus { border-bottom: 2px solid var(--noir); }
-
-        .submit-btn {
-            width: 100%; background-color: var(--noir); color: var(--blanc); padding: 16px;
-            border: 1px solid var(--noir); font-family: 'Montserrat', sans-serif; text-transform: uppercase;
-            letter-spacing: 2px; font-weight: 600; cursor: pointer; margin-top: 10px;
-            transition: all 0.3s ease;
-        }
-        .submit-btn:hover { background: var(--blanc); color: var(--noir); }
-        .submit-btn:disabled {
-            background: var(--gris-clair);
-            border-color: var(--gris-clair);
-            color: var(--gris);
-            cursor: wait;
-        }
-
-        /* MESSAGE DE SUCCÈS */
-        #successMessage { display: none; text-align: center; }
-        #successMessage h3 {
-            color: var(--noir);
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            margin-bottom: 12px;
-        }
-        #successMessage p {
-            color: var(--gris);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-        .close-success-btn {
-            background: var(--noir);
-            color: var(--blanc);
-            border: 1px solid var(--noir);
-            padding: 12px 35px;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .close-success-btn:hover { background: var(--blanc); color: var(--noir); }
-
         /* --- ANIMATION --- */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -315,7 +246,9 @@
             .info-banner { font-size: 0.6rem; letter-spacing: 1px; }
             .container { min-height: auto; padding-top: 50px; padding-bottom: 50px; }
             .site-note { font-size: 0.62rem; padding: 10px 15px; }
-            .modal-content { padding: 30px 25px; }
+            .contact-card { padding: 30px 25px; }
+            .action-btn { padding: 15px 30px; font-size: 0.72rem; }
+            .email-link { font-size: 1.05rem; }
         }
     </style>
 </head>
@@ -348,11 +281,24 @@
             Notre site vitrine complet est en cours de finalisation
         </div>
 
-        <a id="openFormBtn" class="action-btn">Demander mon accès</a>
+        <!-- BLOC CONTACT : l'email est désormais le canal unique -->
+        <div class="contact-card">
+            <div class="contact-card-title">Demande d'accès</div>
+            <p class="contact-card-text">
+                Envoyez-nous un email en précisant votre nom, votre cabinet ou
+                organisation, votre profession et un numéro de téléphone.
+                Notre équipe vous recontactera rapidement.
+            </p>
 
-        <div class="contact-box">
-            <span class="contact-label">Nous contacter</span>
-            <a href="mailto:contact@legem.africa" class="email-link">contact@legem.africa</a>
+            <a class="action-btn"
+               href="mailto:contact@legem.africa?subject=Demande%20d%27acc%C3%A8s%20-%20LEGEM&body=Bonjour%2C%0A%0AJe%20souhaite%20obtenir%20un%20acc%C3%A8s%20%C3%A0%20la%20plateforme%20LEGEM.%0A%0ANom%20%26%20Pr%C3%A9noms%20%3A%20%0ACabinet%20ou%20Organisation%20%3A%20%0AProfession%20%3A%20%0AT%C3%A9l%C3%A9phone%20%3A%20%0A%0ACordialement">
+                Demander mon accès par email
+            </a>
+
+            <div class="email-fallback">
+                ou écrivez-nous directement à<br>
+                <a href="mailto:contact@legem.africa" class="email-link">contact@legem.africa</a>
+            </div>
         </div>
     </div>
 
@@ -360,131 +306,5 @@
         &copy; 2025 Legem Africa. Abidjan, Côte d'Ivoire.
     </footer>
 
-    <!-- MODALE -->
-    <div id="contactModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" style="float:right; cursor:pointer; font-size: 24px; color:#888;">&times;</span>
-            <h2 class="modal-title" id="modalTitle">Demande d'accès</h2>
-            <p class="modal-subtitle" id="modalSubtitle">Renseignez vos coordonnées. Notre équipe vous contactera rapidement pour la mise en place de votre accès à la plateforme.</p>
-
-            <!-- Message affiché au retour après envoi réussi -->
-            <div id="successMessage">
-                <h3>Demande reçue ✓</h3>
-                <p>Merci ! Votre demande a bien été transmise.<br>Notre équipe reviendra vers vous très rapidement.</p>
-                <button type="button" id="closeSuccessBtn" class="close-success-btn">Fermer</button>
-            </div>
-
-            <!--
-                CORRECTION MAJEURE :
-                Soumission POST classique (et non plus AJAX/fetch) pour contourner
-                le blocage Cloudflare 403 sur l'endpoint /ajax/ de FormSubmit.
-
-                ⚠️ IMPORTANT : après le premier envoi, FormSubmit vous enverra un
-                email d'activation. Une fois activé, remplacez l'adresse dans
-                action="" par l'endpoint hashé fourni (https://formsubmit.co/el/xxxxxxx)
-                pour plus de fiabilité et pour masquer votre email aux robots.
-            -->
-            <form id="legemForm" action="https://formsubmit.co/contact@legem.africa" method="POST">
-
-                <!-- Configuration FormSubmit -->
-                <input type="hidden" name="_subject" value="Demande d'ACCÈS - LEGEM (Production)">
-                <input type="hidden" name="Programme_Concerne" value="Agent IA Juridique - Production">
-                <!-- Redirection après envoi : retour sur le site avec marqueur de succès -->
-                <input type="hidden" name="_next" value="https://legem.africa/?success=1">
-                <!-- Désactive le captcha FormSubmit pour une expérience fluide -->
-                <input type="hidden" name="_captcha" value="false">
-                <!-- Email reçu au format tableau, plus lisible -->
-                <input type="hidden" name="_template" value="table">
-                <!-- Piège anti-spam invisible (honeypot) -->
-                <input type="text" name="_honey" style="display:none">
-
-                <div class="form-group">
-                    <label>Nom &amp; Prénoms</label>
-                    <input type="text" name="NomComplet" required>
-                </div>
-                <div class="form-group">
-                    <label>Cabinet ou Organisation</label>
-                    <input type="text" name="Organisation" required>
-                </div>
-                <div class="form-group">
-                    <label>Profession</label>
-                    <input type="text" name="Fonction" placeholder="Avocat, Juriste..." required>
-                </div>
-                <div class="form-group">
-                    <label>Contact (Téléphone)</label>
-                    <input type="tel" name="Telephone" required>
-                </div>
-                <div class="form-group">
-                    <label>E-mail</label>
-                    <input type="email" name="Email" required>
-                </div>
-                <button type="submit" id="submitBtn" class="submit-btn">Envoyer ma demande</button>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        const modal = document.getElementById("contactModal");
-        const openBtn = document.getElementById("openFormBtn");
-        const closeBtn = document.getElementsByClassName("close-btn")[0];
-        const form = document.getElementById("legemForm");
-        const submitBtn = document.getElementById("submitBtn");
-        const successMessage = document.getElementById("successMessage");
-        const modalTitle = document.getElementById("modalTitle");
-        const modalSubtitle = document.getElementById("modalSubtitle");
-
-        /* --- OUVERTURE DE LA MODALE --- */
-        openBtn.onclick = function() {
-            // Réinitialise l'état de la modale à chaque ouverture
-            form.style.display = "block";
-            modalTitle.style.display = "block";
-            modalSubtitle.style.display = "block";
-            successMessage.style.display = "none";
-            submitBtn.textContent = "Envoyer ma demande";
-            submitBtn.disabled = false;
-
-            modal.classList.add("show");
-            document.body.style.overflow = "hidden";
-        };
-
-        /* --- FERMETURE DE LA MODALE --- */
-        function closeModal() {
-            modal.classList.remove("show");
-            document.body.style.overflow = "auto";
-        }
-
-        closeBtn.onclick = closeModal;
-        document.getElementById("closeSuccessBtn").onclick = closeModal;
-
-        window.onclick = function(event) {
-            if (event.target == modal) closeModal();
-        };
-
-        /* --- SOUMISSION DU FORMULAIRE ---
-           Plus de fetch() : le navigateur envoie le POST lui-même,
-           ce qui passe le challenge Cloudflare sans problème.
-           On se contente d'un feedback visuel avant la redirection. */
-        form.addEventListener("submit", function() {
-            submitBtn.textContent = "Traitement...";
-            submitBtn.disabled = true;
-        });
-
-        /* --- AFFICHAGE DU SUCCÈS AU RETOUR (?success=1) ---
-           Après envoi, FormSubmit redirige vers _next.
-           On détecte le paramètre et on affiche la confirmation. */
-        window.addEventListener("DOMContentLoaded", function() {
-            const params = new URLSearchParams(window.location.search);
-            if (params.get("success") === "1") {
-                modal.classList.add("show");
-                document.body.style.overflow = "hidden";
-                form.style.display = "none";
-                modalTitle.style.display = "none";
-                modalSubtitle.style.display = "none";
-                successMessage.style.display = "block";
-                // Nettoie l'URL pour ne pas réafficher le message au rechargement
-                history.replaceState(null, "", window.location.pathname);
-            }
-        });
-    </script>
 </body>
 </html>
