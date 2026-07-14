@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>LEGEM - IA Juridique Côte d'Ivoire</title>
-    <meta name="description" content="Premier agent d'IA juridique en Côte d'Ivoire. Phase pilote exclusive.">
-    
+    <meta name="description" content="LEGEM Africa — Premier agent d'IA juridique en Côte d'Ivoire. Plateforme opérationnelle. Contactez-nous pour accéder au service.">
+
     <!-- Polices -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
 
     <style>
+        /* --- PALETTE : BLANC / NOIR / GRIS --- */
+        :root {
+            --blanc: #ffffff;
+            --noir: #111111;
+            --gris-fonce: #444444;
+            --gris: #888888;
+            --gris-clair: #e5e5e5;
+            --gris-tres-clair: #f7f7f7;
+        }
+
         /* --- RESET & BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -19,21 +29,25 @@
             height: 100%;
             width: 100%;
             font-family: 'Montserrat', sans-serif;
-            background-color: #ffffff;
-            color: #333333;
-            overflow-x: hidden; 
+            background-color: var(--blanc);
+            color: var(--gris-fonce);
+            overflow-x: hidden;
         }
 
-        /* --- BANDEAU ANNONCE PILOTE --- */
-        .pilot-banner {
-            background-color: #1a1a1a;
-            color: #d4af37; /* Couleur Or pour le côté sélect */
+        /* --- BANDEAU INFO SITE --- */
+        .info-banner {
+            background-color: var(--noir);
+            color: var(--blanc);
             text-align: center;
-            padding: 8px 10px;
-            font-size: 0.75rem;
-            letter-spacing: 1px;
+            padding: 10px;
+            font-size: 0.72rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: 600;
+        }
+        .info-banner .muted {
+            color: var(--gris);
+            font-weight: 400;
         }
 
         /* --- LAYOUT CENTRAL --- */
@@ -42,129 +56,157 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            /* MODIFICATION: Ajustement du calcul pour laisser place au footer (100vh - banner - footer approx) */
-            min-height: calc(100vh - 90px);
+            min-height: calc(100vh - 95px);
             text-align: center;
             padding: 20px;
-            animation: fadeIn 2s ease-in-out;
-            position: relative;
+            animation: fadeIn 1.8s ease-in-out;
         }
 
-        /* --- BOUTON D'ACTION (HAUT-GAUCHE) --- */
-        .action-btn {
-            position: absolute;
-            top: 30px;
-            left: 50px; /* Déplacé à gauche */
-            text-decoration: none;
-            color: #ffffff;
-            background-color: #1a1a1a;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border: 1px solid #1a1a1a;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            padding: 12px 30px;
-            font-size: 0.8rem;
-            z-index: 10;
-            box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
-            animation: pulse-gold 2s infinite;
-        }
-
-        @keyframes pulse-gold {
-            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
-        }
-
-        .action-btn:hover {
-            background-color: #d4af37;
-            border-color: #d4af37;
-            color: #1a1a1a;
-        }
-
-        /* --- TYPOGRAPHIE --- */
+        /* --- MARQUE --- */
         .brand-container {
-            margin-bottom: 30px;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 10px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--gris-clair);
+            padding-bottom: 12px;
         }
 
         .brand-name {
-            font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             font-size: 1.5rem;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             text-transform: uppercase;
-            color: #000;
+            color: var(--noir);
             display: inline-block;
         }
 
-        .pilot-badge {
-            font-size: 0.6rem;
-            vertical-align: top;
-            background: #eee;
-            padding: 2px 6px;
-            border-radius: 3px;
-            letter-spacing: 1px;
-            margin-left: 5px;
+        /* --- BADGE STATUT : SERVICE OPÉRATIONNEL --- */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            color: var(--noir);
+            background: var(--gris-tres-clair);
+            border: 1px solid var(--gris-clair);
+            padding: 10px 22px;
+            border-radius: 50px;
+            margin-bottom: 35px;
+        }
+
+        /* Point "live" avec halo — signale que le service tourne */
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--noir);
+            border-radius: 50%;
+            position: relative;
+        }
+        .live-dot::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 8px; height: 8px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: var(--noir);
+            animation: pulse-ring 2s ease-out infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+            100% { transform: translate(-50%, -50%) scale(3.5); opacity: 0; }
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
             font-size: 3.2rem;
             font-weight: 600;
-            color: #1a1a1a;
+            color: var(--noir);
             margin-bottom: 25px;
-            line-height: 1.1;
+            line-height: 1.15;
+            max-width: 850px;
         }
 
         p.subtext {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 300;
-            color: #555;
+            color: var(--gris);
             margin-bottom: 40px;
-            max-width: 800px;
+            max-width: 720px;
             line-height: 1.8;
         }
 
         .highlight {
             font-weight: 600;
-            color: #1a1a1a;
+            color: var(--noir);
+        }
+
+        /* --- NOTE SITE EN FINALISATION --- */
+        .site-note {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gris);
+            border-top: 1px solid var(--gris-clair);
+            border-bottom: 1px solid var(--gris-clair);
+            padding: 12px 25px;
+            margin-bottom: 45px;
+        }
+
+        /* --- BOUTON D'ACTION --- */
+        .action-btn {
+            text-decoration: none;
+            color: var(--blanc);
+            background-color: var(--noir);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid var(--noir);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            padding: 16px 45px;
+            font-size: 0.78rem;
+            margin-bottom: 40px;
+            display: inline-block;
+        }
+
+        .action-btn:hover {
+            background-color: var(--blanc);
+            color: var(--noir);
         }
 
         /* --- LIEN EMAIL --- */
-        .contact-box { margin-top: 20px; }
+        .contact-box { margin-top: 10px; }
         .contact-label {
             display: block;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #999;
+            color: var(--gris);
             margin-bottom: 10px;
         }
         .email-link {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: #1a1a1a;
+            font-size: 1.4rem;
+            color: var(--noir);
             text-decoration: none;
-            position: relative;
             font-style: italic;
-            transition: color 0.3s;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
         }
+        .email-link:hover { border-bottom: 1px solid var(--noir); }
 
-        /* --- FOOTER (CORRIGÉ) --- */
+        /* --- FOOTER --- */
         footer {
-            /* MODIFICATION: Changé de absolute à relative pour éviter le chevauchement */
-            position: relative; 
+            position: relative;
             width: 100%;
             text-align: center;
             font-size: 0.7rem;
-            color: #aaa;
+            color: var(--gris);
             letter-spacing: 1px;
-            /* Ajout de padding pour l'aérer en bas */
-            padding: 20px 0 30px 0; 
+            padding: 20px 0 30px 0;
+            border-top: 1px solid var(--gris-tres-clair);
         }
 
         /* --- MODALE --- */
@@ -172,11 +214,9 @@
             display: none;
             position: fixed;
             z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.8);
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.75);
             backdrop-filter: blur(8px);
             align-items: center;
             justify-content: center;
@@ -187,42 +227,46 @@
         }
         .modal.show { display: flex; opacity: 1; }
         .modal-content {
-            background-color: #fff;
+            background-color: var(--blanc);
             padding: 40px;
             width: 100%;
-            max-width: 500px;
+            max-width: 480px;
             border-radius: 2px;
         }
         .modal-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
             margin-bottom: 10px;
+            color: var(--noir);
         }
         .modal-subtitle {
             font-size: 0.85rem;
-            color: #666;
+            color: var(--gris);
             margin-bottom: 25px;
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
         /* FORMULAIRE */
         .form-group { margin-bottom: 18px; text-align: left; }
         .form-group label {
-            display: block; font-size: 0.75rem; color: #444; margin-bottom: 5px;
+            display: block; font-size: 0.72rem; color: var(--gris-fonce); margin-bottom: 5px;
             text-transform: uppercase; letter-spacing: 1px; font-weight: 600;
         }
         .form-group input {
-            width: 100%; padding: 10px 0; border: none; border-bottom: 1px solid #ccc;
+            width: 100%; padding: 10px 0; border: none; border-bottom: 1px solid var(--gris-clair);
             font-family: 'Montserrat', sans-serif; font-size: 1rem;
             outline: none; transition: border-color 0.3s;
+            background: transparent;
         }
-        .form-group input:focus { border-bottom: 2px solid #1a1a1a; }
-        
+        .form-group input:focus { border-bottom: 2px solid var(--noir); }
+
         .submit-btn {
-            width: 100%; background-color: #1a1a1a; color: #fff; padding: 16px;
-            border: none; font-family: 'Montserrat', sans-serif; text-transform: uppercase;
+            width: 100%; background-color: var(--noir); color: var(--blanc); padding: 16px;
+            border: 1px solid var(--noir); font-family: 'Montserrat', sans-serif; text-transform: uppercase;
             letter-spacing: 2px; font-weight: 600; cursor: pointer; margin-top: 10px;
+            transition: all 0.3s ease;
         }
+        .submit-btn:hover { background: var(--blanc); color: var(--noir); }
 
         #successMessage { display: none; text-align: center; }
 
@@ -234,37 +278,46 @@
 
         /* === MOBILE === */
         @media (max-width: 768px) {
-            .action-btn { position: static; margin-bottom: 20px; display: inline-block; }
             h1 { font-size: 2rem; }
-            .pilot-banner { font-size: 0.65rem; }
-            .container { min-height: auto; padding-top: 40px; padding-bottom: 40px; }
+            .info-banner { font-size: 0.6rem; letter-spacing: 1px; }
+            .container { min-height: auto; padding-top: 50px; padding-bottom: 50px; }
+            .site-note { font-size: 0.62rem; padding: 10px 15px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="pilot-banner">
-        Phase Pilote Exclusive : L'IA Juridique Pionnière en Côte d'Ivoire
+    <div class="info-banner">
+        LEGEM est opérationnel <span class="muted">&nbsp;—&nbsp; Notre nouveau site arrive bientôt</span>
     </div>
 
     <div class="container">
-        <!-- Bouton en Haut à Gauche -->
-        <a id="openFormBtn" class="action-btn">Demander mon Accès Pilote</a>
 
         <div class="brand-container">
             <div class="brand-name">LEGEM AFRICA</div>
-            <span class="pilot-badge">PILOTE</span>
+        </div>
+
+        <div class="status-badge">
+            <span class="live-dot"></span>
+            Service disponible
         </div>
 
         <h1>L'intelligence artificielle au service du droit ivoirien.</h1>
-        
+
         <p class="subtext">
-            Décuplez votre capacité d'analyse juridique.<br>
-            <span class="highlight">Nous ouvrons actuellement un accès privilégié et gratuit</span> à une sélection restreinte de cabinets d'avocats et juristes pour co-construire l'avenir des professions de droit.
+            Notre plateforme d'IA juridique est <span class="highlight">en production et pleinement opérationnelle</span>.
+            Cabinets d'avocats, juristes et directions juridiques peuvent dès à présent
+            <span class="highlight">demander leur accès</span> au service.
         </p>
 
+        <div class="site-note">
+            Notre site vitrine complet est en cours de finalisation
+        </div>
+
+        <a id="openFormBtn" class="action-btn">Demander mon accès</a>
+
         <div class="contact-box">
-            <span class="contact-label">Demande d'information</span>
+            <span class="contact-label">Nous contacter</span>
             <a href="mailto:contact@legem.africa" class="email-link">contact@legem.africa</a>
         </div>
     </div>
@@ -276,19 +329,18 @@
     <!-- MODALE -->
     <div id="contactModal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" style="float:right; cursor:pointer; font-size: 24px;">&times;</span>
-            <h2 class="modal-title" id="modalTitle">Candidature Pilote</h2>
-            <p class="modal-subtitle">Les places pour la phase de test gratuit sont limitées. Notre équipe reviendra vers vous après analyse de votre profil.</p>
-            
+            <span class="close-btn" style="float:right; cursor:pointer; font-size: 24px; color:#888;">&times;</span>
+            <h2 class="modal-title" id="modalTitle">Demande d'accès</h2>
+            <p class="modal-subtitle">Renseignez vos coordonnées. Notre équipe vous contactera rapidement pour la mise en place de votre accès à la plateforme.</p>
+
             <div id="successMessage">
-                <h3 style="color:#d4af37; font-family:'Playfair Display'; margin-bottom:10px;">Demande reçue</h3>
-                <p>Votre profil est en cours d'examen. Vous recevrez une réponse sous peu.</p>
+                <h3 style="color:#111; font-family:'Playfair Display'; margin-bottom:10px;">Demande reçue</h3>
+                <p style="color:#888;">Merci ! Notre équipe reviendra vers vous très rapidement.</p>
             </div>
 
             <form id="legemForm">
-                 <!-- Configuration FormSubmit pour le Juridique -->
-                 <input type="hidden" name="_subject" value="Candidature PILOTE - IA JURIDIQUE">
-                 <input type="hidden" name="Programme_Concerne" value="Agent IA Juridique">
+                 <input type="hidden" name="_subject" value="Demande d'ACCÈS - LEGEM (Production)">
+                 <input type="hidden" name="Programme_Concerne" value="Agent IA Juridique - Production">
                 <div class="form-group">
                     <label>Nom & Prénoms</label>
                     <input type="text" name="NomComplet" required>
@@ -309,7 +361,7 @@
                     <label>E-mail</label>
                     <input type="email" name="Email" required>
                 </div>
-                <button type="submit" id="submitBtn" class="submit-btn">Soumettre ma candidature</button>
+                <button type="submit" id="submitBtn" class="submit-btn">Envoyer ma demande</button>
             </form>
         </div>
     </div>
@@ -318,12 +370,14 @@
         const modal = document.getElementById("contactModal");
         const btn = document.getElementById("openFormBtn");
         const span = document.getElementsByClassName("close-btn")[0];
-        
+
         btn.onclick = function() {
             modal.classList.add("show");
             document.body.style.overflow = "hidden";
             document.getElementById("legemForm").style.display = "block";
             document.getElementById("successMessage").style.display = "none";
+            document.getElementById("modalTitle").style.display = "block";
+            document.querySelector(".modal-subtitle").style.display = "block";
         }
 
         span.onclick = function() {
@@ -342,7 +396,7 @@
             e.preventDefault();
             const submitBtn = document.getElementById("submitBtn");
             submitBtn.textContent = "Traitement...";
-            
+
             const formData = new FormData(this);
             fetch("https://formsubmit.co/ajax/contact@legem.africa", {
                 method: "POST",
