@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>LEGEM - IA Juridique Côte d'Ivoire</title>
-    <meta name="description" content="LEGEM Africa — Premier agent d'IA juridique en Côte d'Ivoire. Plateforme opérationnelle. Contactez-nous par email pour accéder au service.">
+    <meta name="description" content="LEGEM Africa — Premier agent d'IA juridique en Côte d'Ivoire. Notre nouveau site arrive bientôt.">
 
     <!-- Polices -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +34,7 @@
             overflow-x: hidden;
         }
 
-        /* --- BANDEAU INFO SITE --- */
+        /* --- BANDEAU INFO --- */
         .info-banner {
             background-color: var(--noir);
             color: var(--blanc);
@@ -132,8 +132,8 @@
             font-size: 1.05rem;
             font-weight: 300;
             color: var(--gris);
-            margin-bottom: 40px;
-            max-width: 720px;
+            margin-bottom: 50px;
+            max-width: 700px;
             line-height: 1.8;
         }
 
@@ -142,83 +142,55 @@
             color: var(--noir);
         }
 
-        /* --- NOTE SITE EN FINALISATION --- */
-        .site-note {
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gris);
-            border-top: 1px solid var(--gris-clair);
-            border-bottom: 1px solid var(--gris-clair);
-            padding: 12px 25px;
-            margin-bottom: 50px;
-        }
-
-        /* --- BLOC CONTACT EMAIL (élément central de la page) --- */
-        .contact-card {
-            background: var(--gris-tres-clair);
-            border: 1px solid var(--gris-clair);
-            padding: 40px 50px;
-            max-width: 560px;
+        /* --- BARRE DE CHARGEMENT FINE (retour de la v1) --- */
+        .progress-wrap {
             width: 100%;
+            max-width: 320px;
+            margin-bottom: 55px;
         }
-
-        .contact-card-title {
-            font-size: 0.75rem;
+        .progress-track {
+            height: 2px;
+            background: var(--gris-clair);
+            overflow: hidden;
+            position: relative;
+        }
+        .progress-fill {
+            position: absolute;
+            height: 100%;
+            width: 40%;
+            background: var(--noir);
+            animation: slide 2.5s ease-in-out infinite;
+        }
+        @keyframes slide {
+            0% { left: -40%; }
+            100% { left: 100%; }
+        }
+        .progress-label {
+            font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            font-weight: 600;
-            color: var(--noir);
-            margin-bottom: 15px;
-        }
-
-        .contact-card-text {
-            font-size: 0.9rem;
-            font-weight: 300;
             color: var(--gris);
-            line-height: 1.7;
-            margin-bottom: 30px;
+            margin-top: 12px;
         }
 
-        /* Bouton principal : ouvre le client mail avec message pré-rempli */
-        .action-btn {
-            text-decoration: none;
-            color: var(--blanc);
-            background-color: var(--noir);
-            font-weight: 600;
+        /* --- LIEN EMAIL --- */
+        .contact-box { margin-top: 10px; }
+        .contact-label {
+            display: block;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            border: 1px solid var(--noir);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            padding: 16px 45px;
-            font-size: 0.78rem;
-            display: inline-block;
-            margin-bottom: 25px;
-        }
-
-        .action-btn:hover {
-            background-color: var(--blanc);
-            color: var(--noir);
-        }
-
-        /* Adresse affichée en clair (repli si le mailto ne s'ouvre pas) */
-        .email-fallback {
-            font-size: 0.75rem;
             color: var(--gris);
-            letter-spacing: 1px;
+            margin-bottom: 10px;
         }
-
         .email-link {
             font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
+            font-size: 1.4rem;
             color: var(--noir);
             text-decoration: none;
             font-style: italic;
             border-bottom: 1px solid transparent;
             transition: border-color 0.3s;
-            display: inline-block;
-            margin-top: 6px;
         }
         .email-link:hover { border-bottom: 1px solid var(--noir); }
 
@@ -244,11 +216,8 @@
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
             .info-banner { font-size: 0.6rem; letter-spacing: 1px; }
-            .container { min-height: auto; padding-top: 50px; padding-bottom: 50px; }
-            .site-note { font-size: 0.62rem; padding: 10px 15px; }
-            .contact-card { padding: 30px 25px; }
-            .action-btn { padding: 15px 30px; font-size: 0.72rem; }
-            .email-link { font-size: 1.05rem; }
+            .container { min-height: auto; padding-top: 60px; padding-bottom: 60px; }
+            .email-link { font-size: 1.1rem; }
         }
     </style>
 </head>
@@ -273,32 +242,20 @@
 
         <p class="subtext">
             Notre plateforme d'IA juridique est <span class="highlight">en production et pleinement opérationnelle</span>.
-            Cabinets d'avocats, juristes et directions juridiques peuvent dès à présent
-            <span class="highlight">demander leur accès</span> au service.
+            Notre nouveau site vitrine est en cours de finalisation. <span class="highlight">Revenez très bientôt.</span>
         </p>
 
-        <div class="site-note">
-            Notre site vitrine complet est en cours de finalisation
+        <!-- Barre de chargement fine animée -->
+        <div class="progress-wrap">
+            <div class="progress-track">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="progress-label">Nouveau site en préparation</div>
         </div>
 
-        <!-- BLOC CONTACT : l'email est désormais le canal unique -->
-        <div class="contact-card">
-            <div class="contact-card-title">Demande d'accès</div>
-            <p class="contact-card-text">
-                Envoyez-nous un email en précisant votre nom, votre cabinet ou
-                organisation, votre profession et un numéro de téléphone.
-                Notre équipe vous recontactera rapidement.
-            </p>
-
-            <a class="action-btn"
-               href="mailto:contact@legem.africa?subject=Demande%20d%27acc%C3%A8s%20-%20LEGEM&body=Bonjour%2C%0A%0AJe%20souhaite%20obtenir%20un%20acc%C3%A8s%20%C3%A0%20la%20plateforme%20LEGEM.%0A%0ANom%20%26%20Pr%C3%A9noms%20%3A%20%0ACabinet%20ou%20Organisation%20%3A%20%0AProfession%20%3A%20%0AT%C3%A9l%C3%A9phone%20%3A%20%0A%0ACordialement">
-                Demander mon accès par email
-            </a>
-
-            <div class="email-fallback">
-                ou écrivez-nous directement à<br>
-                <a href="mailto:contact@legem.africa" class="email-link">contact@legem.africa</a>
-            </div>
+        <div class="contact-box">
+            <span class="contact-label">Nous contacter</span>
+            <a href="mailto:contact@legem.africa" class="email-link">contact@legem.africa</a>
         </div>
     </div>
 
