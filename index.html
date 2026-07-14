@@ -267,8 +267,41 @@
             transition: all 0.3s ease;
         }
         .submit-btn:hover { background: var(--blanc); color: var(--noir); }
+        .submit-btn:disabled {
+            background: var(--gris-clair);
+            border-color: var(--gris-clair);
+            color: var(--gris);
+            cursor: wait;
+        }
 
+        /* MESSAGE DE SUCCÈS */
         #successMessage { display: none; text-align: center; }
+        #successMessage h3 {
+            color: var(--noir);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+        #successMessage p {
+            color: var(--gris);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .close-success-btn {
+            background: var(--noir);
+            color: var(--blanc);
+            border: 1px solid var(--noir);
+            padding: 12px 35px;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .close-success-btn:hover { background: var(--blanc); color: var(--noir); }
 
         /* --- ANIMATION --- */
         @keyframes fadeIn {
@@ -282,6 +315,7 @@
             .info-banner { font-size: 0.6rem; letter-spacing: 1px; }
             .container { min-height: auto; padding-top: 50px; padding-bottom: 50px; }
             .site-note { font-size: 0.62rem; padding: 10px 15px; }
+            .modal-content { padding: 30px 25px; }
         }
     </style>
 </head>
@@ -331,18 +365,41 @@
         <div class="modal-content">
             <span class="close-btn" style="float:right; cursor:pointer; font-size: 24px; color:#888;">&times;</span>
             <h2 class="modal-title" id="modalTitle">Demande d'accès</h2>
-            <p class="modal-subtitle">Renseignez vos coordonnées. Notre équipe vous contactera rapidement pour la mise en place de votre accès à la plateforme.</p>
+            <p class="modal-subtitle" id="modalSubtitle">Renseignez vos coordonnées. Notre équipe vous contactera rapidement pour la mise en place de votre accès à la plateforme.</p>
 
+            <!-- Message affiché au retour après envoi réussi -->
             <div id="successMessage">
-                <h3 style="color:#111; font-family:'Playfair Display'; margin-bottom:10px;">Demande reçue</h3>
-                <p style="color:#888;">Merci ! Notre équipe reviendra vers vous très rapidement.</p>
+                <h3>Demande reçue ✓</h3>
+                <p>Merci ! Votre demande a bien été transmise.<br>Notre équipe reviendra vers vous très rapidement.</p>
+                <button type="button" id="closeSuccessBtn" class="close-success-btn">Fermer</button>
             </div>
 
-            <form id="legemForm">
-                 <input type="hidden" name="_subject" value="Demande d'ACCÈS - LEGEM (Production)">
-                 <input type="hidden" name="Programme_Concerne" value="Agent IA Juridique - Production">
+            <!--
+                CORRECTION MAJEURE :
+                Soumission POST classique (et non plus AJAX/fetch) pour contourner
+                le blocage Cloudflare 403 sur l'endpoint /ajax/ de FormSubmit.
+
+                ⚠️ IMPORTANT : après le premier envoi, FormSubmit vous enverra un
+                email d'activation. Une fois activé, remplacez l'adresse dans
+                action="" par l'endpoint hashé fourni (https://formsubmit.co/el/xxxxxxx)
+                pour plus de fiabilité et pour masquer votre email aux robots.
+            -->
+            <form id="legemForm" action="https://formsubmit.co/contact@legem.africa" method="POST">
+
+                <!-- Configuration FormSubmit -->
+                <input type="hidden" name="_subject" value="Demande d'ACCÈS - LEGEM (Production)">
+                <input type="hidden" name="Programme_Concerne" value="Agent IA Juridique - Production">
+                <!-- Redirection après envoi : retour sur le site avec marqueur de succès -->
+                <input type="hidden" name="_next" value="https://legem.africa/?success=1">
+                <!-- Désactive le captcha FormSubmit pour une expérience fluide -->
+                <input type="hidden" name="_captcha" value="false">
+                <!-- Email reçu au format tableau, plus lisible -->
+                <input type="hidden" name="_template" value="table">
+                <!-- Piège anti-spam invisible (honeypot) -->
+                <input type="text" name="_honey" style="display:none">
+
                 <div class="form-group">
-                    <label>Nom & Prénoms</label>
+                    <label>Nom &amp; Prénoms</label>
                     <input type="text" name="NomComplet" required>
                 </div>
                 <div class="form-group">
@@ -368,47 +425,65 @@
 
     <script>
         const modal = document.getElementById("contactModal");
-        const btn = document.getElementById("openFormBtn");
-        const span = document.getElementsByClassName("close-btn")[0];
+        const openBtn = document.getElementById("openFormBtn");
+        const closeBtn = document.getElementsByClassName("close-btn")[0];
+        const form = document.getElementById("legemForm");
+        const submitBtn = document.getElementById("submitBtn");
+        const successMessage = document.getElementById("successMessage");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalSubtitle = document.getElementById("modalSubtitle");
 
-        btn.onclick = function() {
+        /* --- OUVERTURE DE LA MODALE --- */
+        openBtn.onclick = function() {
+            // Réinitialise l'état de la modale à chaque ouverture
+            form.style.display = "block";
+            modalTitle.style.display = "block";
+            modalSubtitle.style.display = "block";
+            successMessage.style.display = "none";
+            submitBtn.textContent = "Envoyer ma demande";
+            submitBtn.disabled = false;
+
             modal.classList.add("show");
             document.body.style.overflow = "hidden";
-            document.getElementById("legemForm").style.display = "block";
-            document.getElementById("successMessage").style.display = "none";
-            document.getElementById("modalTitle").style.display = "block";
-            document.querySelector(".modal-subtitle").style.display = "block";
-        }
+        };
 
-        span.onclick = function() {
+        /* --- FERMETURE DE LA MODALE --- */
+        function closeModal() {
             modal.classList.remove("show");
             document.body.style.overflow = "auto";
         }
 
+        closeBtn.onclick = closeModal;
+        document.getElementById("closeSuccessBtn").onclick = closeModal;
+
         window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.classList.remove("show");
-                document.body.style.overflow = "auto";
-            }
-        }
+            if (event.target == modal) closeModal();
+        };
 
-        document.getElementById("legemForm").addEventListener("submit", function(e) {
-            e.preventDefault();
-            const submitBtn = document.getElementById("submitBtn");
+        /* --- SOUMISSION DU FORMULAIRE ---
+           Plus de fetch() : le navigateur envoie le POST lui-même,
+           ce qui passe le challenge Cloudflare sans problème.
+           On se contente d'un feedback visuel avant la redirection. */
+        form.addEventListener("submit", function() {
             submitBtn.textContent = "Traitement...";
+            submitBtn.disabled = true;
+        });
 
-            const formData = new FormData(this);
-            fetch("https://formsubmit.co/ajax/contact@legem.africa", {
-                method: "POST",
-                body: formData
-            })
-            .then(() => {
-                document.getElementById("legemForm").style.display = "none";
-                document.getElementById("modalTitle").style.display = "none";
-                document.querySelector(".modal-subtitle").style.display = "none";
-                document.getElementById("successMessage").style.display = "block";
-            })
-            .catch(() => alert("Erreur. Veuillez réessayer."));
+        /* --- AFFICHAGE DU SUCCÈS AU RETOUR (?success=1) ---
+           Après envoi, FormSubmit redirige vers _next.
+           On détecte le paramètre et on affiche la confirmation. */
+        window.addEventListener("DOMContentLoaded", function() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get("success") === "1") {
+                modal.classList.add("show");
+                document.body.style.overflow = "hidden";
+                form.style.display = "none";
+                modalTitle.style.display = "none";
+                modalSubtitle.style.display = "none";
+                successMessage.style.display = "block";
+                // Nettoie l'URL pour ne pas réafficher le message au rechargement
+                history.replaceState(null, "", window.location.pathname);
+            }
         });
     </script>
 </body>
