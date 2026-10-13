@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mentions légales — Legem Campus</title>
+<meta name="description" content="Mentions légales de Legem Campus, service édité par Legem Africa SARL, Abidjan.">
+<meta name="theme-color" content="#102e29">
+<style>
+/* Feuille de style commune aux pages légales Legem Campus (identique dans les 3 fichiers). */
+:root{--ink:#163b34;--deep:#102e29;--green:#256d55;--lime:#d8eeab;--paper:#f8f7f2;--muted:#55645c;--line:#dfe5dc;--sage:#eef2e6;--serif:Georgia,'Times New Roman',serif;--sans:Inter,'Segoe UI',Roboto,Arial,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:96px}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7}a{color:var(--green)}a:hover{color:var(--deep)}a,button{outline-offset:4px}
+.container{width:min(1160px,calc(100% - 64px));margin:auto}
+/* Champs à compléter avant mise en ligne */
+.ph{background:#fff1b8;color:#5a4300;border:1px dashed #a07c00;border-radius:4px;padding:0 5px;font-weight:600}
+header{position:sticky;top:0;z-index:20;background:rgba(248,247,242,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;line-height:1;color:var(--ink);text-decoration:none}.brand:hover{color:var(--ink)}.brand-mark{display:flex;align-items:center;justify-content:center;width:44px;height:41px;background:var(--ink);color:var(--lime);border-radius:9px 9px 16px 9px;font-family:var(--serif);font-size:20px}.brand-name{font-size:21px;letter-spacing:-1px;font-weight:650}.brand-name span{font-weight:400}
+.back{font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;border:1px solid #c5cfc4;border-radius:7px;padding:10px 14px;min-height:44px;display:inline-flex;align-items:center;gap:8px}.back:hover{background:#edf0e7;color:var(--ink)}
+.hero{padding:56px 0 30px;border-bottom:1px solid var(--line)}.eyebrow{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;font-weight:700;color:var(--green)}
+h1{font:400 clamp(38px,4.4vw,58px)/1.08 var(--serif);letter-spacing:-1.8px;margin:14px 0 16px}
+.meta{display:flex;flex-wrap:wrap;gap:10px 24px;font-size:14px;color:var(--muted);align-items:center}
+.print{border:1px solid #c5cfc4;background:#fff;border-radius:7px;padding:8px 14px;font:inherit;font-size:14px;font-weight:600;color:var(--ink);cursor:pointer;min-height:40px}.print:hover{background:#edf0e7}
+.layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:56px;padding:40px 0 72px}
+.toc{position:sticky;top:96px;align-self:start;font-size:14px}.toc b{display:block;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}.toc ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--line)}.toc a{display:block;padding:5px 0 5px 14px;color:var(--ink);text-decoration:none}.toc a:hover{color:var(--green)}
+article{max-width:760px;min-width:0}
+article h2{font:400 28px/1.2 var(--serif);letter-spacing:-.6px;margin:48px 0 14px}
+article h3{font-size:17px;margin:26px 0 8px}
+article p,article li,article dd,article td{color:#2b3d36}article ul,article ol{padding-left:22px}article li{margin-bottom:6px}
+.summary{background:var(--sage);border:1px solid var(--line);border-radius:12px;padding:24px 28px;margin-bottom:8px}.summary h2{margin:0 0 8px;font-size:22px}.summary ul{margin:0}
+.key{background:var(--deep);color:#e8f0eb;border-radius:12px;padding:26px 28px;margin:18px 0}.key h3{color:var(--lime);margin-top:0}.key p,.key li{color:#dbe7df}.key a{color:var(--lime)}.key strong{color:#fff}
+.note{border-left:3px solid var(--green);background:#fff;padding:14px 18px;border-radius:0 8px 8px 0;font-size:15px}
+dl.id{display:grid;grid-template-columns:210px minmax(0,1fr);border-top:1px solid var(--line);margin:0}dl.id dt,dl.id dd{padding:12px 0;border-bottom:1px solid var(--line);margin:0}dl.id dt{font-weight:600;padding-right:16px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff;margin:12px 0}table{width:100%;border-collapse:collapse;font-size:15px}th,td{text-align:left;vertical-align:top;padding:11px 14px;border-bottom:1px solid var(--line)}tr:last-child td{border-bottom:0}thead th{background:var(--sage);font-size:13px;letter-spacing:.3px}
+footer{border-top:1px solid var(--line);padding:30px 0 26px}.footer-row{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:14px;color:var(--muted)}.footer-row nav{display:flex;gap:18px;flex-wrap:wrap}.footer-row nav a{color:var(--ink)}.footer-row nav a[aria-current="page"]{font-weight:700;color:var(--green)}
+@media(max-width:900px){.layout{grid-template-columns:1fr;gap:28px}.toc{position:static;background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}}
+@media(max-width:600px){.container{width:calc(100% - 32px)}.brand-name{font-size:18px;white-space:nowrap}.long{display:none}.back{padding:8px 12px;font-size:13px}h1{font-size:36px}dl.id{grid-template-columns:1fr}dl.id dt{border-bottom:0;padding-bottom:0}.summary,.key{padding:20px}.hero{padding:36px 0 24px}}
+@media print{header,.toc,.print,footer nav{display:none}body{background:#fff;font-size:11pt}.layout{display:block;padding:0}.hero{padding:0 0 12px}.key{background:#fff;border:2px solid #000}.key *{color:#000!important}.summary{background:#fff}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+ <div class="container nav">
+  <a class="brand" href="https://www.legem.africa/campus" aria-label="Legem Campus, accueil"><span class="brand-mark">LC</span><span class="brand-name">legem <span>campus</span></span></a>
+  <a class="back" href="https://www.legem.africa/campus"><span aria-hidden="true">←</span> Retour<span class="long">&nbsp;à Legem Campus</span></a>
+ </div>
+</header>
+<main>
+<section class="hero">
+ <div class="container">
+  <div class="eyebrow">Informations légales</div>
+  <h1>Mentions légales</h1>
+  <div class="meta"><span>Dernière mise à jour : <span class="ph">[JJ/MM/AAAA]</span></span><button class="print" type="button" onclick="window.print()">Imprimer ou enregistrer en PDF</button></div>
+ </div>
+</section>
+<div class="container layout">
+ <nav class="toc" aria-label="Sommaire">
+  <b>Sommaire</b>
+  <ol>
+   <li><a href="#editeur">1. Éditeur</a></li>
+   <li><a href="#publication">2. Directeur de la publication</a></li>
+   <li><a href="#hebergement">3. Hébergement</a></li>
+   <li><a href="#donnees">4. Données personnelles</a></li>
+   <li><a href="#propriete">5. Propriété intellectuelle</a></li>
+   <li><a href="#informations">6. Nature des informations</a></li>
+   <li><a href="#liens">7. Liens hypertextes</a></li>
+   <li><a href="#droit">8. Droit applicable</a></li>
+   <li><a href="#contact">9. Contact</a></li>
+  </ol>
+ </nav>
+ <article>
+  <p>Le site <strong>www.legem.africa/campus</strong> et l'application <strong>campus.legem.pro</strong>, qui donne accès aux tuteurs Legem Campus Droit et Legem-Fisc Campus (ensemble, « Legem Campus »), sont édités par la société Legem Africa.</p>
+
+  <h2 id="editeur">1. Éditeur</h2>
+  <dl class="id">
+   <dt>Dénomination</dt><dd>LEGEM AFRICA, société à responsabilité limitée (SARL)</dd>
+   <dt>Capital social</dt><dd><span class="ph">[montant]</span> FCFA</dd>
+   <dt>RCCM</dt><dd><span class="ph">[CI-ABJ-…]</span></dd>
+   <dt>Identifiant fiscal</dt><dd><span class="ph">[numéro de compte contribuable ; NIF si assujettie à la TVA]</span></dd>
+   <dt>Siège social</dt><dd>Cocody Riviera III, Immeuble Connexion Hub, 18 BP 3343 Abidjan 18, Côte d'Ivoire</dd>
+   <dt>Gérance</dt><dd>Tomin Apollinaire JEA et Stéphane O. A. GUEI, gérants associés</dd>
+   <dt>E-mail</dt><dd><a href="mailto:contact@legem.africa">contact@legem.africa</a></dd>
+   <dt>Téléphone</dt><dd>+225 07 09 30 28 79 (messages WhatsApp uniquement)</dd>
+  </dl>
+
+  <h2 id="publication">2. Directeur de la publication</h2>
+  <p><span class="ph">[Nom et prénoms]</span>, <span class="ph">[qualité, par exemple gérant associé]</span> de Legem Africa.</p>
+
+  <h2 id="hebergement">3. Hébergement</h2>
+  <h3>Site www.legem.africa/campus</h3>
+  <p><span class="ph">[Nom de l'hébergeur, adresse, pays, contact]</span></p>
+  <h3>Application campus.legem.pro</h3>
+  <p><span class="ph">[Nom de l'hébergeur du serveur, adresse, pays de localisation des serveurs, contact]</span></p>
+
+  <h2 id="donnees">4. Données personnelles</h2>
+  <p>Legem Africa traite les données personnelles des utilisateurs de Legem Campus conformément à la loi n° 2013-450 du 19 juin 2013 relative à la protection des données à caractère personnel.</p>
+  <p>Formalités auprès de l'ARTCI : <span class="ph">[référence du récépissé de déclaration ou de l'autorisation, date]</span>.</p>
+  <div class="note"><strong>À savoir :</strong> les contenus soumis sur Legem Campus sont utilisés pour entraîner et améliorer les modèles d'intelligence artificielle de Legem Africa, après suppression des identifiants directs. Les détails, les garanties et vos droits figurent dans la <a href="https://www.legem.africa/campus/confidentialite">politique de confidentialité</a> et les <a href="https://www.legem.africa/campus/cgu">conditions générales d'utilisation</a>.</div>
+
+  <h2 id="propriete">5. Propriété intellectuelle</h2>
+  <p>Les marques Legem, Legem Africa, Legem Campus et Legem-Fisc, les logos, l'interface, les textes, la structuration des corpus et les autres contenus originaux de Legem Campus sont la propriété de Legem Africa. Ils sont protégés notamment par la loi n° 2016-555 du 26 juillet 2016 relative au droit d'auteur et aux droits voisins et, le cas échéant, par le droit des marques <span class="ph">[références des dépôts de marque, à confirmer]</span>.</p>
+  <p>Toute reproduction, représentation, extraction ou réutilisation de ces éléments sans autorisation écrite préalable de Legem Africa est interdite, sauf dans les limites prévues par la loi et par les <a href="https://www.legem.africa/campus/cgu">conditions générales d'utilisation</a>.</p>
+  <p>Les textes législatifs et réglementaires et les décisions de justice cités par Legem Campus conservent leur statut propre. Legem Africa ne revendique de droits que sur leur sélection, leur organisation, leurs enrichissements et ses contenus originaux.</p>
+
+  <h2 id="informations">6. Nature des informations</h2>
+  <p>Legem Campus est un outil exclusivement pédagogique. Ses réponses, générées en partie par intelligence artificielle, peuvent comporter des erreurs ou des imprécisions. Elles ne constituent ni une consultation juridique, ni un conseil fiscal, et ne remplacent pas l'avis d'un professionnel.</p>
+  <p>Il appartient à l'utilisateur de vérifier les références citées sur les sources officielles, notamment le Journal officiel de la République de Côte d'Ivoire.</p>
+
+  <h2 id="liens">7. Liens hypertextes</h2>
+  <p>Legem Campus peut contenir des liens vers des sites tiers. Legem Africa n'exerce aucun contrôle sur leur contenu et décline toute responsabilité à leur égard.</p>
+
+  <h2 id="droit">8. Droit applicable</h2>
+  <p>Les présentes mentions légales sont régies par le droit ivoirien.</p>
+
+  <h2 id="contact">9. Contact</h2>
+  <p>Pour toute question : <a href="mailto:contact@legem.africa">contact@legem.africa</a> ou WhatsApp au 07 09 30 28 79 (messages uniquement).</p>
+ </article>
+</div>
+</main>
+<footer>
+ <div class="container footer-row">
+  <span>© 2026 Legem Africa · Legem Campus</span>
+  <nav aria-label="Informations légales"><a href="https://www.legem.africa/campus/mentions-legales" aria-current="page">Mentions légales</a><a href="https://www.legem.africa/campus/confidentialite">Confidentialité</a><a href="https://www.legem.africa/campus/cgu">CGU</a></nav>
+ </div>
+</footer>
+</body>
+</html>
