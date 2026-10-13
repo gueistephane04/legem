@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Politique de confidentialité — Legem Campus</title>
+<meta name="description" content="Comment Legem Africa collecte, utilise et protège vos données sur Legem Campus, y compris pour l'entraînement de ses modèles d'IA.">
+<meta name="theme-color" content="#102e29">
+<style>
+/* Feuille de style commune aux pages légales Legem Campus (identique dans les 3 fichiers). */
+:root{--ink:#163b34;--deep:#102e29;--green:#256d55;--lime:#d8eeab;--paper:#f8f7f2;--muted:#55645c;--line:#dfe5dc;--sage:#eef2e6;--serif:Georgia,'Times New Roman',serif;--sans:Inter,'Segoe UI',Roboto,Arial,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:96px}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7}a{color:var(--green)}a:hover{color:var(--deep)}a,button{outline-offset:4px}
+.container{width:min(1160px,calc(100% - 64px));margin:auto}
+/* Champs à compléter avant mise en ligne */
+.ph{background:#fff1b8;color:#5a4300;border:1px dashed #a07c00;border-radius:4px;padding:0 5px;font-weight:600}
+header{position:sticky;top:0;z-index:20;background:rgba(248,247,242,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;line-height:1;color:var(--ink);text-decoration:none}.brand:hover{color:var(--ink)}.brand-mark{display:flex;align-items:center;justify-content:center;width:44px;height:41px;background:var(--ink);color:var(--lime);border-radius:9px 9px 16px 9px;font-family:var(--serif);font-size:20px}.brand-name{font-size:21px;letter-spacing:-1px;font-weight:650}.brand-name span{font-weight:400}
+.back{font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;border:1px solid #c5cfc4;border-radius:7px;padding:10px 14px;min-height:44px;display:inline-flex;align-items:center;gap:8px}.back:hover{background:#edf0e7;color:var(--ink)}
+.hero{padding:56px 0 30px;border-bottom:1px solid var(--line)}.eyebrow{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;font-weight:700;color:var(--green)}
+h1{font:400 clamp(38px,4.4vw,58px)/1.08 var(--serif);letter-spacing:-1.8px;margin:14px 0 16px}
+.meta{display:flex;flex-wrap:wrap;gap:10px 24px;font-size:14px;color:var(--muted);align-items:center}
+.print{border:1px solid #c5cfc4;background:#fff;border-radius:7px;padding:8px 14px;font:inherit;font-size:14px;font-weight:600;color:var(--ink);cursor:pointer;min-height:40px}.print:hover{background:#edf0e7}
+.layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:56px;padding:40px 0 72px}
+.toc{position:sticky;top:96px;align-self:start;font-size:14px}.toc b{display:block;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}.toc ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--line)}.toc a{display:block;padding:5px 0 5px 14px;color:var(--ink);text-decoration:none}.toc a:hover{color:var(--green)}
+article{max-width:760px;min-width:0}
+article h2{font:400 28px/1.2 var(--serif);letter-spacing:-.6px;margin:48px 0 14px}
+article h3{font-size:17px;margin:26px 0 8px}
+article p,article li,article dd,article td{color:#2b3d36}article ul,article ol{padding-left:22px}article li{margin-bottom:6px}
+.summary{background:var(--sage);border:1px solid var(--line);border-radius:12px;padding:24px 28px;margin-bottom:8px}.summary h2{margin:0 0 8px;font-size:22px}.summary ul{margin:0}
+.key{background:var(--deep);color:#e8f0eb;border-radius:12px;padding:26px 28px;margin:18px 0}.key h3{color:var(--lime);margin-top:0}.key p,.key li{color:#dbe7df}.key a{color:var(--lime)}.key strong{color:#fff}
+.note{border-left:3px solid var(--green);background:#fff;padding:14px 18px;border-radius:0 8px 8px 0;font-size:15px}
+dl.id{display:grid;grid-template-columns:210px minmax(0,1fr);border-top:1px solid var(--line);margin:0}dl.id dt,dl.id dd{padding:12px 0;border-bottom:1px solid var(--line);margin:0}dl.id dt{font-weight:600;padding-right:16px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff;margin:12px 0}table{width:100%;border-collapse:collapse;font-size:15px}th,td{text-align:left;vertical-align:top;padding:11px 14px;border-bottom:1px solid var(--line)}tr:last-child td{border-bottom:0}thead th{background:var(--sage);font-size:13px;letter-spacing:.3px}
+footer{border-top:1px solid var(--line);padding:30px 0 26px}.footer-row{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:14px;color:var(--muted)}.footer-row nav{display:flex;gap:18px;flex-wrap:wrap}.footer-row nav a{color:var(--ink)}.footer-row nav a[aria-current="page"]{font-weight:700;color:var(--green)}
+@media(max-width:900px){.layout{grid-template-columns:1fr;gap:28px}.toc{position:static;background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}}
+@media(max-width:600px){.container{width:calc(100% - 32px)}.brand-name{font-size:18px;white-space:nowrap}.long{display:none}.back{padding:8px 12px;font-size:13px}h1{font-size:36px}dl.id{grid-template-columns:1fr}dl.id dt{border-bottom:0;padding-bottom:0}.summary,.key{padding:20px}.hero{padding:36px 0 24px}}
+@media print{header,.toc,.print,footer nav{display:none}body{background:#fff;font-size:11pt}.layout{display:block;padding:0}.hero{padding:0 0 12px}.key{background:#fff;border:2px solid #000}.key *{color:#000!important}.summary{background:#fff}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+ <div class="container nav">
+  <a class="brand" href="https://www.legem.africa/campus" aria-label="Legem Campus, accueil"><span class="brand-mark">LC</span><span class="brand-name">legem <span>campus</span></span></a>
+  <a class="back" href="https://www.legem.africa/campus"><span aria-hidden="true">←</span> Retour<span class="long">&nbsp;à Legem Campus</span></a>
+ </div>
+</header>
+<main>
+<section class="hero">
+ <div class="container">
+  <div class="eyebrow">Données personnelles</div>
+  <h1>Politique de confidentialité</h1>
+  <div class="meta"><span>Dernière mise à jour : <span class="ph">[JJ/MM/AAAA]</span></span><button class="print" type="button" onclick="window.print()">Imprimer ou enregistrer en PDF</button></div>
+ </div>
+</section>
+<div class="container layout">
+ <nav class="toc" aria-label="Sommaire">
+  <b>Sommaire</b>
+  <ol>
+   <li><a href="#bref">En bref</a></li>
+   <li><a href="#responsable">1. Responsable du traitement</a></li>
+   <li><a href="#collecte">2. Données collectées</a></li>
+   <li><a href="#finalites">3. Finalités et fondements</a></li>
+   <li><a href="#entrainement">4. Entraînement de nos modèles</a></li>
+   <li><a href="#destinataires">5. Destinataires</a></li>
+   <li><a href="#transferts">6. Transferts hors de Côte d'Ivoire</a></li>
+   <li><a href="#conservation">7. Durées de conservation</a></li>
+   <li><a href="#securite">8. Sécurité</a></li>
+   <li><a href="#droits">9. Vos droits</a></li>
+   <li><a href="#mineurs">10. Mineurs</a></li>
+   <li><a href="#cookies">11. Cookies</a></li>
+   <li><a href="#modifications">12. Modifications</a></li>
+  </ol>
+ </nav>
+ <article>
+  <section class="summary" id="bref">
+   <h2>En bref</h2>
+   <ul>
+    <li>Legem Africa est responsable des données traitées sur Legem Campus.</li>
+    <li>Nous collectons les données de votre compte, les contenus que vous soumettez et des données techniques.</li>
+    <li><strong>Vos contenus servent à entraîner et améliorer nos modèles d'intelligence artificielle</strong>, après suppression de vos identifiants directs. C'est une condition du service gratuit, que vous acceptez expressément à l'inscription.</li>
+    <li>Nous ne vendons pas vos données.</li>
+    <li>Ne saisissez ni données personnelles de tiers, ni informations confidentielles, ni éléments de vrais dossiers.</li>
+    <li>Pour exercer vos droits : <a href="mailto:contact@legem.africa">contact@legem.africa</a>.</li>
+   </ul>
+  </section>
+
+  <p style="margin-top:32px">La présente politique explique comment Legem Africa traite vos données personnelles lorsque vous utilisez le site www.legem.africa/campus et l'application campus.legem.pro (ensemble, « Legem Campus »), dans le respect de la loi n° 2013-450 du 19 juin 2013 relative à la protection des données à caractère personnel.</p>
+
+  <h2 id="responsable">1. Responsable du traitement</h2>
+  <p>LEGEM AFRICA SARL, Cocody Riviera III, Immeuble Connexion Hub, 18 BP 3343 Abidjan 18, Côte d'Ivoire. Contact : <a href="mailto:contact@legem.africa">contact@legem.africa</a>.</p>
+  <p>Formalités auprès de l'ARTCI : <span class="ph">[référence du récépissé de déclaration ou de l'autorisation, date]</span>.</p>
+  <p>Correspondant à la protection des données : <span class="ph">[nom ou fonction, adresse e-mail dédiée si désignée]</span>.</p>
+
+  <h2 id="collecte">2. Données collectées</h2>
+  <div class="table-wrap"><table>
+   <thead><tr><th scope="col">Catégorie</th><th scope="col">Exemples</th><th scope="col">Origine</th></tr></thead>
+   <tbody>
+    <tr><td>Données de compte</td><td>Nom, adresse e-mail, mot de passe (stocké sous forme chiffrée irréversible)</td><td>Vous, à l'inscription</td></tr>
+    <tr><td>Profil d'études</td><td><span class="ph">[si collectés : filière, niveau, établissement]</span></td><td>Vous</td></tr>
+    <tr><td>Contenus</td><td>Questions, textes, devoirs et documents soumis, réponses générées, évaluations et corrections que vous donnez</td><td>Votre utilisation du service</td></tr>
+    <tr><td>Données techniques</td><td>Adresse IP, type d'appareil et de navigateur, journaux de connexion, dates et volumes d'utilisation</td><td>Automatique</td></tr>
+    <tr><td>Échanges avec nous</td><td>Messages WhatsApp ou e-mails adressés au support</td><td>Vous</td></tr>
+    <tr><td>Origine de la visite</td><td>Paramètres de campagne (par exemple le flyer scanné) associés à votre inscription</td><td>Automatique</td></tr>
+   </tbody>
+  </table></div>
+  <p>Nous ne vous demandons aucune donnée de paiement : le service est gratuit.</p>
+
+  <h2 id="finalites">3. Finalités et fondements</h2>
+  <div class="table-wrap"><table>
+   <thead><tr><th scope="col">Pourquoi nous traitons vos données</th><th scope="col">Fondement</th></tr></thead>
+   <tbody>
+    <tr><td>Créer et gérer votre compte, faire fonctionner les tuteurs, conserver votre historique</td><td>Exécution des conditions générales d'utilisation que vous avez acceptées</td></tr>
+    <tr><td><strong>Constituer des jeux de données, entraîner, évaluer et améliorer les modèles d'IA et les services de Legem Africa</strong> (section 4)</td><td>Votre consentement exprès, recueilli à l'inscription par une case dédiée</td></tr>
+    <tr><td>Assurer la sécurité du service, prévenir les abus et les fraudes</td><td>Exécution des conditions générales et respect de nos obligations légales</td></tr>
+    <tr><td>Mesurer l'audience et l'efficacité de nos campagnes, sous forme de statistiques</td><td><span class="ph">[fondement à confirmer]</span></td></tr>
+    <tr><td>Répondre à vos demandes de support</td><td>Votre demande</td></tr>
+    <tr><td>Vous informer des nouveautés de Legem Campus</td><td>Votre consentement préalable, conformément à la loi n° 2013-546 du 30 juillet 2013 relative aux transactions électroniques. Vous pouvez vous désinscrire à tout moment.</td></tr>
+    <tr><td>Répondre aux demandes des autorités</td><td>Obligations légales</td></tr>
+   </tbody>
+  </table></div>
+
+  <h2 id="entrainement">4. Utilisation de vos contenus pour entraîner nos modèles</h2>
+  <div class="key">
+   <h3>Ce que vous acceptez en vous inscrivant</h3>
+   <p>Legem Campus est gratuit. En contrepartie, <strong>Legem Africa se réserve le droit d'utiliser les contenus soumis sur Legem Campus pour entraîner, évaluer et améliorer ses modèles d'intelligence artificielle</strong>, y compris ceux utilisés dans ses autres produits.</p>
+   <p>Vous donnez ce consentement expressément, en cochant une case dédiée lors de votre inscription.</p>
+  </div>
+  <h3>Contenus concernés</h3>
+  <ul>
+   <li>les questions que vous posez et les textes, devoirs ou documents que vous soumettez ;</li>
+   <li>les réponses générées par les tuteurs ;</li>
+   <li>vos évaluations, corrections et retours sur ces réponses ;</li>
+   <li>les données d'usage associées (matière, niveau, déroulé de l'échange).</li>
+  </ul>
+  <h3>Ce que nous en faisons</h3>
+  <p>Ces contenus peuvent être sélectionnés, annotés, corrigés et regroupés en jeux de données servant à entraîner, affiner, tester et évaluer des modèles d'intelligence artificielle développés ou exploités par Legem Africa.</p>
+  <h3>Nos garanties</h3>
+  <ul>
+   <li><strong>Pseudonymisation :</strong> avant leur intégration à un jeu de données, nous supprimons ou remplaçons vos identifiants directs (nom, adresse e-mail, téléphone, identifiant de compte).</li>
+   <li><strong>Filtrage :</strong> nous nous efforçons d'écarter les données sensibles, les données concernant des tiers et les documents identifiés comme œuvres de tiers <span class="ph">[méthode à confirmer]</span>.</li>
+   <li><strong>Accès restreint :</strong> seules les personnes habilitées, tenues à la confidentialité, y accèdent, y compris les juristes chargés de l'annotation.</li>
+   <li><strong>Aucune publication nominative :</strong> nous ne publions pas vos travaux et ne les communiquons pas, sous une forme permettant de vous identifier, à votre établissement ou à des tiers.</li>
+   <li><strong>Aucune vente :</strong> nous ne vendons pas vos contenus ni vos données personnelles.</li>
+  </ul>
+  <h3>Limites à connaître</h3>
+  <p>Une fois intégrés à un modèle entraîné, des contenus ne peuvent pas en être retirés. La suppression de votre compte efface vos données de nos systèmes actifs dans les délais de la section 7, mais pas des jeux de données pseudonymisés déjà constitués ni des modèles déjà entraînés.</p>
+  <h3>Votre droit d'opposition</h3>
+  <p>Vous pouvez vous opposer à tout moment à l'utilisation de vos contenus futurs en écrivant à <a href="mailto:contact@legem.africa">contact@legem.africa</a>. <span class="ph">[Option à arbitrer : poursuite de l'accès sans utilisation des nouveaux contenus, ou clôture du compte]</span></p>
+  <div class="note"><strong>Notre conseil :</strong> ne saisissez jamais de nom, de coordonnées ou d'informations sur des personnes réelles, ni d'éléments de vrais dossiers juridiques ou fiscaux. Travaillez sur des cas fictifs, des sujets de cours et des annales.</div>
+
+  <h2 id="destinataires">5. Destinataires</h2>
+  <p>Vos données sont accessibles, dans la limite de leurs attributions :</p>
+  <ul>
+   <li>aux membres habilités de l'équipe Legem Africa ;</li>
+   <li>aux annotateurs et prestataires agissant pour notre compte, liés par une obligation de confidentialité ;</li>
+   <li>à nos prestataires techniques : hébergement <span class="ph">[nom]</span> et fournisseurs de modèles d'intelligence artificielle <span class="ph">[noms]</span> ;</li>
+   <li>aux autorités administratives ou judiciaires, sur demande légalement fondée.</li>
+  </ul>
+
+  <h2 id="transferts">6. Transferts hors de Côte d'Ivoire</h2>
+  <p>Certains de nos prestataires peuvent traiter vos données hors de Côte d'Ivoire. Ces transferts sont encadrés conformément à la loi n° 2013-450 du 19 juin 2013 et aux exigences de l'ARTCI.</p>
+  <p><span class="ph">[Liste des prestataires concernés, pays de traitement, garanties mises en place, référence de l'autorisation ARTCI]</span></p>
+
+  <h2 id="conservation">7. Durées de conservation</h2>
+  <div class="table-wrap"><table>
+   <thead><tr><th scope="col">Données</th><th scope="col">Durée</th></tr></thead>
+   <tbody>
+    <tr><td>Données de compte</td><td>Pendant la durée du compte, puis <span class="ph">[12 mois]</span> après sa suppression ou après <span class="ph">[24 mois]</span> d'inactivité</td></tr>
+    <tr><td>Conversations dans votre espace</td><td>Jusqu'à leur suppression par vous ou jusqu'à la suppression du compte</td></tr>
+    <tr><td>Jeux de données d'entraînement pseudonymisés</td><td>Aussi longtemps que nécessaire à l'entraînement et à l'évaluation des modèles, dans la limite de <span class="ph">[durée maximale]</span></td></tr>
+    <tr><td>Journaux techniques</td><td><span class="ph">[12 mois]</span></td></tr>
+    <tr><td>Échanges avec le support</td><td><span class="ph">[24 mois]</span> après le dernier échange</td></tr>
+   </tbody>
+  </table></div>
+
+  <h2 id="securite">8. Sécurité</h2>
+  <p>Nous mettons en œuvre des mesures techniques et organisationnelles adaptées pour protéger vos données contre la perte, l'accès non autorisé ou la divulgation : connexions chiffrées (HTTPS), mots de passe stockés sous forme chiffrée irréversible, accès limités aux personnes habilitées <span class="ph">[autres mesures à confirmer]</span>.</p>
+  <p>Aucun système n'étant infaillible, nous vous invitons à choisir un mot de passe robuste et à ne jamais le partager.</p>
+
+  <h2 id="droits">9. Vos droits</h2>
+  <p>Conformément à la loi n° 2013-450 du 19 juin 2013, vous disposez d'un droit d'information, d'accès, de rectification, d'opposition et de suppression de vos données, dans les conditions prévues par la loi.</p>
+  <p>Pour les exercer, écrivez à <a href="mailto:contact@legem.africa">contact@legem.africa</a> depuis l'adresse liée à votre compte, avec l'objet « Données personnelles — Legem Campus ». Nous pouvons vous demander de justifier de votre identité. Nous répondons dans un délai de <span class="ph">[délai, à vérifier au regard de la loi]</span>.</p>
+  <p>Si vous estimez que vos droits ne sont pas respectés, vous pouvez saisir l'Autorité de Régulation des Télécommunications/TIC de Côte d'Ivoire (ARTCI), autorité de protection des données à caractère personnel : <a href="https://www.artci.ci" rel="noopener">www.artci.ci</a>.</p>
+
+  <h2 id="mineurs">10. Mineurs</h2>
+  <p>Legem Campus s'adresse aux étudiants âgés d'au moins 18 ans. Une personne mineure ne peut l'utiliser qu'avec l'autorisation de son représentant légal, qui accepte pour elle les conditions d'utilisation et la présente politique. <span class="ph">[Règle à confirmer par le juriste]</span></p>
+
+  <h2 id="cookies">11. Cookies</h2>
+  <p>L'application campus.legem.pro utilise des cookies et un stockage local strictement nécessaires à votre connexion et au fonctionnement du service. La page www.legem.africa/campus ne dépose aucun cookie publicitaire.</p>
+  <p><span class="ph">[Si un outil de mesure d'audience est ajouté : le nommer ici et préciser comment le refuser]</span></p>
+
+  <h2 id="modifications">12. Modifications</h2>
+  <p>Nous pouvons modifier la présente politique, notamment pour tenir compte d'évolutions légales ou du service. En cas de changement important, en particulier sur l'utilisation de vos contenus, nous vous en informons avant son entrée en vigueur, par e-mail ou dans l'application.</p>
+ </article>
+</div>
+</main>
+<footer>
+ <div class="container footer-row">
+  <span>© 2026 Legem Africa · Legem Campus</span>
+  <nav aria-label="Informations légales"><a href="https://www.legem.africa/campus/mentions-legales">Mentions légales</a><a href="https://www.legem.africa/campus/confidentialite" aria-current="page">Confidentialité</a><a href="https://www.legem.africa/campus/cgu">CGU</a></nav>
+ </div>
+</footer>
+</body>
+</html>
