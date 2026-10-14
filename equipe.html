@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Équipe dirigeante - LEGEM Africa</title>
+    <meta name="description" content="L'équipe dirigeante de Legem Africa, éditeur de la première IA juridique et fiscale de Côte d'Ivoire (droit ivoirien, OHADA, CIMA).">
+    <link rel="canonical" href="https://legem.africa/equipe">
+
+    <!-- Mêmes polices que la page d'accueil -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
+    <!-- Données structurées : relie l'organisation, ses dirigeants et ses deux domaines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Legem Africa",
+      "legalName": "Legem Africa SARL",
+      "url": "https://legem.africa",
+      "email": "contact@legem.africa",
+      "sameAs": ["https://legem.pro"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Cocody Riviera III, Immeuble Connexion Hub, 18 BP 3343",
+        "addressLocality": "Abidjan",
+        "addressCountry": "CI"
+      },
+      "founder": [
+        { "@type": "Person", "name": "Tomin Apollinaire JEA", "jobTitle": "Co-fondateur & CEO" },
+        { "@type": "Person", "name": "Stéphane O. A. GUEI", "jobTitle": "Co-fondateur & CTO, responsable de la sécurité", "email": "steve@legem.pro" }
+      ]
+    }
+    </script>
+
+    <style>
+        /* --- PALETTE : BLANC / NOIR / GRIS (identique à la page d'accueil) --- */
+        :root {
+            --blanc: #ffffff;
+            --noir: #111111;
+            --gris-fonce: #444444;
+            --gris: #888888;
+            --gris-clair: #e5e5e5;
+            --gris-tres-clair: #f7f7f7;
+        }
+
+        /* --- RESET & BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body, html {
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--blanc);
+            color: var(--gris-fonce);
+            overflow-x: hidden;
+        }
+
+        /* --- BANDEAU INFO --- */
+        .info-banner {
+            background-color: var(--noir);
+            color: var(--blanc);
+            text-align: center;
+            padding: 10px;
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .info-banner .muted { color: var(--gris); font-weight: 400; }
+
+        /* --- LAYOUT CENTRAL --- */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 70px 20px 60px;
+            animation: fadeIn 1.8s ease-in-out;
+        }
+
+        /* --- MARQUE --- */
+        .brand-container {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--gris-clair);
+            padding-bottom: 12px;
+        }
+        .brand-name {
+            font-weight: 600;
+            font-size: 1.5rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--noir);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        /* --- BADGE (même style que « Service disponible ») --- */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            color: var(--noir);
+            background: var(--gris-tres-clair);
+            border: 1px solid var(--gris-clair);
+            padding: 10px 22px;
+            border-radius: 50px;
+            margin-bottom: 35px;
+        }
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--noir);
+            border-radius: 50%;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            font-weight: 600;
+            color: var(--noir);
+            margin-bottom: 25px;
+            line-height: 1.15;
+            max-width: 850px;
+        }
+
+        p.subtext {
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: var(--gris);
+            margin-bottom: 60px;
+            max-width: 700px;
+            line-height: 1.8;
+        }
+        .highlight { font-weight: 600; color: var(--noir); }
+
+        /* --- ÉQUIPE --- */
+        .team {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            width: 100%;
+            max-width: 900px;
+            margin-bottom: 60px;
+            text-align: left;
+        }
+        .member {
+            border: 1px solid var(--gris-clair);
+            padding: 36px 32px;
+            background: var(--blanc);
+        }
+        .member-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--gris);
+            margin-bottom: 14px;
+        }
+        .member h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--noir);
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+        .member-role {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            color: var(--noir);
+            padding-bottom: 18px;
+            margin-bottom: 18px;
+            border-bottom: 1px solid var(--gris-clair);
+        }
+        .member p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--gris-fonce);
+            line-height: 1.8;
+        }
+        .member-contact {
+            margin-top: 18px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gris);
+        }
+        .member-contact a {
+            display: block;
+            margin-top: 6px;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            text-transform: none;
+            letter-spacing: normal;
+            color: var(--noir);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            width: fit-content;
+            transition: border-color 0.3s;
+        }
+        .member-contact a:hover { border-bottom: 1px solid var(--noir); }
+
+        /* --- SÉCURITÉ --- */
+        .security {
+            width: 100%;
+            max-width: 900px;
+            background: var(--gris-tres-clair);
+            border: 1px solid var(--gris-clair);
+            padding: 40px 32px;
+            margin-bottom: 60px;
+        }
+        .security h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--noir);
+            margin-bottom: 16px;
+        }
+        .security p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--gris-fonce);
+            line-height: 1.8;
+            max-width: 680px;
+            margin: 0 auto 10px;
+        }
+
+        /* --- LIEN EMAIL --- */
+        .contact-box { margin-top: 10px; }
+        .contact-label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gris);
+            margin-bottom: 10px;
+        }
+        .email-link {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--noir);
+            text-decoration: none;
+            font-style: italic;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+        .email-link:hover { border-bottom: 1px solid var(--noir); }
+
+        /* --- FOOTER --- */
+        footer {
+            width: 100%;
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--gris);
+            letter-spacing: 1px;
+            line-height: 1.9;
+            padding: 20px 16px 30px;
+            border-top: 1px solid var(--gris-tres-clair);
+        }
+        footer a { color: var(--gris); text-decoration: none; }
+        footer a:hover { color: var(--noir); }
+
+        /* --- ANIMATION --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* === MOBILE === */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .info-banner { font-size: 0.6rem; letter-spacing: 1px; }
+            .container { padding-top: 60px; padding-bottom: 50px; }
+            .team { grid-template-columns: 1fr; }
+            .member, .security { padding: 28px 22px; }
+            .email-link { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="info-banner">
+        LEGEM est opérationnel <span class="muted">&nbsp;—&nbsp; Notre nouveau site arrive bientôt</span>
+    </div>
+
+    <main class="container">
+
+        <div class="brand-container">
+            <a class="brand-name" href="/">Legem Africa</a>
+        </div>
+
+        <div class="status-badge"><span class="live-dot"></span>Équipe dirigeante</div>
+
+        <h1>Rendre le droit et la fiscalité d'Afrique francophone accessibles, fiables et opposables.</h1>
+
+        <p class="subtext">
+            Legem Africa édite la première <span class="highlight">IA souveraine spécialisée en droit et fiscalité ivoiriens, OHADA et CIMA</span>, au service des professionnels du droit, des entreprises et des institutions.
+        </p>
+
+        <section class="team" aria-label="Fondateurs">
+            <article class="member">
+                <div class="member-label">Co-fondateur</div>
+                <h2>Tomin Apollinaire JEA</h2>
+                <div class="member-role">Directeur général (CEO)</div>
+                <p>Pilote la stratégie, le développement et les partenariats de Legem Africa.</p>
+            </article>
+
+            <article class="member">
+                <div class="member-label">Co-fondateur</div>
+                <h2>Stéphane O. A. GUEI</h2>
+                <div class="member-role">Directeur technique (CTO)</div>
+                <p>Responsable de l'architecture technique et de la sécurité de la plateforme Legem : infrastructure, protection des données et sécurité applicative.</p>
+                <div class="member-contact">
+                    Contact technique &amp; sécurité
+                    <a href="mailto:steve@legem.pro">steve@legem.pro</a>
+                </div>
+            </article>
+        </section>
+
+        <section class="security" id="securite" aria-labelledby="securite-titre">
+            <h2 id="securite-titre">Sécurité et protection des données</h2>
+            <p>La confidentialité des documents de nos clients est au cœur de notre plateforme. La sécurité de Legem est placée sous la responsabilité directe de notre CTO.</p>
+            <p>Vous avez identifié une vulnérabilité ? Écrivez à <a class="highlight" href="mailto:steve@legem.pro" style="text-decoration:none">steve@legem.pro</a>. Chaque signalement est traité en priorité.</p>
+        </section>
+
+        <div class="contact-box">
+            <span class="contact-label">Nous contacter</span>
+            <a href="mailto:contact@legem.africa" class="email-link">contact@legem.africa</a>
+        </div>
+
+    </main>
+
+    <footer>
+        © 2026 Legem Africa SARL. Cocody Riviera III, Immeuble Connexion Hub, 18 BP 3343 Abidjan 18, Côte d'Ivoire.<br>
+        <a href="https://legem.africa">legem.africa</a> &nbsp;·&nbsp; <a href="https://legem.pro">legem.pro</a>
+    </footer>
+
+</body>
+</html>
