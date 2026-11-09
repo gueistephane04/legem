@@ -1,0 +1,713 @@
+<title>Manuel Legem aOS</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Serif:wght@500;600&display=swap">
+<style>
+/* Mise en page : manuel en fiches — sommaire fixe à gauche, une fiche à la fois, recherche dans tout le manuel. Charte Legem : noir, blanc, gris. */
+:root {
+  --bg: #ffffff;
+  --surface: #f3f4f5;
+  --ink: #111316;
+  --ink-soft: #2c3036;
+  --muted: #5d636b;
+  --line: #dcdfe3;
+  --mark: #e6e8eb;
+  --invert-bg: #111316;
+  --invert-fg: #ffffff;
+  --f-display: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --f-body: "IBM Plex Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1113; --surface: #171a1d; --ink: #eceef0; --ink-soft: #cfd3d8;
+    --muted: #9ba1a9; --line: #2b2f34; --mark: #24282d; --invert-bg: #eceef0; --invert-fg: #0f1113;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1113; --surface: #171a1d; --ink: #eceef0; --ink-soft: #cfd3d8;
+  --muted: #9ba1a9; --line: #2b2f34; --mark: #24282d; --invert-bg: #eceef0; --invert-fg: #0f1113;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { background: var(--bg); color: var(--ink); }
+body { font-family: var(--f-body); font-size: 16px; line-height: 1.6; }
+
+.shell {
+  display: grid;
+  grid-template-columns: 290px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+/* ---------- Sommaire ---------- */
+.side {
+  border-right: 1px solid var(--line);
+  background: var(--surface);
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  height: 100vh;
+  overflow-y: auto;
+  padding-block: 24px;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+.logo {
+  width: 36px; height: 36px; flex: none;
+  background: var(--invert-bg); color: var(--invert-fg);
+  font-family: var(--f-display); font-weight: 600; font-size: 22px;
+  display: grid; place-items: center; border-radius: 4px;
+}
+.brand-text { display: flex; flex-direction: column; line-height: 1.2; }
+.brand-name { font-family: var(--f-display); font-weight: 600; font-size: 18px; }
+.brand-sub { font-size: 12.5px; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
+
+.search { position: relative; }
+.search input {
+  width: 100%; font: inherit; font-size: 15px;
+  padding: 9px 12px 9px 34px;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: var(--bg); color: var(--ink);
+}
+.search input:focus { outline: 2px solid var(--ink); outline-offset: 1px; border-color: transparent; }
+.search svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); width: 15px; height: 15px; stroke: var(--muted); fill: none; stroke-width: 2; }
+
+.toc { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1px; }
+.toc a {
+  display: grid; grid-template-columns: 26px minmax(0,1fr); gap: 6px;
+  padding: 7px 10px; border-radius: 5px;
+  color: var(--ink-soft); text-decoration: none; font-size: 14.5px; line-height: 1.35;
+}
+.toc a .n { font-family: var(--f-mono); font-size: 12px; color: var(--muted); padding-top: 2px; font-variant-numeric: tabular-nums; }
+.toc a:hover { background: var(--mark); }
+.toc a:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; }
+.toc a[aria-current="page"] { background: var(--invert-bg); color: var(--invert-fg); }
+.toc a[aria-current="page"] .n { color: var(--invert-fg); opacity: .7; }
+.toc-group { font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 14px 10px 4px; }
+.side-foot { margin-top: auto; font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; }
+
+/* ---------- Contenu ---------- */
+.main {
+  padding-block: 40px 80px;
+  padding-left: max(32px, env(safe-area-inset-left, 0px));
+  padding-right: max(32px, env(safe-area-inset-right, 0px));
+  min-width: 0;
+}
+.page { max-width: 720px; }
+.crumb { font-family: var(--f-mono); font-size: 12.5px; color: var(--muted); display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.draft { border: 1px solid var(--line); border-radius: 999px; padding: 1px 9px; font-family: var(--f-body); font-size: 11.5px; letter-spacing: .05em; text-transform: uppercase; }
+h1 { font-family: var(--f-display); font-weight: 600; font-size: clamp(30px, 4vw, 40px); line-height: 1.15; margin: 10px 0 14px; text-wrap: balance; letter-spacing: -0.01em; }
+.lead { font-size: 18.5px; color: var(--ink-soft); margin: 0 0 28px; max-width: 64ch; }
+h2 { font-family: var(--f-display); font-weight: 600; font-size: 22px; margin: 36px 0 10px; text-wrap: balance; }
+h3 { font-size: 16px; font-weight: 600; margin: 24px 0 6px; }
+p, li { max-width: 66ch; }
+.page p { margin: 0 0 12px; }
+.page ul, .page ol { padding-left: 22px; margin: 0 0 14px; }
+.page li { margin-bottom: 6px; }
+.page ol li::marker { font-family: var(--f-mono); font-size: 13px; color: var(--muted); }
+a { color: var(--ink); text-underline-offset: 3px; }
+
+.path {
+  font-family: var(--f-mono); font-size: 13.5px;
+  background: var(--mark); border-radius: 4px; padding: 1px 6px;
+  white-space: nowrap;
+}
+kbd {
+  font-family: var(--f-mono); font-size: 12.5px;
+  border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px;
+  padding: 0 5px; background: var(--bg);
+}
+
+.note {
+  border: 1px solid var(--line); border-radius: 6px;
+  padding: 14px 16px; margin: 20px 0; background: var(--surface);
+}
+.note .label { display: block; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; font-weight: 600; }
+.note p:last-child, .note ul:last-child { margin-bottom: 0; }
+.note.strong { background: var(--invert-bg); color: var(--invert-fg); border-color: var(--invert-bg); }
+.note.strong .label { color: var(--invert-fg); opacity: .75; }
+
+.prompt {
+  border-left: 3px solid var(--ink); padding: 10px 14px; margin: 14px 0;
+  background: var(--surface); font-size: 15.5px; border-radius: 0 6px 6px 0;
+}
+.prompt .label { display: block; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; font-weight: 600; }
+
+.table-wrap { overflow-x: auto; margin: 14px 0 18px; border: 1px solid var(--line); border-radius: 6px; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; background: var(--surface); }
+tr:last-child td { border-bottom: none; }
+td code, .page code { font-family: var(--f-mono); font-size: 13.5px; }
+
+.grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; margin: 18px 0 8px; }
+.card {
+  display: block; text-decoration: none; color: var(--ink);
+  border: 1px solid var(--line); border-radius: 6px; padding: 14px;
+}
+.card:hover { border-color: var(--ink); }
+.card:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.card .n { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.card strong { display: block; margin: 2px 0 4px; font-size: 15.5px; }
+.card span.d { font-size: 13.5px; color: var(--muted); line-height: 1.45; display: block; }
+
+.pager { display: flex; justify-content: space-between; gap: 12px; margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+.pager a { text-decoration: none; color: var(--ink); display: flex; flex-direction: column; gap: 2px; max-width: 48%; }
+.pager a.next { text-align: right; margin-left: auto; }
+.pager small { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.pager span { font-weight: 500; }
+
+.results h1 { font-size: 26px; }
+.result { display: block; text-decoration: none; color: var(--ink); padding: 14px 0; border-bottom: 1px solid var(--line); }
+.result strong { font-size: 16.5px; }
+.result .snip { display: block; font-size: 14.5px; color: var(--muted); margin-top: 3px; }
+.result mark { background: var(--mark); color: var(--ink); padding: 0 2px; border-radius: 2px; }
+.empty { color: var(--muted); }
+
+/* ---------- Téléphone ---------- */
+.topbar { display: none; }
+@media (max-width: 860px) {
+  .shell { display: block; }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+    background: var(--surface); border-bottom: 1px solid var(--line);
+    padding-block: 10px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .menu-btn {
+    font: inherit; font-size: 14px; font-weight: 500;
+    border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+    border-radius: 6px; padding: 7px 12px; cursor: pointer;
+  }
+  .menu-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; }
+  .side { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line);
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .side .brand { display: none; }
+  .side.closed { display: none; }
+  .main { padding-block: 28px 60px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .lead { font-size: 17px; }
+  .pager a { max-width: 100%; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .page { animation: rise .25s ease-out both; }
+  @keyframes rise { from { transform: translateY(6px); } to { transform: none; } }
+}
+</style>
+
+<div class="topbar">
+  <a class="brand" href="#accueil"><span class="logo">L</span><span class="brand-text"><span class="brand-name">Legem aOS</span><span class="brand-sub">Manuel</span></span></a>
+  <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="side">Sommaire</button>
+</div>
+
+<div class="shell">
+  <nav class="side" id="side" aria-label="Sommaire du manuel">
+    <a class="brand" href="#accueil"><span class="logo">L</span><span class="brand-text"><span class="brand-name">Legem aOS</span><span class="brand-sub">Manuel utilisateur</span></span></a>
+    <div class="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
+      <input id="q" type="search" placeholder="Rechercher dans le manuel" aria-label="Rechercher dans le manuel" autocomplete="off">
+    </div>
+    <ul class="toc" id="toc"></ul>
+    <div class="side-foot">Une question ? <span>contact@legem.africa</span><br>Legem Africa, Abidjan</div>
+  </nav>
+
+  <main class="main" id="main" tabindex="-1">
+    <article class="page" id="page"></article>
+  </main>
+</div>
+
+<script>
+const P = [
+{ id: "accueil", group: "Bien démarrer", title: "Bienvenue dans Legem aOS",
+  lead: "Legem aOS est votre espace de travail juridique et fiscal. Vous y posez vos questions à l'agent Legem, vous travaillez sur vos documents et vous organisez vos dossiers clients, au même endroit.",
+  body: `
+<p>L'agent connaît le droit ivoirien, le droit OHADA, les textes UEMOA et CEDEAO, le Code CIMA et la fiscalité ivoirienne. Il cite les textes sur lesquels il s'appuie, pour que vous puissiez les vérifier.</p>
+<div class="note strong"><span class="label">À garder en tête</span><p>Legem aOS vous apporte une information juridique et fiscale fiable et sourcée. Il ne remplace pas votre analyse professionnelle : relisez toujours une réponse avant de la transmettre à un client ou de l'utiliser dans un acte.</p></div>
+<h2>Par où commencer</h2>
+<p>Si vous découvrez la plateforme, lisez les fiches dans l'ordre. Sinon, allez directement à la fonction qui vous intéresse.</p>
+<div class="grid-cards">
+  <a class="card" href="#premiers-pas"><span class="n">01</span><strong>Premiers pas</strong><span class="d">Se connecter, sécuriser son compte, découvrir l'écran.</span></a>
+  <a class="card" href="#discuter"><span class="n">02</span><strong>Discuter avec l'agent</strong><span class="d">Bien formuler une question et exploiter la réponse.</span></a>
+  <a class="card" href="#fichiers"><span class="n">03</span><strong>Travailler sur des fichiers</strong><span class="d">Word, Excel, PowerPoint et PDF.</span></a>
+  <a class="card" href="#dossiers"><span class="n">04</span><strong>Organiser ses dossiers</strong><span class="d">Un dossier par client ou par affaire.</span></a>
+  <a class="card" href="#collaboration"><span class="n">10</span><strong>Travailler à plusieurs</strong><span class="d">Partager, répondre ensemble, canaux.</span></a>
+  <a class="card" href="#confidentialite"><span class="n">14</span><strong>Confidentialité</strong><span class="d">Les bons réflexes avec les données clients.</span></a>
+</div>
+<h2>Ce que vous pouvez faire</h2>
+<ul>
+<li>Poser une question de droit ou de fiscalité et obtenir une réponse sourcée.</li>
+<li>Faire analyser, comparer ou rédiger un contrat, un acte, des statuts ou une note.</li>
+<li>Faire préparer un tableau de calcul fiscal ou une simulation dans un fichier Excel.</li>
+<li>Ranger vos conversations par client, avec des instructions et des documents propres à chaque dossier.</li>
+<li>Programmer des rappels d'échéance et des tâches qui reviennent chaque semaine ou chaque mois.</li>
+<li>Travailler à plusieurs sur un même dossier, en direct.</li>
+</ul>` },
+
+{ id: "premiers-pas", group: "Bien démarrer", title: "Premiers pas",
+  lead: "Vous vous connectez avec l'adresse e-mail et le mot de passe fournis par Legem Africa. Si la double authentification est activée, un code à six chiffres vous est aussi demandé.",
+  body: `
+<h2>Se connecter</h2>
+<ol>
+<li>Ouvrez l'adresse de la plateforme communiquée par Legem Africa dans votre navigateur.</li>
+<li>Saisissez votre e-mail et votre mot de passe.</li>
+<li>Si un code vous est demandé, ouvrez votre application d'authentification et saisissez le code affiché.</li>
+</ol>
+<h2>Activer la double authentification</h2>
+<p>La double authentification protège votre compte même si votre mot de passe est découvert. Lors de votre première connexion après son activation :</p>
+<ol>
+<li>Installez sur votre téléphone une application d'authentification, par exemple Microsoft Authenticator, Google Authenticator ou Bitwarden.</li>
+<li>Scannez le QR code affiché à l'écran. Si vous ne pouvez pas scanner, choisissez la saisie manuelle de la clé.</li>
+<li>Saisissez le code à six chiffres que l'application affiche.</li>
+<li>Enregistrez les <strong>dix codes de secours</strong> qui s'affichent. Ils ne seront montrés qu'une fois.</li>
+</ol>
+<div class="note"><span class="label">Important</span><p>Conservez vos codes de secours ailleurs que sur votre téléphone. Chaque code ne sert qu'une fois et vous permet de vous connecter si vous perdez votre téléphone.</p></div>
+<h3>Changer de téléphone</h3>
+<p>Allez dans <span class="path">Paramètres › Compte › Authentification multifacteur</span>, puis choisissez <strong>Gérer</strong>. Vous pouvez remplacer l'application d'authentification ou générer de nouveaux codes de secours. Ces deux actions vous déconnectent de tous vos appareils.</p>
+<h3>Téléphone et codes de secours perdus</h3>
+<p>Écrivez à <span class="path">contact@legem.africa</span>. Après vérification de votre identité, l'équipe vous envoie un code de récupération à usage unique, valable 30 minutes.</p>
+<h2>Découvrir l'écran</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Zone</th><th>Ce que vous y trouvez</th></tr></thead>
+<tbody>
+<tr><td>Barre latérale, en haut</td><td>Nouvelle conversation et recherche.</td></tr>
+<tr><td>Barre latérale, au milieu</td><td>Vos dossiers, vos conversations récentes, vos notes et vos canaux.</td></tr>
+<tr><td>Boîte de réception, dans la barre latérale</td><td>Commentaires, mentions, réponses, automatisations en échec et événements à venir, avec le nombre de non-lus.</td></tr>
+<tr><td>Menu utilisateur, en bas à gauche</td><td>Calendrier, Automatisations, Paramètres et déconnexion.</td></tr>
+<tr><td>Zone de saisie</td><td>Votre message, le bouton <strong>+</strong> pour joindre des fichiers, des notes ou une autre conversation.</td></tr>
+<tr><td>Menu du modèle, à côté de la zone de saisie</td><td><strong>Contrôles</strong> : fichiers de la conversation, instructions et paramètres.</td></tr>
+<tr><td>Bouton Onglets, en haut de la conversation</td><td>L'espace à onglets : documents produits par l'agent, aperçus, commentaires et chats latéraux. Sur grand écran, la conversation devient le premier onglet.</td></tr>
+</tbody></table></div>` },
+
+{ id: "discuter", group: "Le quotidien", title: "Discuter avec l'agent",
+  lead: "Plus votre question est précise, plus la réponse est utile. Donnez le contexte, la question exacte et le format attendu.",
+  body: `
+<h2>Bien formuler une question</h2>
+<ul>
+<li><strong>Le contexte</strong> : type de société, secteur, période, qualité des parties.</li>
+<li><strong>La question</strong> : ce que vous voulez savoir ou obtenir.</li>
+<li><strong>Le format</strong> : note, tableau, projet de clause, liste de points à vérifier.</li>
+</ul>
+<div class="prompt"><span class="label">Exemple</span>Une SARL ivoirienne veut augmenter son capital par apport en numéraire. Quelles sont les étapes et les conditions prévues par l'Acte uniforme OHADA relatif au droit des sociétés commerciales ? Présente la réponse sous forme de liste chronologique, avec les articles.</div>
+<div class="prompt"><span class="label">Exemple</span>Prépare un tableau de calcul de l'impôt sur les bénéfices pour une entreprise ivoirienne avec les données suivantes : [vos chiffres]. Indique les textes appliqués.</div>
+<h2>Pendant et après la réponse</h2>
+<ul>
+<li><strong>Arrêter</strong> : le bouton carré interrompt une réponse en cours.</li>
+<li><strong>Continuer à écrire</strong> : vous pouvez taper un nouveau message pendant que l'agent répond. Il partira ensuite, dans l'ordre.</li>
+<li><strong>Régénérer</strong> : sous une réponse, l'icône de régénération produit une nouvelle version. Les flèches permettent de passer d'une version à l'autre.</li>
+<li><strong>Modifier votre question</strong> : l'icône crayon sous votre message crée une nouvelle branche, sans effacer la précédente.</li>
+<li><strong>Copier</strong> : l'icône de copie place la réponse dans le presse-papiers.</li>
+<li><strong>Créer une copie</strong> : l'action de duplication sous une réponse crée une nouvelle conversation jusqu'à ce point, pour explorer une autre piste.</li>
+<li><strong>Vue d'ensemble</strong> : dans le menu <strong>⋯</strong> de la conversation, elle affiche la carte de tous les messages et de leurs branches.</li>
+</ul>
+<h2>Les raccourcis de la zone de saisie</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Tapez</th><th>Pour</th></tr></thead>
+<tbody>
+<tr><td><code>/</code></td><td>Afficher les commandes et vos modèles de messages.</td></tr>
+<tr><td><code>#</code></td><td>Joindre un fichier, une base de documents ou un dossier.</td></tr>
+<tr><td><code>$</code></td><td>Activer une procédure enregistrée (voir la fiche Skills).</td></tr>
+<tr><td><code>/temporary</code></td><td>Démarrer une conversation temporaire, qui n'est pas enregistrée.</td></tr>
+<tr><td><code>/side</code></td><td>Ouvrir un chat latéral pour une question rapide.</td></tr>
+<tr><td><code>/compare</code></td><td>Comparer deux versions d'un texte.</td></tr>
+</tbody></table></div>
+<h2>Conversations temporaires</h2>
+<p>Une conversation temporaire n'est pas enregistrée dans votre historique. Elle est utile pour une question ponctuelle que vous ne souhaitez pas conserver. Tapez <code>/temporary</code> avant d'envoyer votre premier message.</p>
+<h2>Chat latéral</h2>
+<p>Le chat latéral ouvre une deuxième conversation dans un onglet, à côté de la conversation principale. Il reprend tout ce qui a déjà été dit, mais n'ajoute rien au fil principal.</p>
+<ol>
+<li>Tapez <code>/side</code> dans la zone de saisie, ou choisissez <strong>Nouvelle conversation</strong> dans le menu <strong>+</strong> de l'espace à onglets.</li>
+<li>Posez votre question.</li>
+</ol>
+<div class="prompt"><span class="label">Exemple</span>Vous travaillez sur un projet de statuts. Dans un chat latéral : « Rappelle-moi la différence entre gérant statutaire et gérant non statutaire. » Le fil du dossier reste propre.</div>
+<p>Le chat latéral est enregistré dès votre premier message : il apparaît dans votre liste de conversations, avec son propre titre, dans le même dossier que la conversation principale. Pour ne pas le conserver, activez la conversation temporaire dans le chat latéral ; ses messages disparaissent alors à la fermeture de l'onglet.</p>
+<p>Pour consulter une autre conversation sans quitter celle en cours, faites-la glisser depuis la barre latérale sur la zone de conversation : elle s'ouvre dans un onglet.</p>
+<p>Si la commande n'apparaît pas, le chat latéral n'est pas activé pour votre compte.</p>
+<h2>Longues conversations</h2>
+<p>Quand une conversation devient très longue, Legem aOS résume automatiquement les échanges les plus anciens pour continuer. Une ligne « Contexte compacté » l'indique ; cliquez dessus pour lire le résumé. Pour un nouveau sujet, ouvrez plutôt une nouvelle conversation.</p>` },
+
+{ id: "fichiers", group: "Le quotidien", title: "Travailler sur des fichiers",
+  lead: "L'agent lit, analyse, modifie et crée des fichiers Word, Excel, PowerPoint et PDF. Vous voyez un aperçu fidèle du document avant de le télécharger.",
+  body: `
+<h2>Joindre un fichier</h2>
+<ol>
+<li>Cliquez sur <strong>+</strong> dans la zone de saisie, puis sur <strong>Joindre des fichiers</strong>. Vous pouvez aussi glisser le fichier dans la conversation.</li>
+<li>Attendez la fin du traitement du fichier.</li>
+<li>Écrivez votre demande et envoyez.</li>
+</ol>
+<div class="prompt"><span class="label">Exemple</span>Voici un contrat de bail commercial. Relève les clauses défavorables au preneur au regard de l'Acte uniforme OHADA portant sur le droit commercial général, et propose une rédaction alternative pour chacune.</div>
+<h2>Document entier ou recherche ciblée</h2>
+<p>Les documents courts, jusqu'à une quinzaine de pages environ, sont lus en entier automatiquement. Pour un document plus long, cliquez sur le fichier joint pour choisir comment l'agent le lit :</p>
+<ul>
+<li><strong>Document entier</strong> : l'agent lit tout le document. À privilégier pour un contrat ou un acte à analyser en détail.</li>
+<li><strong>Recherche ciblée</strong> : l'agent ne lit que les passages utiles. Adapté à un gros document dont vous cherchez un point précis.</li>
+</ul>
+<p>Le mode utilisé par défaut se règle dans <span class="path">Paramètres › Interface</span>, rubrique Fichiers.</p>
+<h2>Faire créer ou modifier un document</h2>
+<p>Demandez simplement le document voulu : un projet de statuts en Word, une simulation fiscale en Excel, une présentation pour un client en PowerPoint. L'agent produit le fichier et l'ouvre dans un onglet à côté de la conversation. Vous téléchargez ensuite le fichier d'un clic.</p>
+<h2>Voir le document et la conversation côte à côte</h2>
+<p>Sur grand écran, le bouton <strong>Écran partagé</strong> divise l'espace en deux volets réglables : le document d'un côté, la conversation de l'autre. Vous pouvez aussi faire glisser un onglet vers un bord de l'écran.</p>
+<p>Les onglets ouverts sont conservés pour chaque conversation. Vous les retrouvez en la rouvrant, même sur un autre appareil.</p>
+<div class="prompt"><span class="label">Exemple</span>À partir des données jointes, crée un fichier Excel qui simule l'impôt dû sur trois scénarios de chiffre d'affaires, avec une feuille par scénario et un récapitulatif.</div>
+<div class="note"><span class="label">Bon réflexe</span><p>Anonymisez les documents clients avant de les joindre : remplacez les noms, adresses et numéros par des mentions neutres. Voir la fiche Confidentialité.</p></div>` },
+
+{ id: "dossiers", group: "S'organiser", title: "Organiser ses dossiers",
+  lead: "Un dossier regroupe les conversations d'un même client ou d'une même affaire. Il peut aussi porter des instructions et des documents qui s'appliquent à toutes ses conversations.",
+  body: `
+<h2>Créer un dossier</h2>
+<ol>
+<li>Dans la barre latérale, cliquez sur <strong>+</strong> à côté de la section Dossiers.</li>
+<li>Choisissez <strong>Nouveau dossier</strong>, donnez-lui un nom, puis enregistrez.</li>
+</ol>
+<p>Pour créer un sous-dossier, ouvrez le menu <strong>⋯</strong> du dossier et choisissez <strong>Créer un dossier</strong>. Exemple : un dossier par client, puis un sous-dossier par affaire.</p>
+<h2>Ranger une conversation</h2>
+<ul>
+<li>Glissez la conversation sur le dossier dans la barre latérale.</li>
+<li>Ou ouvrez son menu <strong>⋯</strong>, choisissez <strong>Déplacer</strong>, puis le dossier.</li>
+</ul>
+<h2>Configurer un dossier</h2>
+<p>Ouvrez le menu <strong>⋯</strong> du dossier, puis <strong>Modifier</strong>. Vous pouvez y définir :</p>
+<ul>
+<li><strong>Une description</strong> : l'objet du dossier, affiché sur sa page.</li>
+<li><strong>Des instructions</strong> : elles s'appliquent à chaque nouvelle conversation du dossier.</li>
+<li><strong>Des documents</strong> : les pièces du dossier, que l'agent consulte dans chaque conversation.</li>
+</ul>
+<div class="prompt"><span class="label">Exemple d'instructions de dossier</span>Client : société de transport, SA avec conseil d'administration. Les réponses concernent ce client. Signale systématiquement les obligations déclaratives et leurs délais.</div>
+<h2>Démarrer une conversation dans un dossier</h2>
+<p>Cliquez sur le dossier, ou choisissez <strong>Nouvelle conversation</strong> dans son menu. La conversation hérite des instructions et des documents du dossier.</p>
+<h2>Retrouver ses conversations</h2>
+<ul>
+<li><strong>Épingler</strong> une conversation importante pour la garder en haut.</li>
+<li><strong>Ajouter des étiquettes</strong>, par exemple « fiscal » ou « contentieux ».</li>
+<li><strong>Archiver</strong> une conversation terminée pour alléger la barre latérale.</li>
+<li><strong>Marquer comme non lu</strong> pour garder un sujet en tête.</li>
+<li><strong>Renommer</strong> une conversation depuis son titre, en haut de la page. Le bouton étincelle propose un titre à partir de son contenu.</li>
+</ul>` },
+
+{ id: "notes", group: "S'organiser", title: "Notes",
+  lead: "Les notes sont des documents de travail qui vivent en dehors des conversations : une note de synthèse, une chronologie des faits, une liste de pièces. Vous pouvez les joindre à n'importe quelle conversation.",
+  body: `
+<h2>Créer une note</h2>
+<ol>
+<li>Ouvrez <strong>Notes</strong> dans la barre latérale.</li>
+<li>Créez une nouvelle note et rédigez avec la barre de mise en forme qui apparaît à la sélection du texte.</li>
+</ol>
+<h2>Organiser une note en pages</h2>
+<p>Une note peut contenir plusieurs pages et sous-pages, par exemple une page par pièce ou par étape de la procédure. Les onglets de page permettent d'en ajouter, de les renommer, de les réordonner ou de les télécharger.</p>
+<h2>Améliorer un texte avec l'agent</h2>
+<p>Sélectionnez un passage et choisissez <strong>Améliorer</strong> pour le reformuler ou le développer. Le panneau de discussion de la note permet aussi d'échanger avec l'agent sur son contenu. Toutes les modifications peuvent être annulées avec les boutons <strong>Annuler</strong> et <strong>Rétablir</strong>.</p>
+<h2>Utiliser une note dans une conversation</h2>
+<p>Dans la zone de saisie, cliquez sur <strong>+</strong> puis <strong>Joindre des notes</strong>. L'agent lit la note en entier.</p>
+<h2>Bon à savoir</h2>
+<ul>
+<li>Épinglez une note pour la retrouver dans la barre latérale.</li>
+<li>Chaque paragraphe a une poignée : faites-la glisser pour déplacer le bloc, ou cliquez dessus pour le monter ou le descendre.</li>
+<li>Une note s'exporte en texte, Markdown ou PDF.</li>
+<li>Quand une note est partagée, vous voyez qui la consulte en même temps que vous.</li>
+</ul>` },
+
+{ id: "memoire", group: "S'organiser", title: "Mémoire",
+  lead: "La mémoire permet à l'agent de retenir des informations sur vous d'une conversation à l'autre : votre spécialité, vos préférences de rédaction, votre façon de présenter un calcul.",
+  body: `
+<h2>Ajouter un souvenir</h2>
+<ul>
+<li>Dans une conversation, demandez-le simplement : « Retiens que je suis fiscaliste et que je préfère les réponses en tableau. »</li>
+<li>Ou ajoutez-le vous-même dans <span class="path">Paramètres › Personnalisation › Mémoire</span>.</li>
+</ul>
+<h2>Consulter, modifier ou effacer</h2>
+<p>Tous vos souvenirs sont visibles dans <span class="path">Paramètres › Personnalisation › Mémoire</span>. Vous pouvez y modifier un souvenir, en supprimer un ou tout effacer.</p>
+<div class="note"><span class="label">Ce qu'il vaut mieux y mettre</span><ul>
+<li>Oui : votre métier, votre domaine, vos préférences de format et de ton.</li>
+<li>Non : des informations sur vos clients, des montants, des pièces de dossier. Placez-les plutôt dans le dossier concerné.</li>
+</ul></div>
+<p>Vos souvenirs sont propres à votre compte. Ils ne sont pas partagés avec les autres utilisateurs.</p>` },
+
+{ id: "skills", group: "Gagner du temps", title: "Skills : vos procédures réutilisables",
+  lead: "Un skill est une procédure de travail enregistrée une fois et réutilisée ensuite. Par exemple : votre méthode d'audit d'un contrat, ou le plan type de vos notes de consultation.",
+  body: `
+<h2>Utiliser un skill</h2>
+<ol>
+<li>Dans la zone de saisie, tapez <code>$</code>.</li>
+<li>Choisissez le skill dans la liste.</li>
+<li>Écrivez votre demande. L'agent suit la procédure du skill.</li>
+</ol>
+<div class="prompt"><span class="label">Exemple</span><code>$audit-bail</code> Voici le bail de mon client, preneur. Fais l'audit.</div>
+<h2>Créer un skill à partir d'une conversation</h2>
+<p>Vous venez de mener un travail que vous referez souvent ? Tapez <code>/skills:create</code> dans la même conversation. L'agent transforme la démarche en skill et l'enregistre dans votre espace. Ajoutez une précision après la commande pour orienter ce que le skill doit couvrir.</p>
+<h2>Quelques idées pour un cabinet</h2>
+<ul>
+<li>Plan type d'une note de consultation.</li>
+<li>Liste de contrôle avant la signature d'un acte de cession de parts.</li>
+<li>Méthode de vérification d'une déclaration fiscale.</li>
+<li>Trame de courrier de mise en demeure.</li>
+</ul>` },
+
+{ id: "agenda", group: "Gagner du temps", title: "Calendrier et minuteurs",
+  lead: "Le calendrier garde vos échéances, audiences et rendez-vous, avec un rappel avant chaque événement. L'agent peut aussi créer des événements pour vous.",
+  body: `
+<h2>Ouvrir le calendrier</h2>
+<p>Ouvrez le <strong>menu utilisateur</strong> en bas de la barre latérale, puis <strong>Calendrier</strong>. Deux calendriers existent d'office : <strong>Personnel</strong> pour vos événements, et <strong>Tâches planifiées</strong> qui affiche vos automatisations.</p>
+<h2>Créer un événement</h2>
+<ol>
+<li>Cliquez sur <strong>Nouvel événement</strong>, ou directement sur un jour du calendrier.</li>
+<li>Renseignez le titre, la date et l'heure, le lieu si besoin et la description.</li>
+<li>Choisissez la répétition : aucune, chaque jour, du lundi au vendredi, chaque semaine, chaque mois ou chaque année.</li>
+<li>Choisissez le rappel : aucun, à l'heure de l'événement, 5, 10, 15 ou 30 minutes avant, ou une heure avant. Par défaut, il sonne 10 minutes avant.</li>
+</ol>
+<h2>Demander à l'agent</h2>
+<div class="prompt"><span class="label">Exemple</span>Ajoute à mon calendrier l'audience du dossier Kouassi le 18/11/2026 à 9h, avec un rappel une heure avant.</div>
+<div class="prompt"><span class="label">Exemple</span>Qu'est-ce que j'ai dans mon calendrier cette semaine ?</div>
+<h2>Minuteurs</h2>
+<p>Vous pouvez demander à l'agent de revenir vers vous plus tard dans la même conversation, par exemple « Rappelle-moi dans deux heures de relire ce projet de clause. » Le message arrive dans la conversation au moment voulu.</p>
+<p>Vos événements à venir apparaissent aussi dans votre boîte de réception.</p>
+<div class="note"><span class="label">Limite</span><p>Le calendrier de Legem aOS ne se synchronise pas avec Google Agenda ou Outlook.</p></div>` },
+
+{ id: "automatisations", group: "Gagner du temps", title: "Automatisations",
+  lead: "Une automatisation envoie une demande à l'agent à intervalle régulier, sans que vous ayez à y penser. Chaque exécution crée une conversation que vous lisez quand vous voulez.",
+  body: `
+<h2>Créer une automatisation</h2>
+<ol>
+<li>Ouvrez le <strong>menu utilisateur</strong>, puis <strong>Automatisations</strong>.</li>
+<li>Cliquez sur <strong>Nouvelle automatisation</strong>.</li>
+<li>Renseignez un titre, les instructions à envoyer à l'agent et la fréquence : une fois, chaque heure, chaque jour, chaque semaine ou chaque mois.</li>
+<li>Choisissez si besoin un dossier où ranger les conversations créées.</li>
+<li>Enregistrez.</li>
+</ol>
+<div class="prompt"><span class="label">Exemple d'instructions</span>Chaque lundi à 8h : liste les obligations déclaratives fiscales des quinze prochains jours pour une entreprise soumise au régime du réel normal, sous forme de tableau.</div>
+<h2>Gérer vos automatisations</h2>
+<ul>
+<li><strong>Exécuter maintenant</strong> pour tester sans attendre la prochaine échéance.</li>
+<li><strong>Mettre en pause</strong> puis reprendre, sans rien supprimer.</li>
+<li>Consulter l'<strong>historique</strong> et ouvrir la conversation de chaque exécution.</li>
+<li>Les exécutions en échec apparaissent dans votre boîte de réception. Vous pouvez aussi recevoir une notification via <span class="path">Paramètres › Notifications</span>.</li>
+</ul>
+<p>Vos automatisations sont privées : personne d'autre ne peut les voir ni les lancer.</p>` },
+
+{ id: "collaboration", group: "Avec votre équipe", title: "Travailler à plusieurs",
+  lead: "Vous pouvez partager une conversation avec un collègue, avancer à plusieurs dans le même fil, ou échanger dans des canaux où l'agent intervient quand vous l'appelez.",
+  body: `
+<h2>Partager une conversation</h2>
+<ol>
+<li>Dans la barre latérale, ouvrez le menu <strong>⋯</strong> de la conversation, puis <strong>Partager</strong>.</li>
+<li>Choisissez qui peut y accéder : des personnes ou des groupes précis. Un nouveau lien est privé tant que vous n'avez ajouté personne.</li>
+<li>Choisissez le mode de partage, puis copiez le lien.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>Mode</th><th>Ce que voit la personne</th></tr></thead>
+<tbody>
+<tr><td>Copie seule</td><td>La conversation telle qu'au moment du partage. Elle peut la copier pour la poursuivre de son côté.</td></tr>
+<tr><td>Réponses autorisées</td><td>La conversation en direct. Tout le monde peut y écrire et voit les messages arriver.</td></tr>
+</tbody></table></div>
+<p>En mode réponses autorisées, chaque message porte le nom de son auteur. Une ligne indique qui est en train d'écrire, et la barre du haut montre qui a la conversation ouverte.</p>
+<div class="note"><span class="label">Ce qui n'est pas partagé</span><p>Vos réglages personnels de la conversation restent privés. Seul le contenu des échanges est partagé. Pour retirer l'accès, ouvrez à nouveau <strong>Partager</strong> et supprimez le lien.</p></div>
+<h2>Canaux</h2>
+<p>Un canal est un espace d'échange permanent pour une équipe ou un sujet. L'agent n'intervient que lorsque vous le mentionnez avec <code>@</code>.</p>
+<ul>
+<li><strong>Mentionner l'agent</strong> : tapez <code>@</code> puis son nom. Il répond dans un fil sous votre message.</li>
+<li><strong>Mentionner un collègue</strong> : <code>@</code> suivi de son nom, pour le notifier.</li>
+<li><strong>Réagir, épingler, répondre</strong> : survolez un message pour afficher ces actions.</li>
+<li><strong>Rechercher dans un canal</strong> : le bouton <strong>Rechercher</strong>, en haut du canal, retrouve un message parmi les échanges.</li>
+<li><strong>Couper les notifications</strong> : dans le menu <strong>⋯</strong> du canal, choisissez <strong>Mentions uniquement</strong>.</li>
+</ul>
+<h2>Messages directs</h2>
+<p>Pour écrire à un collègue, ouvrez sa fiche profil et cliquez sur <strong>Message</strong>. Si la fonction est activée pour votre compte, vous pouvez y ouvrir une discussion chiffrée de bout en bout, qui n'est jamais enregistrée sur le serveur.</p>` },
+
+{ id: "commentaires", group: "Avec votre équipe", title: "Commentaires et boîte de réception",
+  lead: "Les commentaires permettent d'échanger sur une conversation, une note ou une base de documents sans en modifier le contenu. La boîte de réception rassemble tout ce qui vous concerne.",
+  body: `
+<h2>Commenter</h2>
+<ol>
+<li>Ouvrez la conversation ou la note concernée.</li>
+<li>Sélectionnez le passage à commenter, ou ouvrez l'onglet <strong>Commentaires</strong>. Dans une conversation, vous pouvez aussi taper <code>/comments</code>.</li>
+<li>Rédigez votre commentaire. Pour prévenir un collègue, mentionnez-le avec <code>@</code> suivi de son nom.</li>
+</ol>
+<p>Un passage commenté reste surligné dans la réponse ou dans la note. Chacun peut répondre au commentaire ou y réagir.</p>
+<div class="prompt"><span class="label">Exemple</span>L'associé sélectionne un paragraphe de la note de consultation et écrit : « Vérifier la jurisprudence récente sur ce point, @Aminata. » La collaboratrice est prévenue dans sa boîte de réception.</div>
+<p>On peut commenter les conversations, les notes, les bases de documents, les skills et les modèles de messages auxquels on a accès.</p>
+<div class="note"><span class="label">À savoir</span><p>Un commentaire est visible par toutes les personnes qui ont accès à l'élément commenté. Si l'option n'apparaît pas, elle n'est pas activée pour votre espace.</p></div>
+<h2>Boîte de réception</h2>
+<p>La boîte de réception se trouve dans la barre latérale. Un chiffre indique le nombre d'éléments non lus. Vous y trouvez :</p>
+<ul>
+<li>les commentaires laissés sur vos conversations, notes et documents ;</li>
+<li>les réponses à vos commentaires ;</li>
+<li>les mentions de votre nom dans les commentaires et les canaux ;</li>
+<li>les réponses dans les canaux ;</li>
+<li>les automatisations en échec ;</li>
+<li>les événements à venir de votre calendrier.</li>
+</ul>
+<p>Cliquez sur un élément pour l'ouvrir directement. Le son des notifications se choisit dans <span class="path">Paramètres › Notifications</span>, avec un bouton pour l'écouter.</p>` },
+
+{ id: "connecteurs", group: "Avec votre équipe", title: "Connecteurs",
+  lead: "Les connecteurs relient Legem aOS à vos outils : Gmail, Outlook, Google Drive, OneDrive et SharePoint. L'agent peut alors lire un document ou un e-mail sans que vous le téléchargiez.",
+  body: `
+<h2>Joindre un fichier depuis votre stockage en ligne</h2>
+<ol>
+<li>Cliquez sur <strong>+</strong> dans la zone de saisie.</li>
+<li>Choisissez Google Drive ou OneDrive.</li>
+<li>La première fois, connectez votre compte. Sélectionnez ensuite les fichiers à joindre.</li>
+</ol>
+<p>Pour Google Drive, Legem aOS n'a accès qu'aux fichiers que vous choisissez, pas à tout votre Drive.</p>
+<h2>Travailler avec votre messagerie</h2>
+<p>Une fois le connecteur Gmail ou Outlook activé pour votre compte, vous pouvez demander par exemple :</p>
+<div class="prompt"><span class="label">Exemple</span>Retrouve le dernier e-mail du cabinet adverse dans le dossier Kouassi et résume ses demandes.</div>
+<div class="note"><span class="label">Un autre outil ?</span><p>D'autres connecteurs peuvent être ajoutés à la demande. Écrivez à <span class="path">contact@legem.africa</span>.</p></div>` },
+
+{ id: "comparer-rechercher", group: "Avec votre équipe", title: "Comparer et rechercher",
+  lead: "La vue de comparaison place deux versions d'un texte côte à côte et vous fait passer en revue chaque modification. La recherche retrouve en un endroit vos conversations, notes et messages.",
+  body: `
+<h2>Comparer deux versions d'un texte</h2>
+<ol>
+<li>Collez la version d'origine dans la zone de saisie.</li>
+<li>Cliquez sur <strong>+</strong> puis <strong>Comparer le texte</strong>, ou tapez <code>/compare</code>.</li>
+<li>Collez la version révisée, par exemple celle proposée par l'agent, puis cliquez sur <strong>Comparer</strong>.</li>
+<li>Passez d'une modification à l'autre avec les flèches. Pour chacune, reprenez l'original, la révision, ou gardez les deux.</li>
+<li>Cliquez sur <strong>Utiliser dans le message</strong> pour reprendre le résultat.</li>
+</ol>
+<p>Le menu <strong>⋯</strong> de la vue permet d'ignorer les espaces ou la mise en forme, et de n'afficher que les changements. Le bouton <strong>Annuler</strong> revient en arrière, modification par modification.</p>
+<h2>Rechercher</h2>
+<p>La fenêtre de recherche couvre vos conversations, celles partagées avec vous, vos notes et vos messages de canaux. Des filtres affinent les résultats :</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Filtre</th><th>Affiche</th></tr></thead>
+<tbody>
+<tr><td><code>tag:fiscal</code></td><td>Les conversations portant l'étiquette « fiscal ».</td></tr>
+<tr><td><code>folder:</code></td><td>Les conversations d'un dossier.</td></tr>
+<tr><td><code>pinned:</code></td><td>Les conversations épinglées.</td></tr>
+<tr><td><code>shared:</code></td><td>Les conversations partagées.</td></tr>
+<tr><td><code>archived:</code></td><td>Les conversations archivées.</td></tr>
+</tbody></table></div>` },
+
+{ id: "confidentialite", group: "Bonnes pratiques", title: "Confidentialité et bonnes pratiques",
+  lead: "Vos dossiers sont couverts par le secret professionnel. Quelques réflexes simples permettent d'utiliser Legem aOS en toute sérénité.",
+  body: `
+<h2>Les réflexes à adopter</h2>
+<ol>
+<li><strong>Anonymiser</strong> les documents clients avant de les joindre. Legem aOS propose une anonymisation automatique ou manuelle, à votre choix.</li>
+<li><strong>Vérifier les sources</strong> : l'agent cite les textes. Contrôlez les références importantes sur la source officielle ; en cas d'écart, le Journal officiel fait foi.</li>
+<li><strong>Relire avant de transmettre</strong> : une réponse de l'agent est un point de départ, pas un avis signé.</li>
+<li><strong>Partager avec précision</strong> : partagez avec des personnes ou des groupes nommés, et supprimez le lien quand il n'est plus utile.</li>
+<li><strong>Éviter les canaux ouverts</strong> pour les informations sensibles : ce qui y est écrit est visible de tous leurs membres.</li>
+<li><strong>Utiliser une conversation temporaire</strong> pour une question que vous ne voulez pas garder.</li>
+<li><strong>Protéger son compte</strong> : activez la double authentification et déconnectez-vous sur un poste partagé.</li>
+</ol>
+<div class="note"><span class="label">Information ou conseil ?</span><p>Legem aOS fournit une information juridique et fiscale. Le conseil personnalisé donné au client reste celui du professionnel qui l'utilise.</p></div>` },
+
+{ id: "astuces", group: "Bonnes pratiques", title: "Astuces et questions fréquentes",
+  lead: "Quelques gestes pour aller plus vite, sur ordinateur comme sur téléphone, et les réponses aux questions les plus courantes.",
+  body: `
+<h2>Raccourcis clavier</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Touche</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td><kbd>Entrée</kbd></td><td>Envoyer le message.</td></tr>
+<tr><td><kbd>Maj</kbd> + <kbd>Entrée</kbd></td><td>Aller à la ligne sans envoyer.</td></tr>
+<tr><td><kbd>Échap</kbd></td><td>Retirer les options sélectionnées dans la zone de saisie.</td></tr>
+</tbody></table></div>
+<p>Tous les raccourcis se consultent et se modifient dans <span class="path">Paramètres › Clavier</span>.</p>
+<h2>Sur téléphone et tablette</h2>
+<ul>
+<li>Sur tablette, les fils des canaux, les pages des notes et l'aperçu de la recherche s'ouvrent à côté du contenu.</li>
+<li>Glissez le doigt vers la droite pour ouvrir la barre latérale, vers la gauche pour la fermer.</li>
+<li>Dans une conversation, glissez vers la gauche pour ouvrir le panneau latéral.</li>
+<li>Le menu <strong>⋯</strong> de chaque conversation reste visible, sans survol.</li>
+</ul>
+<h2>Questions fréquentes</h2>
+<h3>La réponse s'est arrêtée au milieu.</h3>
+<p>Régénérez la réponse. Si la connexion a été coupée, rechargez la page : la conversation reprend où elle en était. Si un message vous invite à réessayer, relancez simplement la réponse.</p>
+<h3>L'agent ne trouve pas une information dans mon document.</h3>
+<p>Pour un long document, cliquez sur le fichier joint et passez-le en mode <strong>Document entier</strong>, ou indiquez à l'agent la page ou l'article à lire. Vérifiez aussi qu'il ne s'agit pas d'un scan de mauvaise qualité.</p>
+<h3>Une ligne « Contexte compacté » est apparue.</h3>
+<p>La conversation était longue : les premiers échanges ont été résumés pour continuer. Cliquez sur la ligne pour lire le résumé.</p>
+<h3>Je ne vois pas une fonction décrite ici.</h3>
+<p>Certaines fonctions sont activées selon votre abonnement. Écrivez à <span class="path">contact@legem.africa</span>.</p>
+<h3>J'ai perdu mon téléphone.</h3>
+<p>Connectez-vous avec un code de secours, puis remplacez votre application d'authentification. Sans code de secours, contactez l'équipe Legem Africa.</p>` }
+];
+
+const toc = document.getElementById("toc");
+const page = document.getElementById("page");
+const q = document.getElementById("q");
+const side = document.getElementById("side");
+const menuBtn = document.getElementById("menu-btn");
+const pad = n => String(n).padStart(2, "0");
+
+function buildToc() {
+  let html = "", group = "";
+  P.forEach((p, i) => {
+    if (p.group !== group) { group = p.group; html += '<li class="toc-group">' + group + '</li>'; }
+    html += '<li><a href="#' + p.id + '" data-id="' + p.id + '"><span class="n">' + pad(i) + '</span><span>' + p.title + '</span></a></li>';
+  });
+  toc.innerHTML = html;
+}
+
+function render(id) {
+  const i = Math.max(0, P.findIndex(p => p.id === id));
+  const p = P[i];
+  const prev = P[i - 1], next = P[i + 1];
+  page.innerHTML =
+    '<div class="crumb"><span>Fiche ' + pad(i) + ' · ' + p.group + '</span><span class="draft">Ébauche</span></div>' +
+    '<h1>' + p.title + '</h1><p class="lead">' + p.lead + '</p>' + p.body +
+    '<nav class="pager" aria-label="Fiches voisines">' +
+      (prev ? '<a href="#' + prev.id + '"><small>Précédent</small><span>' + prev.title + '</span></a>' : '') +
+      (next ? '<a class="next" href="#' + next.id + '"><small>Suivant</small><span>' + next.title + '</span></a>' : '') +
+    '</nav>';
+  toc.querySelectorAll("a").forEach(a => {
+    if (a.dataset.id === p.id) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+  });
+  document.title = (p.id === "accueil" ? "" : p.title + " · ") + "Manuel Legem aOS";
+}
+
+const plain = html => { const d = document.createElement("div"); d.innerHTML = html; return d.textContent.replace(/\s+/g, " ").trim(); };
+const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+const index = P.map(p => ({ p, text: plain(p.lead + " " + p.body) }));
+const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+function search(term) {
+  const t = norm(term.trim());
+  if (t.length < 2) { render(location.hash.slice(1) || "accueil"); return; }
+  const hits = index.map(({ p, text }) => {
+    const hay = norm(p.title + " " + text);
+    if (!hay.includes(t)) return null;
+    const pos = norm(text).indexOf(t);
+    let snip = pos >= 0 ? text.slice(Math.max(0, pos - 60), pos + t.length + 90) : p.lead;
+    if (pos > 60) snip = "… " + snip;
+    const sp = norm(snip).indexOf(t);
+    const out = sp >= 0 ? esc(snip.slice(0, sp)) + "<mark>" + esc(snip.slice(sp, sp + t.length)) + "</mark>" + esc(snip.slice(sp + t.length)) : esc(snip);
+    return { p, out, score: norm(p.title).includes(t) ? 0 : 1 };
+  }).filter(Boolean).sort((a, b) => a.score - b.score);
+  page.innerHTML = '<div class="results"><div class="crumb"><span>Recherche</span></div><h1>' + hits.length + ' fiche' + (hits.length > 1 ? 's' : '') + ' pour « ' + esc(term.trim()) + ' »</h1>' +
+    (hits.length ? hits.map(h => '<a class="result" href="#' + h.p.id + '"><strong>' + h.p.title + '</strong><span class="snip">' + h.out + '</span></a>').join("")
+                 : '<p class="empty">Aucune fiche ne contient ce terme. Essayez un mot plus court, par exemple « dossier », « partager » ou « Excel ».</p>') + '</div>';
+}
+
+function closeMenuOnMobile() {
+  if (window.matchMedia("(max-width: 860px)").matches) { side.classList.add("closed"); menuBtn.setAttribute("aria-expanded", "false"); }
+}
+
+buildToc();
+render(location.hash.slice(1) || "accueil");
+closeMenuOnMobile();
+
+window.addEventListener("hashchange", () => {
+  q.value = "";
+  render(location.hash.slice(1) || "accueil");
+  closeMenuOnMobile();
+  window.scrollTo(0, 0);
+});
+q.addEventListener("input", () => search(q.value));
+q.addEventListener("keydown", e => { if (e.key === "Escape") { q.value = ""; search(""); } });
+menuBtn.addEventListener("click", () => {
+  const open = side.classList.toggle("closed") === false;
+  menuBtn.setAttribute("aria-expanded", String(open));
+});
+toc.addEventListener("click", e => {
+  const a = e.target.closest("a");
+  if (a && ("#" + a.dataset.id) === location.hash) { q.value = ""; render(a.dataset.id); closeMenuOnMobile(); }
+});
+</script>
