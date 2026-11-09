@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Manuel Legem aOS</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -123,6 +128,11 @@ kbd {
   border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px;
   padding: 0 5px; background: var(--bg);
 }
+.chip {
+  font-size: 12.5px; white-space: nowrap;
+  border: 1px solid var(--line); border-radius: 999px;
+  padding: 1px 8px; background: var(--surface); color: var(--ink-soft);
+}
 
 .note {
   border: 1px solid var(--line); border-radius: 6px;
@@ -202,6 +212,8 @@ td code, .page code { font-family: var(--f-mono); font-size: 13.5px; }
   @keyframes rise { from { transform: translateY(6px); } to { transform: none; } }
 }
 </style>
+</head>
+<body>
 
 <div class="topbar">
   <a class="brand" href="#accueil"><span class="logo">L</span><span class="brand-text"><span class="brand-name">Legem aOS</span><span class="brand-sub">Manuel</span></span></a>
@@ -216,7 +228,7 @@ td code, .page code { font-family: var(--f-mono); font-size: 13.5px; }
       <input id="q" type="search" placeholder="Rechercher dans le manuel" aria-label="Rechercher dans le manuel" autocomplete="off">
     </div>
     <ul class="toc" id="toc"></ul>
-    <div class="side-foot">Une question ? <span>contact@legem.africa</span><br>Legem Africa, Abidjan</div>
+    <div class="side-foot">Une question ? <span>contact@legem.africa</span><br>Legem Africa, Abidjan<br>Mise à jour : 09/11/2026</div>
   </nav>
 
   <main class="main" id="main" tabindex="-1">
@@ -229,23 +241,28 @@ const P = [
 { id: "accueil", group: "Bien démarrer", title: "Bienvenue dans Legem aOS",
   lead: "Legem aOS est votre espace de travail juridique et fiscal. Vous y posez vos questions à l'agent Legem, vous travaillez sur vos documents et vous organisez vos dossiers clients, au même endroit.",
   body: `
-<p>L'agent connaît le droit ivoirien, le droit OHADA, les textes UEMOA et CEDEAO, le Code CIMA et la fiscalité ivoirienne. Il cite les textes sur lesquels il s'appuie, pour que vous puissiez les vérifier.</p>
+<p>L'agent connaît le droit ivoirien, le droit OHADA et la jurisprudence de la CCJA, les textes UEMOA, BCEAO et CEDEAO, le Code CIMA, le droit OAPI, la fiscalité ivoirienne et les décisions des hautes juridictions ivoiriennes. Il cite les textes sur lesquels il s'appuie : un clic sur un renvoi ouvre l'article ou la décision cité, pour que vous puissiez le vérifier.</p>
 <div class="note strong"><span class="label">À garder en tête</span><p>Legem aOS vous apporte une information juridique et fiscale fiable et sourcée. Il ne remplace pas votre analyse professionnelle : relisez toujours une réponse avant de la transmettre à un client ou de l'utiliser dans un acte.</p></div>
 <h2>Par où commencer</h2>
 <p>Si vous découvrez la plateforme, lisez les fiches dans l'ordre. Sinon, allez directement à la fonction qui vous intéresse.</p>
 <div class="grid-cards">
   <a class="card" href="#premiers-pas"><span class="n">01</span><strong>Premiers pas</strong><span class="d">Se connecter, sécuriser son compte, découvrir l'écran.</span></a>
   <a class="card" href="#discuter"><span class="n">02</span><strong>Discuter avec l'agent</strong><span class="d">Bien formuler une question et exploiter la réponse.</span></a>
-  <a class="card" href="#fichiers"><span class="n">03</span><strong>Travailler sur des fichiers</strong><span class="d">Word, Excel, PowerPoint et PDF.</span></a>
-  <a class="card" href="#dossiers"><span class="n">04</span><strong>Organiser ses dossiers</strong><span class="d">Un dossier par client ou par affaire.</span></a>
-  <a class="card" href="#collaboration"><span class="n">10</span><strong>Travailler à plusieurs</strong><span class="d">Partager, répondre ensemble, canaux.</span></a>
-  <a class="card" href="#confidentialite"><span class="n">14</span><strong>Confidentialité</strong><span class="d">Les bons réflexes avec les données clients.</span></a>
+  <a class="card" href="#sources"><span class="n">03</span><strong>Vérifier les sources</strong><span class="d">Renvois cliquables, textes abrogés, limites de la réponse.</span></a>
+  <a class="card" href="#fichiers"><span class="n">04</span><strong>Travailler sur des fichiers</strong><span class="d">Word, Excel, PowerPoint et PDF.</span></a>
+  <a class="card" href="#dossiers"><span class="n">05</span><strong>Organiser ses dossiers</strong><span class="d">Un dossier par client ou par affaire.</span></a>
+  <a class="card" href="#collaboration"><span class="n">11</span><strong>Travailler à plusieurs</strong><span class="d">Partager, répondre ensemble, canaux.</span></a>
+  <a class="card" href="#connecteurs"><span class="n">13</span><strong>Connecteurs et messagerie</strong><span class="d">Vos documents en ligne et vos e-mails avec LEGEM Mail.</span></a>
+  <a class="card" href="#confidentialite"><span class="n">15</span><strong>Confidentialité</strong><span class="d">Les bons réflexes et l'anonymisation des documents clients.</span></a>
 </div>
 <h2>Ce que vous pouvez faire</h2>
 <ul>
 <li>Poser une question de droit ou de fiscalité et obtenir une réponse sourcée.</li>
+<li>Ouvrir d'un clic le texte de chaque article ou décision cité dans une réponse.</li>
 <li>Faire analyser, comparer ou rédiger un contrat, un acte, des statuts ou une note.</li>
+<li>Anonymiser un document client avant de le faire analyser.</li>
 <li>Faire préparer un tableau de calcul fiscal ou une simulation dans un fichier Excel.</li>
+<li>Faire lire, trier et préparer vos e-mails par l'agent, qui n'envoie rien sans votre confirmation.</li>
 <li>Ranger vos conversations par client, avec des instructions et des documents propres à chaque dossier.</li>
 <li>Programmer des rappels d'échéance et des tâches qui reviennent chaque semaine ou chaque mois.</li>
 <li>Travailler à plusieurs sur un même dossier, en direct.</li>
@@ -260,6 +277,7 @@ const P = [
 <li>Saisissez votre e-mail et votre mot de passe.</li>
 <li>Si un code vous est demandé, ouvrez votre application d'authentification et saisissez le code affiché.</li>
 </ol>
+<p>La plateforme s'affiche sous le nom <strong>Legem</strong>, avec le logo de Legem Africa.</p>
 <h2>Activer la double authentification</h2>
 <p>La double authentification protège votre compte même si votre mot de passe est découvert. Lors de votre première connexion après son activation :</p>
 <ol>
@@ -292,11 +310,15 @@ const P = [
 <h2>Bien formuler une question</h2>
 <ul>
 <li><strong>Le contexte</strong> : type de société, secteur, période, qualité des parties.</li>
+<li><strong>La date des faits</strong> : date de l'acte, de la saisie, de l'exercice fiscal. L'agent applique le texte en vigueur à cette date, même s'il a été abrogé depuis.</li>
 <li><strong>La question</strong> : ce que vous voulez savoir ou obtenir.</li>
 <li><strong>Le format</strong> : note, tableau, projet de clause, liste de points à vérifier.</li>
 </ul>
 <div class="prompt"><span class="label">Exemple</span>Une SARL ivoirienne veut augmenter son capital par apport en numéraire. Quelles sont les étapes et les conditions prévues par l'Acte uniforme OHADA relatif au droit des sociétés commerciales ? Présente la réponse sous forme de liste chronologique, avec les articles.</div>
 <div class="prompt"><span class="label">Exemple</span>Prépare un tableau de calcul de l'impôt sur les bénéfices pour une entreprise ivoirienne avec les données suivantes : [vos chiffres]. Indique les textes appliqués.</div>
+<h2>Ce que contient une réponse</h2>
+<p>Pour une question de droit ou de fiscalité, l'agent répond d'abord sur le fond, puis présente les textes et les décisions qui fondent sa réponse. Il termine par une rubrique <strong>Sources</strong>, une rubrique <strong>Limites</strong> quand il y en a, et un court avertissement. S'il lui manque une information pour conclure, il la demande dans <strong>Questions à préciser</strong>.</p>
+<p>Chaque affirmation tirée d'un texte est suivie d'un renvoi cliquable qui ouvre l'article ou la décision. Voir la fiche <a href="#sources">Vérifier les sources</a>.</p>
 <h2>Pendant et après la réponse</h2>
 <ul>
 <li><strong>Arrêter</strong> : le bouton carré interrompt une réponse en cours.</li>
@@ -333,6 +355,27 @@ const P = [
 <h2>Longues conversations</h2>
 <p>Quand une conversation devient très longue, Legem aOS résume automatiquement les échanges les plus anciens pour continuer. Une ligne « Contexte compacté » l'indique ; cliquez dessus pour lire le résumé. Pour un nouveau sujet, ouvrez plutôt une nouvelle conversation.</p>` },
 
+{ id: "sources", group: "Le quotidien", title: "Vérifier les sources",
+  lead: "Chaque réponse de l'agent s'appuie sur des extraits de textes et de décisions tirés de la base documentaire de Legem. Un clic sur un renvoi ouvre le texte de l'article ou de la décision cité.",
+  body: `
+<h2>Les renvois cliquables</h2>
+<p>Après chaque affirmation tirée d'un texte, l'agent place un renvoi : une petite étiquette qui indique le texte et l'article, par exemple <span class="chip">AUPSRVE-2023, art. 92</span> ou <span class="chip">Loi n° 2018-975, art. 751</span>. Pour une décision, l'étiquette indique la juridiction et le numéro, par exemple <span class="chip">CCJA, 3e ch., 09/04/2020, n° 109/2020</span> ; une étiquette longue est abrégée à l'écran.</p>
+<ul>
+<li><strong>Cliquez sur un renvoi</strong> : une fenêtre affiche le texte de l'article ou de la décision tel qu'il figure dans la base, avec ses références. Pour un texte long, le bouton <strong>Show all</strong> affiche la suite.</li>
+<li>Une étiquette suivie de <strong>+2</strong>, <strong>+3</strong>… regroupe plusieurs extraits cités ensemble.</li>
+<li>Le bouton placé sous la réponse, par exemple <strong>12 Sources</strong>, liste tous les extraits utilisés.</li>
+</ul>
+<div class="note"><span class="label">Fenêtre « Référence non vérifiée »</span><p>Elle signale que l'agent a cité un extrait qu'il n'a pas consulté pendant cette réponse. Ne reprenez pas l'affirmation sans l'avoir vérifiée sur le texte officiel, ou reposez la question dans une nouvelle conversation.</p></div>
+<h2>Les rubriques Sources et Limites</h2>
+<p>La rubrique <strong>Sources</strong> liste les textes (intitulé officiel, articles, édition) et les décisions (référence complète) réellement utilisés. La rubrique <strong>Limites</strong> dit ce que l'agent n'a pas pu établir : un article qu'il n'a pas trouvé, une version incertaine, une question que les textes ne tranchent pas. Lisez-la avant d'utiliser la réponse.</p>
+<p>Si un texte manque dans la base, l'agent le dit. Il peut le compléter par un site officiel (Journal officiel, ministère, OHADA, UEMOA…) ; il le signale alors comme « source en ligne », avec l'adresse et la date de consultation.</p>
+<h2>Textes abrogés et versions anciennes</h2>
+<p>Un texte abrogé ou caduc n'est jamais présenté comme le droit en vigueur. Quand l'agent le cite, c'est pour des faits anciens ou pour comparer, et il le précise.</p>
+<p>La base contient aussi les <strong>versions d'origine des Actes uniformes OHADA</strong> adoptées de 1997 à 2000 : droit commercial général, sociétés commerciales et GIE, sûretés, voies d'exécution, procédures collectives, arbitrage et comptabilité. De nombreux arrêts de la CCJA appliquent ces versions. L'agent peut donc lire l'article tel qu'il était, le comparer au texte en vigueur et dire si la règle a changé. Il le cite alors comme « version d'origine, abrogée ».</p>
+<div class="prompt"><span class="label">Exemple</span>Que prévoyait l'article 32 de l'Acte uniforme sur les voies d'exécution de 1998, tel qu'appliqué par la CCJA, et qu'est-ce qui a changé avec l'Acte uniforme de 2023 ?</div>
+<p>Indiquez toujours la date des faits, de l'acte ou de la procédure : c'est elle qui détermine la version applicable. Par exemple, une saisie engagée avant l'entrée en vigueur de l'Acte uniforme de 2023 reste soumise à celui de 1998.</p>
+<div class="note"><span class="label">À garder en tête</span><p>La base documentaire est large, mais elle ne contient pas tous les textes ni toutes les décisions, et un extrait peut ne montrer qu'une partie d'un long article ou d'une longue décision. Pour un acte important ou un contentieux, vérifiez le texte sur la source officielle ; en cas d'écart, le Journal officiel fait foi.</p></div>` },
+
 { id: "fichiers", group: "Le quotidien", title: "Travailler sur des fichiers",
   lead: "L'agent lit, analyse, modifie et crée des fichiers Word, Excel, PowerPoint et PDF. Vous voyez un aperçu fidèle du document avant de le télécharger.",
   body: `
@@ -356,7 +399,7 @@ const P = [
 <p>Sur grand écran, le bouton <strong>Écran partagé</strong> divise l'espace en deux volets réglables : le document d'un côté, la conversation de l'autre. Vous pouvez aussi faire glisser un onglet vers un bord de l'écran.</p>
 <p>Les onglets ouverts sont conservés pour chaque conversation. Vous les retrouvez en la rouvrant, même sur un autre appareil.</p>
 <div class="prompt"><span class="label">Exemple</span>À partir des données jointes, crée un fichier Excel qui simule l'impôt dû sur trois scénarios de chiffre d'affaires, avec une feuille par scénario et un récapitulatif.</div>
-<div class="note"><span class="label">Bon réflexe</span><p>Anonymisez les documents clients avant de les joindre : remplacez les noms, adresses et numéros par des mentions neutres. Voir la fiche Confidentialité.</p></div>` },
+<div class="note"><span class="label">Bon réflexe</span><p>Avant de faire analyser un document client, anonymisez-le avec l'outil LEGEM Anonymisation, puis faites travailler l'agent sur la version anonymisée. Voir la fiche Confidentialité.</p></div>` },
 
 { id: "dossiers", group: "S'organiser", title: "Organiser ses dossiers",
   lead: "Un dossier regroupe les conversations d'un même client ou d'une même affaire. Il peut aussi porter des instructions et des documents qui s'appliquent à toutes ses conversations.",
@@ -544,8 +587,8 @@ const P = [
 </ul>
 <p>Cliquez sur un élément pour l'ouvrir directement. Le son des notifications se choisit dans <span class="path">Paramètres › Notifications</span>, avec un bouton pour l'écouter.</p>` },
 
-{ id: "connecteurs", group: "Avec votre équipe", title: "Connecteurs",
-  lead: "Les connecteurs relient Legem aOS à vos outils : Gmail, Outlook, Google Drive, OneDrive et SharePoint. L'agent peut alors lire un document ou un e-mail sans que vous le téléchargiez.",
+{ id: "connecteurs", group: "Avec votre équipe", title: "Connecteurs et messagerie",
+  lead: "Les connecteurs relient Legem aOS à vos outils : Google Drive, OneDrive et SharePoint pour vos documents, et votre messagerie avec l'outil LEGEM Mail. L'agent peut alors lire un document ou un e-mail sans que vous le téléchargiez.",
   body: `
 <h2>Joindre un fichier depuis votre stockage en ligne</h2>
 <ol>
@@ -554,9 +597,26 @@ const P = [
 <li>La première fois, connectez votre compte. Sélectionnez ensuite les fichiers à joindre.</li>
 </ol>
 <p>Pour Google Drive, Legem aOS n'a accès qu'aux fichiers que vous choisissez, pas à tout votre Drive.</p>
-<h2>Travailler avec votre messagerie</h2>
-<p>Une fois le connecteur Gmail ou Outlook activé pour votre compte, vous pouvez demander par exemple :</p>
-<div class="prompt"><span class="label">Exemple</span>Retrouve le dernier e-mail du cabinet adverse dans le dossier Kouassi et résume ses demandes.</div>
+<h2>Votre messagerie avec LEGEM Mail</h2>
+<p>L'outil LEGEM Mail permet à l'agent de chercher et de lire vos e-mails, d'en enregistrer les pièces jointes, de préparer vos réponses et, avec votre accord, de les envoyer.</p>
+<h3>Le configurer une fois</h3>
+<ol>
+<li>Dans une conversation, cliquez sur <strong>+</strong> à gauche de la zone de saisie, puis sur <strong>Outils</strong>.</li>
+<li>Au bout de la ligne <strong>LEGEM Mail</strong>, cliquez sur la roue dentée.</li>
+<li>Choisissez votre fournisseur de messagerie, puis saisissez votre adresse et un <strong>mot de passe d'application</strong>, créé dans les réglages de sécurité de votre messagerie. N'utilisez pas votre mot de passe habituel.</li>
+</ol>
+<p>Ces réglages sont personnels et le mot de passe reste masqué.</p>
+<h3>L'utiliser</h3>
+<div class="prompt"><span class="label">Exemple</span>Montre-moi mes 5 derniers mails non lus.</div>
+<div class="prompt"><span class="label">Exemple</span>Retrouve le dernier e-mail du cabinet adverse dans le dossier Kouassi, résume ses demandes et enregistre ses pièces jointes.</div>
+<div class="prompt"><span class="label">Exemple</span>Prépare une réponse avec le fichier joint.</div>
+<ul>
+<li>Une réponse préparée est enregistrée dans vos <strong>Brouillons</strong>.</li>
+<li><strong>Rien ne part sans votre accord</strong> : avant chaque envoi, une fenêtre affiche les destinataires, l'objet, les pièces jointes et le début du message. <strong>Confirmer</strong> envoie ; <strong>Annuler</strong> n'envoie rien. Sans confirmation claire, rien n'est envoyé.</li>
+<li>La mise à la corbeille demande aussi votre confirmation.</li>
+<li>Seuls les fichiers de la conversation en cours peuvent être joints à un e-mail.</li>
+</ul>
+<div class="note"><span class="label">Prudence</span><p>Le contenu d'un e-mail reçu est traité comme une donnée extérieure : l'agent ne suit jamais les consignes qu'il contient. Relisez toujours un brouillon avant de l'envoyer.</p></div>
 <div class="note"><span class="label">Un autre outil ?</span><p>D'autres connecteurs peuvent être ajoutés à la demande. Écrivez à <span class="path">contact@legem.africa</span>.</p></div>` },
 
 { id: "comparer-rechercher", group: "Avec votre équipe", title: "Comparer et rechercher",
@@ -588,14 +648,31 @@ const P = [
   body: `
 <h2>Les réflexes à adopter</h2>
 <ol>
-<li><strong>Anonymiser</strong> les documents clients avant de les joindre. Legem aOS propose une anonymisation automatique ou manuelle, à votre choix.</li>
-<li><strong>Vérifier les sources</strong> : l'agent cite les textes. Contrôlez les références importantes sur la source officielle ; en cas d'écart, le Journal officiel fait foi.</li>
+<li><strong>Anonymiser</strong> les documents clients avant de les faire analyser, avec l'outil LEGEM Anonymisation (ci-dessous).</li>
+<li><strong>Vérifier les sources</strong> : l'agent cite les textes et un clic sur chaque renvoi ouvre l'extrait utilisé. Contrôlez les références importantes sur la source officielle ; en cas d'écart, le Journal officiel fait foi.</li>
 <li><strong>Relire avant de transmettre</strong> : une réponse de l'agent est un point de départ, pas un avis signé.</li>
 <li><strong>Partager avec précision</strong> : partagez avec des personnes ou des groupes nommés, et supprimez le lien quand il n'est plus utile.</li>
 <li><strong>Éviter les canaux ouverts</strong> pour les informations sensibles : ce qui y est écrit est visible de tous leurs membres.</li>
 <li><strong>Utiliser une conversation temporaire</strong> pour une question que vous ne voulez pas garder.</li>
 <li><strong>Protéger son compte</strong> : activez la double authentification et déconnectez-vous sur un poste partagé.</li>
 </ol>
+<h2>Anonymiser un document avec LEGEM Anonymisation</h2>
+<ol>
+<li>Joignez le document à la conversation (Word, Excel ou PDF), puis demandez : « Anonymise ce contrat ».</li>
+<li>Une fenêtre de validation affiche les éléments détectés, regroupés par type : personnes, sociétés, adresses e-mail, téléphones, références bancaires, numéros de compte contribuable… Vérifiez la liste.</li>
+<li>Corrigez-la si besoin en écrivant dans la fenêtre, par exemple « ajouter Kouassi ; ignorer Cour suprême ». Le type d'un terme ajouté est deviné ; vous pouvez le préciser : « Baobab:SOCIETE ». La fenêtre se met à jour.</li>
+<li>Validez. Vous recevez le document anonymisé et une table de restitution au format Excel.</li>
+<li>Faites ensuite travailler l'agent sur le document anonymisé.</li>
+<li>Pour remettre les vrais noms dans un document, demandez par exemple : « Désanonymise contrat_anonymise.docx ».</li>
+</ol>
+<p>Pour un nom à masquer dans tous vos documents, celui d'un client régulier par exemple, demandez à l'agent de l'ajouter à votre glossaire d'anonymisation.</p>
+<div class="note"><span class="label">Ce que garantit l'outil</span><ul>
+<li>L'agent ne voit jamais les noms et numéros d'origine : il ne reçoit que des codes.</li>
+<li>Dans un Word, la mise en forme est conservée ; les en-têtes, pieds de page, notes et commentaires sont traités, et les propriétés du fichier (auteur, etc.) sont vidées.</li>
+<li>Dans un PDF, les passages sont réellement effacés. Un PDF scanné, qui ne contient qu'une image, ne peut pas être anonymisé : l'outil le signale par un avertissement « page(s) sans texte ».</li>
+<li>Conservez la table de restitution Excel : c'est elle qui permet de retrouver les noms. Sur le serveur, les tables d'une conversation inactive sont effacées après 90 jours.</li>
+</ul></div>
+<p>Relisez toujours le document anonymisé avant de l'utiliser : la détection est automatique et peut laisser passer un nom.</p>
 <div class="note"><span class="label">Information ou conseil ?</span><p>Legem aOS fournit une information juridique et fiscale. Le conseil personnalisé donné au client reste celui du professionnel qui l'utilise.</p></div>` },
 
 { id: "astuces", group: "Bonnes pratiques", title: "Astuces et questions fréquentes",
@@ -622,6 +699,12 @@ const P = [
 <p>Régénérez la réponse. Si la connexion a été coupée, rechargez la page : la conversation reprend où elle en était. Si un message vous invite à réessayer, relancez simplement la réponse.</p>
 <h3>L'agent ne trouve pas une information dans mon document.</h3>
 <p>Pour un long document, cliquez sur le fichier joint et passez-le en mode <strong>Document entier</strong>, ou indiquez à l'agent la page ou l'article à lire. Vérifiez aussi qu'il ne s'agit pas d'un scan de mauvaise qualité.</p>
+<h3>Un renvoi ouvre une fenêtre « Référence non vérifiée ».</h3>
+<p>L'agent a cité un extrait qu'il n'a pas consulté pendant cette réponse. Vérifiez l'affirmation sur le texte officiel, ou reposez la question dans une nouvelle conversation.</p>
+<h3>L'agent cite un texte abrogé.</h3>
+<p>C'est voulu quand les faits sont anciens, ou pour expliquer un arrêt rendu sous l'ancien texte : il le présente alors comme abrogé et le compare au texte en vigueur. Précisez la date des faits pour qu'il applique la bonne version.</p>
+<h3>L'anonymisation affiche « page(s) sans texte ».</h3>
+<p>Le PDF est scanné : il ne contient qu'une image et ne peut pas être anonymisé. Utilisez plutôt la version Word du document, ou un PDF enregistré directement depuis le traitement de texte.</p>
 <h3>Une ligne « Contexte compacté » est apparue.</h3>
 <p>La conversation était longue : les premiers échanges ont été résumés pour continuer. Cliquez sur la ligne pour lire le résumé.</p>
 <h3>Je ne vois pas une fonction décrite ici.</h3>
@@ -711,3 +794,5 @@ toc.addEventListener("click", e => {
   if (a && ("#" + a.dataset.id) === location.hash) { q.value = ""; render(a.dataset.id); closeMenuOnMobile(); }
 });
 </script>
+</body>
+</html>
